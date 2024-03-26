@@ -1,1 +1,62 @@
-<p>register works!</p>
+<!-- source:https://codepen.io/owaiswiz/pen/jOPvEPB -->
+<div class="  text-gray-900 flex justify-center" style="height: 100vh; background-color: #09070e;">
+    <div class="max-w-screen-xl m-0 sm:m-10  shadow sm:rounded-lg flex justify-center flex-1" style="background-color: #19181d;">
+        <div class="flex-1 text-center hidden lg:flex" style="background-color: #141317;">
+            <div class="m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat img"></div>
+        </div>
+        <div class="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
+            <section class="logo-cont flex justify-center items-center ">
+                <div class="logo h-full w-full"></div>
+            </section>
+            <div class="mt-5 flex flex-col items-center justify-center">
+                <div class="w-full flex-1 mt-8">
+                    <div class="mx-auto max-w-xs">
+                        <div class="textInputWrapper">
+                            <input 
+                            [(ngModel)]="name"
+                            name="name"
+                            placeholder="User name" type="text" class="textInput">
+                        </div>
+                        <div class="textInputWrapper">
+                            <input 
+                            [(ngModel)]="email"
+                            name="email"
+                            placeholder="email" type="text" class="textInput">
+                        </div>
+                        <div class="textInputWrapper">
+                            <input 
+                            [(ngModel)]="password"
+                            name="password"
+                            placeholder="password" type="text" class="textInput">
+                        </div>
+                        <div class="textInputWrapper">
+                            <input 
+                            [(ngModel)]="confirmPassword"
+                            name="confirmPassword"
+                            placeholder="repeat password" type="text" class="textInput">
+                        </div>
+                        <button
+                            class="mt-5 tracking-wide font-semibold text-white-500 w-full py-4 rounded-lg hover:bg-green-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none" style="background-color: #a3e583;">
+                            <svg class="w-6 h-6 -ml-2" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+                                <circle cx="8.5" cy="7" r="4" />
+                                <path d="M20 8v6M23 11h-6" />
+                            </svg>
+                            <span class="ml-">
+                                Register account
+                            </span>
+                        </button>
+                        <p class="mt-6 text-xs text-gray-600 text-center">
+                            Already have an account?
+                            <a  
+                            (click)="login()"
+                            class="hover:underline cursor-pointer text-green-500">
+                            Login</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
