@@ -1,0 +1,47 @@
+
+
+section{
+    border-radius: 20px;
+grid-template-rows: 1fr 4fr 1fr;
+}
+
+.img{
+    width: 5rem;
+    height: 4rem;
+    background-image: url('../../../../resources/images/icons/icoGlobal.png');
+    background-size: cover;
+    background-position: center;
+}
+.cover{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    height: 4rem;
+    transition:  0.5s;
+}
+
+/*
+    Estilo cuando esta seleccionado 
+    CAMBIAR POR JS 
+ */
+.cover:first-child{
+    background-color: #19181d;
+    border-radius: 14px;
+}
+.cover:first-child i {
+    color: white;
+}
+/*  */
+.cover:hover{
+    background-color: #19181d;
+    border-radius: 14px;
+    transition: 0.5s;
+}
+.cover:hover i{
+    color: white;
+}
+.cover .bi, .profile .bi{
+    font-size: 1.4rem;
+    color: #4f4e55;
+}
