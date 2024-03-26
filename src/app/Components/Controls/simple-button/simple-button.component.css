@@ -1,0 +1,11 @@
+.cover{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    transition:  0.5s;
+    background-color: #19181d;
+    border-radius: 10px;
+}
+

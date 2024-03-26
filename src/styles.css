@@ -5,14 +5,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
 
 body{
-    background-color: #19181d;
+    background-color: #141317;
     color: #e2e8f0;
     font-family: "Comfortaa", sans-serif;
     font-optical-sizing: auto;
 }
 
-.sb-text{
+.sub-text{
     font-size: 0.8rem;
+    color: #49484b;
+}
+
+.sb-text{
+    font-size: 1.2rem;
     color: #49484b;
 }
 
@@ -26,6 +31,15 @@ body{
     font-weight: 600;
 }
 
+
+.custom-scrollbar::-webkit-scrollbar {
+    display: none; 
+}
+
+.custom-scrollbar {
+    -ms-overflow-style: none;  
+    scrollbar-width: none; 
+}
 
 
 
