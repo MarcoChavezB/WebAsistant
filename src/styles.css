@@ -1,1 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
+
+body{
+    background-color: #19181d;
+    color: #e2e8f0;
+    font-family: "Comfortaa", sans-serif;
+    font-optical-sizing: auto;
+}
+
+.sb-text{
+    font-size: 0.8rem;
+    color: #49484b;
+}
+
+.nm-text{
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.hd-text{
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+
+
+

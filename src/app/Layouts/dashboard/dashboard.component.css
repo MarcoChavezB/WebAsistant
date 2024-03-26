@@ -1,0 +1,9 @@
+
+main{
+    height: 99vh;
+}
+
+.contenedor{
+    grid-template-columns: 1fr 13fr;
+    gap: 20px;
+}
