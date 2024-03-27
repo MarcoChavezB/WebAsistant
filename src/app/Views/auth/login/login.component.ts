@@ -18,7 +18,10 @@ export class LoginComponent {
     email: string = ''
     password: string = ''
 
-
+    login(){
+        console.log('login')
+        this.router.navigate(['verify-code'])
+    }
     register(){
         this.router.navigate(['/register'])
     }

@@ -1,0 +1,16 @@
+.modal-mapa{
+    position: absolute;
+    width: 30%;
+    height: 30%;
+    z-index: 1000;
+    bottom: 0;
+    right: 0;
+    background-image: url('https://th.bing.com/th/id/OIP.Xl33AAWnwUNysT_nFRsUEgHaHa?rs=1&pid=ImgDetMain');
+}
+
+.modal-camara{
+    background-image: url('https://th.bing.com/th/id/R.63858388319c421520299cea2538afc4?rik=0WHwe0NNoe9UZA&riu=http%3a%2f%2fcloakroommedia.com%2fwp-content%2fuploads%2f2016%2f01%2ffreefly-TERO.jpg&ehk=s%2fmUnHPyLoAo9Aj7NXEx%2bzo1NJE5ebjq2ldzucigIgA%3d&risl=&pid=ImgRaw&r=0');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}

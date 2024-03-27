@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { SimpleButtonComponent } from '../../../Components/Controls/simple-button/simple-button.component';
-import { CardSensorComponent } from '../../../Components/Cards/card-sensor/card-sensor.component';
 import { RowComponent } from '../../../Components/Sections/Table/row/row.component';
 import { HeaderComponent } from '../../../Components/Sections/Table/header/header.component';
 import { RouterOutlet } from '@angular/router';
@@ -10,7 +9,6 @@ import { RouterOutlet } from '@angular/router';
   standalone: true,
   imports: [
     SimpleButtonComponent,
-    CardSensorComponent,
     RouterOutlet
   ],
   templateUrl: './home.component.html',

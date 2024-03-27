@@ -1,39 +1,55 @@
 <div class="h-full w-full flex flex-col md:flex-row p-4" style="background-color: #09070e;">
-  <!-- Paneles de video y mapa -->
   <div class="flex-grow flex flex-col justify-between mr-4 md:mr-0 md:mb-4">
-    <!-- Panel de video -->
-    <div class="flex-grow mb-4 bg-gray-800 rounded-lg shadow-lg">
-      <!-- Aquí iría el video de la cámara -->
-      <p class="text-center text-white">Video de la cámara</p>
-    </div>
-    <!-- Panel del mapa -->
-    <div class="flex-grow bg-gray-700 rounded-lg shadow-lg">
-      <!-- Aquí iría el mapa -->
-      <p class="text-center text-white">Mapa</p>
+    <div class="modal-camara relative flex-grow mb-4 bg-gray-800 rounded-lg shadow-lg">
+      <p class="text-center text-white w-full" style="background-color: #19181d;">Video de la cámara</p>
+        <div class="modal-mapa flex-grow  rounded-lg shadow-lg">
+          <p class="text-center text-white">Mapa</p>
+        </div>
     </div>
   </div>
-
   <!-- Panel lateral -->
-  <div style="background-color: #09070e;" class="w-full md:w-64 text-white rounded-lg shadow-lg p-4 md:ml-4">
-    <!-- Aquí irían los cuadros de monitoreo -->
-    <div class="mb-4 border border-white rounded p-2">
-      <h2 class="font-bold mb-2">Temperatura</h2>
-      <p>Valor de la temperatura</p>
-    </div>
-    <br>
-    <div class="mb-4 border border-white rounded p-2">
-      <h2 class="font-bold mb-2">Velocidad</h2>
-      <p>Valor de la velocidad</p>
-    </div>
-    <br>
-    <div class="mb-4 border border-white rounded p-2">
-      <h2 class="font-bold mb-2">Ángulo de inclinación</h2>
-      <p>Valor del ángulo de inclinación</p>
-    </div>
-    <br>
-    <div class="border border-white rounded p-2">
-      <h2 class="font-bold mb-2">Distancia del objeto más cercano</h2>
-      <p>Valor de la distancia</p>
-    </div>
+  <div style="background-color: #09070e;" class="w-full md:w-64 text-white rounded-lg shadow-lg p-4 md:ml-4 flex justify-between flex-col">
+    <!-- cuadros de monitoreo -->  
+        <app-card-graph-line 
+        [sensorIcon]="'bi bi-brightness-high'" 
+        [sensorName]="'Luminosidad'" 
+        [sensorValue]="50"
+
+        [data]="data"
+        [fill]="fill"
+        [labels]="labels"
+        [backgroundColor]="'rgba(168, 140, 112, 0.4)'"
+        [borderColor]="borderColor"
+        [tension]="tension"
+        [responsive]="responsive"
+        />
+
+        <app-card-graph-line 
+        [sensorIcon]="'bi bi-brightness-high'" 
+        [sensorName]="'Luminosidad'" 
+        [sensorValue]="50"
+
+        [data]="data"
+        [fill]="fill"
+        [labels]="labels"
+        [backgroundColor]="'rgba(168, 140, 112, 0.4)'"
+        [borderColor]="borderColor"
+        [tension]="tension"
+        [responsive]="responsive"
+        />
+        <app-card-graph-line 
+        [sensorIcon]="'bi bi-brightness-high'" 
+        [sensorName]="'Luminosidad'" 
+        [sensorValue]="50"
+
+        [data]="data"
+        [fill]="fill"
+        [labels]="labels"
+        [backgroundColor]="'rgba(168, 140, 112, 0.4)'"
+        [borderColor]="borderColor"
+        [tension]="tension"
+        [responsive]="responsive"
+        />
+
   </div>
 </div>

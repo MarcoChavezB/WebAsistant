@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CardSensorComponent } from './card-sensor.component';
+import { RadioChartComponent } from './radio-chart.component';
 
-describe('CardSensorComponent', () => {
-  let component: CardSensorComponent;
-  let fixture: ComponentFixture<CardSensorComponent>;
+describe('RadioChartComponent', () => {
+  let component: RadioChartComponent;
+  let fixture: ComponentFixture<RadioChartComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CardSensorComponent]
+      imports: [RadioChartComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(CardSensorComponent);
+    fixture = TestBed.createComponent(RadioChartComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
