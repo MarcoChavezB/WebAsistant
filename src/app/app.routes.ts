@@ -5,6 +5,8 @@ import { RegisterComponent } from './Views/auth/register/register.component';
 import { CodeVerifyComponent } from './Views/auth/veirfy-code/veirfy-code.component';
 import { DashboardComponent } from './Layouts/dashboard/dashboard.component';
 import { HomeComponent } from './Views/Dashboard/home/home.component';
+import {WelcomeViewComponent} from "./Views/Welcome/welcome-view.component";
+import {ControlViewComponent} from "./Views/Control/control-view.component";
 
 export const routes: Routes = [
     {
@@ -31,7 +33,11 @@ export const routes: Routes = [
         children: [
             {
                 path: '',
-                component: HomeComponent
+                component: WelcomeViewComponent
+            },
+            {
+                path: 'control',
+                component: ControlViewComponent
             }
         ]
     }
