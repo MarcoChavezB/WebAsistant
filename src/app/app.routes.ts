@@ -7,6 +7,7 @@ import { DashboardComponent } from './Layouts/dashboard/dashboard.component';
 import { HomeComponent } from './Views/Dashboard/home/home.component';
 import {WelcomeViewComponent} from "./Views/Welcome/welcome-view.component";
 import {ControlViewComponent} from "./Views/Control/control-view.component";
+import {UserUpdateComponent} from "./Views/UserUpdate/user-update.component";
 
 export const routes: Routes = [
     {
@@ -38,7 +39,11 @@ export const routes: Routes = [
             {
                 path: 'control',
                 component: ControlViewComponent
-            }
+            },
+          {
+            path: 'my/info',
+            component: UserUpdateComponent
+          }
         ]
     }
 ];
