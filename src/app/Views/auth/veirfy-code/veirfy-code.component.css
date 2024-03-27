@@ -1,0 +1,38 @@
+input{
+  font-size: 1.8rem;
+}
+
+.l{
+  width: 100%;
+}
+
+
+.alert{
+  position: absolute;
+  width: 30%;
+  bottom: 10vh;
+  right: 0;
+  z-index: 100;
+  animation: slideIn 0.5s forwards;
+}
+
+.successInput{
+  border: 2px solid green;
+}
+
+@keyframes slideOut {
+  from {
+      right: 0;
+  }
+  to {
+      right: -100%;
+  }
+}
+@keyframes slideIn {
+  from {
+      right: -100%;
+  }
+  to {
+      right: 0;
+  }
+}
