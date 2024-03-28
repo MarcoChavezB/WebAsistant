@@ -1,5 +1,5 @@
 .img{
-    background-image: url('../../../../resources/images/backImage.jpg');    
+    background-image: url('../../../../resources/images/backImage.jpg');
 }
 .logo{
     background-image: url('../../../../resources/images/icons/icoGlobal.png');
@@ -106,4 +106,15 @@
 
 .textInputWrapper:focus-within .textInput::placeholder {
   opacity: 0;
+}
+
+.alert {
+  color: #ef3042;
+  border-color: #f5c6cb;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+}
+
+button:disabled {
+  background-color: gray !important;
 }

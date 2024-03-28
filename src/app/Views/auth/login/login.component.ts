@@ -2,19 +2,24 @@ import { Component } from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import {UserLogin} from "../../../Models/User";
-import {UserServicesService} from "../../../Services/UserServices/user-services.service";
+import {UserServicesService} from "@services/UserServices/user-services.service";
+import {GlobalLoadingComponent} from "../../../Components/GlobalLoading/global-loading.component";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [
     ReactiveFormsModule,
+    GlobalLoadingComponent,
+    NgIf
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
     isSubmitting = false;
+    backendErrors: any;
     constructor(
         private router:Router,
         private userService: UserServicesService
@@ -42,6 +47,9 @@ export class LoginComponent {
         },
         err => {
           this.isSubmitting = false;
+          if (err.error.errors){
+            this.backendErrors = err.error.errors
+          }
         }
       )
     }
