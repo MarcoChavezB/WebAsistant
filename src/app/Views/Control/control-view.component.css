@@ -1,16 +1,27 @@
-.modal-mapa{
-    position: absolute;
-    width: 30%;
-    height: 30%;
-    z-index: 1000;
-    bottom: 0;
-    right: 0;
-    background-image: url('https://th.bing.com/th/id/OIP.Xl33AAWnwUNysT_nFRsUEgHaHa?rs=1&pid=ImgDetMain');
+.menu{
+    grid-template-rows: 1.5fr 1fr;
+    gap: 1rem;
 }
 
-.modal-camara{
-    background-image: url('https://th.bing.com/th/id/R.63858388319c421520299cea2538afc4?rik=0WHwe0NNoe9UZA&riu=http%3a%2f%2fcloakroommedia.com%2fwp-content%2fuploads%2f2016%2f01%2ffreefly-TERO.jpg&ehk=s%2fmUnHPyLoAo9Aj7NXEx%2bzo1NJE5ebjq2ldzucigIgA%3d&risl=&pid=ImgRaw&r=0');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+.top{
+    grid-template-columns: 3fr 2fr;
+    gap: 1rem;
 }
+
+article{
+    background-color: #272b2e;
+    border-radius: 10px;
+}
+
+#map{
+    background-image: url('https://www.wprendering-plastering.co.uk/wp-content/uploads/2022/04/wp-rendering-map-location-area-640x480.jpg');
+    background-size: cover;
+    background-position: center;    
+}
+
+#camera{
+    background-image: url('https://th.bing.com/th/id/R.fbd105c7db92871d91015b929f36b170?rik=H2cKupNHqT2sKQ&pid=ImgRaw&r=0');
+    background-size: cover;
+    background-position: center;    
+}
+

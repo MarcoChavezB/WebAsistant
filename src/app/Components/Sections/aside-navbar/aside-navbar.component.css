@@ -1,9 +1,6 @@
 
-
 section{
-    border-radius: 20px;
     grid-template-rows: 1fr 4fr 1fr;
-    
 }
 
 .img{
