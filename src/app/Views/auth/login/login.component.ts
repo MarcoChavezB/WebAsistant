@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import {UserLogin} from "../../../Models/User";
 import {UserServicesService} from "@services/UserServices/user-services.service";
 import {GlobalLoadingComponent} from "../../../Components/GlobalLoading/global-loading.component";
-import {NgIf} from "@angular/common";
+import {KeyValuePipe, NgForOf, NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-login',
@@ -12,7 +12,9 @@ import {NgIf} from "@angular/common";
   imports: [
     ReactiveFormsModule,
     GlobalLoadingComponent,
-    NgIf
+    NgIf,
+    KeyValuePipe,
+    NgForOf
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
@@ -20,6 +22,7 @@ import {NgIf} from "@angular/common";
 export class LoginComponent {
     isSubmitting = false;
     backendErrors: any;
+    backendErrorMessage: any;
     constructor(
         private router:Router,
         private userService: UserServicesService
@@ -49,6 +52,8 @@ export class LoginComponent {
           this.isSubmitting = false;
           if (err.error.errors){
             this.backendErrors = err.error.errors
+          }else if (!err.error.success){
+            this.backendErrorMessage = err.error.message
           }
         }
       )

@@ -57,6 +57,18 @@
                             (click)="register()"
                             class="hover:underline cursor-pointer text-green-500">Sign up</a>
                         </p>
+
+                      <div class="alert" *ngIf="backendErrorMessage">
+                        <div class="text-red-500">
+                          {{ backendErrorMessage }}
+                        </div>
+                      </div>
+
+                      <div class="alert" *ngIf="backendErrors">
+                        <div class="text-red-500" *ngFor="let error of backendErrors | keyvalue">
+                          {{ error.value }}
+                        </div>
+                      </div>
                     </form>
                 </div>
             </div>
