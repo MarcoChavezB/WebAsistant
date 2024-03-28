@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import {UserRegister} from "../../../Models/User";
 import {UserServicesService} from "@services/UserServices/user-services.service";
 import {KeyValuePipe, NgClass, NgForOf, NgIf} from "@angular/common";
+import {GlobalLoadingComponent} from "../../../Components/GlobalLoading/global-loading.component";
 @Component({
   selector: 'app-register',
   standalone: true,
@@ -12,7 +13,8 @@ import {KeyValuePipe, NgClass, NgForOf, NgIf} from "@angular/common";
     NgIf,
     NgForOf,
     KeyValuePipe,
-    NgClass
+    NgClass,
+    GlobalLoadingComponent
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
@@ -46,7 +48,7 @@ export class RegisterComponent {
       }
       this.userService.register(formValues).subscribe(
         data => {
-          console.log(data)
+          this.router.navigate(['']);
         },
         err => {
           this.isSubmitting = false;
