@@ -1,9 +1,13 @@
 <main class="menu grid h-full w-full">
     <section class="top grid">
         <article id="camera" class="flex justify-center items-center">
+            <span
+            *ngIf="loading"
+             class="loading loading-dots loading-lg"></span>
             <iframe
+                *ngIf="!loading"
                 class="h-full w-full"
-                src="https://player.twitch.tv/?channel=vickypalami&parent=localhost"
+                src="https://player.twitch.tv/?channel=elabrahaham&parent=localhost"
                 allowfullscreen
                 autoplay
                 >
@@ -27,7 +31,7 @@
                 [data]="data" [labels]="labels" [fill]="fill" [backgroundColor]="backColor" [borderColor]="borderColor"
                 [tension]="tension" [responsive]="responsive" />
 
-            <app-card-graph-line [sensorName]="'Temperature'" [sensorIcon]="'bi bi-thermometer-half'" [sensorValue]="10"
+            <app-card-graph-line [sensorName]="'Angulo'" [sensorIcon]="'bi bi-thermometer-half'" [sensorValue]="90"
                 [data]="data" [labels]="labels" [fill]="fill" [backgroundColor]="backColor" [borderColor]="borderColor"
                 [tension]="tension" [responsive]="responsive" />
         </article>

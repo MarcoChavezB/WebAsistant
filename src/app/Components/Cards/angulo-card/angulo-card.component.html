@@ -1,0 +1,29 @@
+<button class=" p-3 w-full flex flex-col rounded-md shadow-lg relative focus:outline-none"
+    style="background-color: #1f1d23;">
+    <div
+        class="flex gap-5 xl:flex-row flex-col items-center font-medium text-gray-900 dark:text-white pb-2 mb-2 xl:border-b border-gray-200 border-opacity-75 dark:border-gray-700 w-full">
+        <i [class]="sensorIcon" style="font-size: 1em; color: #bebdbf;"></i>
+        <p class="sub-text">{{sensorName}}</p>
+    </div>
+    <div class="chart">
+        <div style="display: block;">
+            <div style="height: 100%; width: 100%;">
+            
+            </div>
+        </div>
+    </div>
+    <div *ngIf="sensorValue < 50; else otherBlock" class="flex items-center w-full">
+        <div class="text-xs py-1 px-2 leading-none rounded-md" style="background-color: #cbf0ce; color: #6d706d;">
+            <i class="bi bi-check" style="font-weight: 600; font-size: 0.9rem;"></i>
+        </div>
+        <div class="ml-auto text-xs text-gray-500">{{sensorValue}}</div>
+    </div>
+    <ng-template #otherBlock>
+        <div class="flex items-center w-full">
+            <div class="text-xs py-1 px-2 leading-none rounded-md" style="background-color: #5e282c; color: #da4b4e;">
+                <i class="bi bi-exclamation-lg" style="font-weight: 600; font-size: 0.9rem;"></i>
+            </div>
+            <div class="ml-auto text-xs text-gray-500">{{sensorValue}}</div>
+        </div>
+    </ng-template>
+</button>
