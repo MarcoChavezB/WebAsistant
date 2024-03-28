@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { CardGraphLineComponent } from '../../Components/Cards/card-graph-line/card-graph-line.component';
+import { MapsComponent } from '../../Components/Sections/maps/maps.component';
 
 @Component({
   selector: 'app-Control',
   standalone: true,
   imports: [
-    CardGraphLineComponent
+    CardGraphLineComponent,
+    MapsComponent
   ],
   templateUrl: './control-view.component.html',
   styleUrl: './control-view.component.css'

@@ -1,7 +1,17 @@
 <main class="menu grid h-full w-full">
     <section class="top grid">
-        <article id="camera"></article>
-        <article id="map"></article>
+        <article id="camera" class="flex justify-center items-center">
+            <iframe
+                class="h-full w-full"
+                src="https://player.twitch.tv/?channel=vickypalami&parent=localhost"
+                allowfullscreen
+                autoplay
+                >
+            </iframe>
+        </article>
+        <article id="map">
+            <app-maps/>            
+        </article>
     </section>
     <section class="bottom grid">
         <article class="h-full w-full p-5 flex justify-between items-center gap-5">
