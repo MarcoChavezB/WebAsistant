@@ -29,7 +29,7 @@ export class UserServicesService {
   }
 
   register(data: UserRegister){
-    return this.http.post(this.registerURL, data)
+    return this.http.post<UserRegister>(this.registerURL, data)
   }
 
 }
