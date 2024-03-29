@@ -8,6 +8,7 @@ import {WelcomeViewComponent} from "./Views/Welcome/welcome-view.component";
 import {ControlViewComponent} from "./Views/Control/control-view.component";
 import {UserUpdateComponent} from "./Views/UserUpdate/user-update.component";
 import {StoreDeviceComponent} from "./Views/StoreDevice/store-device.component";
+import { SelectDeviceComponent } from './Views/Devices/select-device/select-device.component';
 
 export const routes: Routes = [
     {
@@ -25,6 +26,10 @@ export const routes: Routes = [
             {
                 path: 'verify-code',
                 component: CodeVerifyComponent
+            },
+            {
+                path: 'select-device',
+                component: SelectDeviceComponent
             }
         ]
     },
