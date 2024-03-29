@@ -1,9 +1,13 @@
 <main class="flex justify-center items-center" style="width: 100%; height: 100vh;">
-    <article style="height: 100vh; width: 40%;"> 
-        <section class="title">
-            
-        </section>
-        <section class="body">
-        </section>
-    </article>
+    <article style="height: 100vh; width: 40%;" class="flex justify-center items-center"> 
+        <article id="body" class="grid" style="height: 90%; width: 90%;">
+            <section class="title flex justify-center items-center ">
+                    <h1>Selecciona el dispositivo que quieres monitorear</h1>
+            </section>
+            <section class="devices flex justify-center items-center flex-col gap-5" style="max-height: 80vh; overflow-y: auto;">                
+                <app-device-row/>
+                <app-device-row/>
+            </section>
+        </article>
+    </article>  
 </main>

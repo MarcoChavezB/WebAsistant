@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-device-row',
@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './device-row.component.css'
 })
 export class DeviceRowComponent {
-
+    @Input() reference: string = '#######';
 }
