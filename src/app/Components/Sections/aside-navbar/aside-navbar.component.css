@@ -45,12 +45,4 @@ section{
     color: #4f4e55;
 }
 
-@media (max-width: 768px) {
-  .grid {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-  }
-  .logo, .menu, .profile {
-    flex-direction: row;
-  }
-}
+
