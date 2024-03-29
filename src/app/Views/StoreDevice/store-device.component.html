@@ -1,0 +1,83 @@
+<app-GlobalLoading *ngIf="isSubmitting" />
+<div class="  text-gray-900 flex justify-center" style="height: 100vh; background-color: #09070e;">
+  <div class="max-w-screen-xl m-0 sm:m-10  shadow sm:rounded-lg flex justify-center flex-1" style="background-color: #19181d;">
+    <div class="flex-1 text-center hidden lg:flex" style="background-color: #141317;">
+      <div class="m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat img"></div>
+    </div>
+    <div class="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
+      <section class="logo-cont flex justify-center items-center ">
+        <div class="logo h-full w-full"></div>
+      </section>
+      <div class="mt-5 flex flex-col items-center justify-center">
+        <div class="w-full flex-1 mt-8">
+          <form class="mx-auto max-w-xs" [formGroup]="storeDeviceForm" (ngSubmit)="onSubmit()">
+            <div class="textInputWrapper">
+              <input
+                name="type"
+                formControlName="type"
+                placeholder="Tipo de dispositivo" type="text" class="textInput">
+
+              <div class="alert"
+                   *ngIf="storeDeviceForm.controls['type'].invalid && (storeDeviceForm.controls['type'].dirty || storeDeviceForm.controls['type'].touched)">
+                <div
+                  *ngIf="storeDeviceForm.controls['type'].errors?.['required']">El tipo de dispositivo es requerido.
+                </div>
+                <div
+                  *ngIf="storeDeviceForm.controls['type'].errors?.['minlength']">
+                  El tipo de dispositivo debe tener al menos 3 caracteres.
+                </div>
+              </div>
+            </div>
+
+            <div class="textInputWrapper">
+              <input
+                name="model"
+                formControlName="model"
+                placeholder="Modelo del dispositivo" type="text" class="textInput">
+              <div class="alert"
+                   *ngIf="storeDeviceForm.controls['model'].invalid && (storeDeviceForm.controls['model'].dirty || storeDeviceForm.controls['model'].touched)">
+                <div
+                  *ngIf="storeDeviceForm.controls['model'].errors?.['required']">El modelo es requerido.
+                </div>
+                <div
+                  *ngIf="storeDeviceForm.controls['model'].errors?.['minlength']">
+                  El modelo del dispositivo debe tener al menos 3 caracteres.
+                </div>
+              </div>
+            </div>
+            <div class="textInputWrapper">
+              <input
+                name="os"
+                formControlName="os"
+                placeholder="Sistema operativo del dispositivo" type="text" class="textInput">
+
+              <div class="alert"
+                   *ngIf="storeDeviceForm.controls['os'].invalid && (storeDeviceForm.controls['os'].dirty || storeDeviceForm.controls['os'].touched)">
+                <div
+                  *ngIf="storeDeviceForm.controls['os'].errors?.['required']">El sistema operativo es requerido.
+                </div>
+                <div
+                  *ngIf="storeDeviceForm.controls['os'].errors?.['minlength']">
+                  El sistema operativo del dispositivo debe tener al menos 3 caracteres.
+                </div>
+              </div>
+            </div>
+            <button [disabled]="!storeDeviceForm.valid || isSubmitting"
+                    class="mt-5 tracking-wide font-semibold text-white-500 w-full py-4 rounded-lg hover:bg-green-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none" style="background-color: #a3e583;">
+              <span class="ml-">
+                                Almacenar dispositivo
+                            </span>
+            </button>
+            <br>
+
+            <div class="alert" *ngIf="backendErrors">
+              <div class="text-red-500" *ngFor="let error of backendErrors | keyvalue">
+                {{ error.value }}
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

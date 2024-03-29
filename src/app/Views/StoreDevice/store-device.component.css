@@ -1,22 +1,26 @@
 .img{
-    background-image: url('../../../../resources/images/analitics.png');
+  background-image: url('../../../resources/images/OIP.jpeg');
+  mask-image: linear-gradient(
+    to top,
+    transparent 0%,
+    black 70%,
+    black 100%,
+    transparent 100%
+  );
 }
 .logo{
-    background-image: url('../../../../resources/images/icons/icoGlobal.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 4rem;
-    width: 100px;
+  background-image: url('../../../resources/images/icons/icoGlobal.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 4rem;
+  width: 100px;
 }
 
 .logo-cont{
-    height: 4rem;
-    width: 100%;
+  height: 4rem;
+  width: 100%;
 }
-
-
-
 
 .textInputWrapper {
   position: relative;

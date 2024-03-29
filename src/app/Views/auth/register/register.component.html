@@ -20,11 +20,9 @@
                           <div class="alert"
                                *ngIf="registerForm.controls['name'].invalid && (registerForm.controls['name'].dirty || registerForm.controls['name'].touched)">
                             <div
-                              [@shake]="registerForm.controls['name'].errors?.['required']"
                               *ngIf="registerForm.controls['name'].errors?.['required']">El nombre es requerido.
                             </div>
                             <div
-                              [@shake]="registerForm.controls['name'].errors?.['minlength']"
                               *ngIf="registerForm.controls['name'].errors?.['minlength']">
                               El nombre debe tener al menos 3 caracteres.
                             </div>

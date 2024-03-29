@@ -8,6 +8,7 @@ import { HomeComponent } from './Views/Dashboard/home/home.component';
 import {WelcomeViewComponent} from "./Views/Welcome/welcome-view.component";
 import {ControlViewComponent} from "./Views/Control/control-view.component";
 import {UserUpdateComponent} from "./Views/UserUpdate/user-update.component";
+import {StoreDeviceComponent} from "./Views/StoreDevice/store-device.component";
 
 export const routes: Routes = [
     {
@@ -43,7 +44,11 @@ export const routes: Routes = [
           {
             path: 'my/info',
             component: UserUpdateComponent
-          }
+          },
+            {
+                path: 'employee/store/device',
+                component: StoreDeviceComponent
+            }
         ]
     }
 ];
