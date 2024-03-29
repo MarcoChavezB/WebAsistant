@@ -21,8 +21,8 @@ section{
 }
 
 /*
-    Estilo cuando esta seleccionado 
-    CAMBIAR POR JS 
+    Estilo cuando esta seleccionado
+    CAMBIAR POR JS
  */
 .cover:first-child{
     background-color: #19181d;
@@ -43,4 +43,14 @@ section{
 .cover .bi, .profile .bi{
     font-size: 1.4rem;
     color: #4f4e55;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+  .logo, .menu, .profile {
+    flex-direction: row;
+  }
 }
