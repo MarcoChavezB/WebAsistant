@@ -1,0 +1,5 @@
+#body{
+    grid-template-rows: 1fr 5fr;
+    background-color: #272a2f;
+    border-radius: 20px;
+}
