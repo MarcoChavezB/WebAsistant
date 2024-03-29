@@ -5,7 +5,7 @@ import {UserLogin} from "../../../Models/User";
 import {UserServicesService} from "@services/UserServices/user-services.service";
 import {GlobalLoadingComponent} from "../../../Components/GlobalLoading/global-loading.component";
 import {KeyValuePipe, NgForOf, NgIf} from "@angular/common";
-
+import { AuthServiceService } from '@services/AuthService/auth-service.service';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -25,7 +25,8 @@ export class LoginComponent {
     backendErrorMessage: any;
     constructor(
         private router:Router,
-        private userService: UserServicesService
+        private userService: UserServicesService,
+        private authService: AuthServiceService
     ){}
     register(){
         this.router.navigate(['/register'])
@@ -46,7 +47,8 @@ export class LoginComponent {
 
       this.userService.login(user).subscribe(
         data => {
-          this.router.navigate(['/dashboard']);
+          this.authService.saveTokenResponse(data.jwt, data.data)
+          
         },
         err => {
           this.isSubmitting = false;

@@ -9,6 +9,8 @@ import {ControlViewComponent} from "./Views/Control/control-view.component";
 import {UserUpdateComponent} from "./Views/UserUpdate/user-update.component";
 import {StoreDeviceComponent} from "./Views/StoreDevice/store-device.component";
 import { SelectDeviceComponent } from './Views/Devices/select-device/select-device.component';
+import { NotfoundComponent } from './Views/Notfound/notfound/notfound.component';
+import { NotpermissionComponent } from './Views/Notpermission/notpermission/notpermission.component';
 
 export const routes: Routes = [
     {
@@ -30,7 +32,16 @@ export const routes: Routes = [
             {
                 path: 'select-device',
                 component: SelectDeviceComponent
+            },
+            {
+                path: 'NotPermission',
+                component: NotpermissionComponent
+            },
+            {
+                path: 'NotFound',
+                component: NotfoundComponent
             }
+
         ]
     },
     {
