@@ -7,6 +7,7 @@ export const environment ={
   registerURL : `${baseURL}user/register`,
   googleApiKey: 'AIzaSyAGWRNTQSsmyCpleuJzSJPZb15FDMzaEzQ',
   storeDeviceURL : `${baseURL}employee/store/device`,
+  getDeviceDataURL : `${baseURL}employee/device/data/`,
   logoutURL : `${baseURL}user/logout`,
   authenticateURL : `${baseURL}user/authenticatetoken`,
   urladminAuth: `${baseURL}employee/employeeauthenticate`,

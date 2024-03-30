@@ -1,5 +1,5 @@
 .img{
-  background-image: url('../../../resources/images/OIP.jpeg');
+  background-image: url('../../../../resources/images/OIP.jpeg');
   mask-image: linear-gradient(
     to top,
     transparent 0%,
@@ -9,7 +9,7 @@
   );
 }
 .logo{
-  background-image: url('../../../resources/images/icons/icoGlobal.png');
+  background-image: url('../../../../resources/images/icons/icoGlobal.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
