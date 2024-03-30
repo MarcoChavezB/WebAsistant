@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import {environment} from "../../../environments/environments";
 import {LoginResponseInterface, UserData, UserLogin, UserRegister, UserUpdate, statusInterface} from "../../Models/User";
 import { Observable } from 'rxjs';
-import { DeviceGet } from '../../Models/Device';
+import { DeviceGet, DeviceGetResult } from '../../Models/Device';
 
 @Injectable({
   providedIn: 'root'
@@ -44,6 +44,10 @@ export class UserServicesService {
 
   adminAuth(): Observable<any> {
     return this.http.get<any>(environment.urladminAuth)
+  }
+
+  getUserDevice(): Observable<DeviceGetResult>{
+    return this.http.get<DeviceGetResult>(environment.getUserDevice)
   }
 
 }
