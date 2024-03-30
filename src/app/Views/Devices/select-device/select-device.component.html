@@ -1,13 +1,20 @@
-<main class="flex justify-center items-center" style="width: 100%; height: 100vh;">
-    <article style="height: 100vh; width: 40%;" class="flex justify-center items-center"> 
-        <article id="body" class="grid" style="height: 90%; width: 90%;">
-            <section class="title flex justify-center items-center ">
-                    <h1 class="title-p">Selecciona el dispositivo que quieres monitorear</h1>
-            </section>
-            <section class="devices flex justify-center items-center flex-col gap-5" style="max-height: 80vh; overflow-y: auto;">                
-                <app-device-row/>
-                <app-device-row/>
-            </section>
-        </article>
-    </article>  
-</main>
+
+<section class="w-full flex justify-center items-center" style="height: 100vh;">
+  <div class="max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
+    <div class="grid grid-cols-1 gap-y-8 lg:grid-cols-2 lg:items-center lg:gap-x-16">
+      <div class="mx-auto max-w-lg text-center lg:mx-0 ltr:lg:text-left rtl:lg:text-right">
+        <h2 class="text-3xl font-bold sm:text-4xl">Selecciona un dispositivo</h2>
+
+        <p class="mt-4 text-gray-600">
+          El dispositivo que selecciones será el que mostrara el control de sus sensores en el dashboard, no te preocupes, puedes cambiarlo en cualquier momento.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 overflow-auto" style="max-height: 80vh;">
+        <div *ngFor="let device of devices">
+            <app-device-row [reference]="device.code"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

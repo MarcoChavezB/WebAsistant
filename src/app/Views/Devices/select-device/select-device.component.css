@@ -6,6 +6,12 @@
     margin-bottom: 10px;
 }
 
+.card{
+
+box-shadow:  16px 16px 32px #17191c,
+             -16px -16px 32px #27292e
+}
+
 .title{
     border-bottom: 1px solid white;
     margin-bottom: 10px;

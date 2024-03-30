@@ -12,3 +12,8 @@ export interface DeviceGet{
     created_at: string;
     updated_at: string;
 }
+
+export interface DeviceGetResult{
+    success: boolean;
+    data: DeviceGet[];
+}
