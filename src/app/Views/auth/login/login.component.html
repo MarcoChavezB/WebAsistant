@@ -51,12 +51,7 @@
                                 Sign In
                             </span>
                         </button>
-                        <p class="mt-6 text-xs text-gray-600 text-center">
-                            Don't have an account?
-                            <a
-                            (click)="register()"
-                            class="hover:underline cursor-pointer text-green-500">Sign up</a>
-                        </p>
+                        
 
                       <div class="alert" *ngIf="backendErrorMessage">
                         <div class="text-red-500">
@@ -64,11 +59,30 @@
                         </div>
                       </div>
 
+                      <div class="text-red-500" *ngIf="notfound">
+                        User Not Found.
+                      </div>
+                
+                      <div class="text-red-500" *ngIf="passwordVerify" >
+                        Incorrect password.
+                      </div>
+                
+                      <div class="text-red-500" *ngIf="error">
+                        Server error.
+                      </div>
+                      
                       <div class="alert" *ngIf="backendErrors">
                         <div class="text-red-500" *ngFor="let error of backendErrors | keyvalue">
                           {{ error.value }}
                         </div>
                       </div>
+
+                      <p class="mt-6 text-xs text-gray-600 text-center">
+                        Don't have an account?
+                        <a
+                        (click)="register()"
+                        class="hover:underline cursor-pointer text-green-500">Sign up</a>
+                    </p>
                     </form>
                 </div>
             </div>
@@ -85,8 +99,6 @@
                   <div class="face bottom">¡Welcome!</div>
                 </div>
               </div>
-              
-
             </div>
         </div>
     </div>
