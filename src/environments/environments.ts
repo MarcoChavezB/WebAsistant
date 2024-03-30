@@ -1,4 +1,4 @@
-const baseURL= 'http://backend.mylittleasistant.online:8000/api/';
+const baseURL= 'http://127.0.0.1:8000/api/';
 
 export const environment ={
   production : false,
