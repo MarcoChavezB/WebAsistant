@@ -3,6 +3,8 @@ import { DeviceRowComponent } from '../../../Components/Cards/device-row/device-
 import { UserServicesService } from '@services/UserServices/user-services.service';
 import { DeviceGet } from '../../../Models/Device';
 import { CommonModule } from '@angular/common';
+import { DeviceService } from '@services/device.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-select-device',
@@ -16,106 +18,30 @@ import { CommonModule } from '@angular/common';
 })
 export class SelectDeviceComponent {
 
-    devices: DeviceGet[] = [
-        {
-            "id": 2,
-            "code": "102938",
-            "user_id": 22,
-            "created_at": "2024-03-29T22:07:09.000000Z",
-            "updated_at": "2024-03-29T22:07:09.000000Z"
-        },
-        {
-            "id": 2,
-            "code": "102938",
-            "user_id": 22,
-            "created_at": "2024-03-29T22:07:09.000000Z",
-            "updated_at": "2024-03-29T22:07:09.000000Z"
-        },
-        {
-            "id": 2,
-            "code": "102938",
-            "user_id": 22,
-            "created_at": "2024-03-29T22:07:09.000000Z",
-            "updated_at": "2024-03-29T22:07:09.000000Z"
-        },
-        {
-            "id": 2,
-            "code": "102938",
-            "user_id": 22,
-            "created_at": "2024-03-29T22:07:09.000000Z",
-            "updated_at": "2024-03-29T22:07:09.000000Z"
-        },
-        {
-            "id": 2,
-            "code": "102938",
-            "user_id": 22,
-            "created_at": "2024-03-29T22:07:09.000000Z",
-            "updated_at": "2024-03-29T22:07:09.000000Z"
-        },
-        {
-            "id": 2,
-            "code": "102938",
-            "user_id": 22,
-            "created_at": "2024-03-29T22:07:09.000000Z",
-            "updated_at": "2024-03-29T22:07:09.000000Z"
-        },
-        {
-            "id": 2,
-            "code": "102938",
-            "user_id": 22,
-            "created_at": "2024-03-29T22:07:09.000000Z",
-            "updated_at": "2024-03-29T22:07:09.000000Z"
-        },
-        {
-            "id": 2,
-            "code": "102938",
-            "user_id": 22,
-            "created_at": "2024-03-29T22:07:09.000000Z",
-            "updated_at": "2024-03-29T22:07:09.000000Z"
-        },
-        {
-            "id": 2,
-            "code": "102938",
-            "user_id": 22,
-            "created_at": "2024-03-29T22:07:09.000000Z",
-            "updated_at": "2024-03-29T22:07:09.000000Z"
-        },
-        {
-            "id": 2,
-            "code": "102938",
-            "user_id": 22,
-            "created_at": "2024-03-29T22:07:09.000000Z",
-            "updated_at": "2024-03-29T22:07:09.000000Z"
-        },
-        {
-            "id": 2,
-            "code": "102938",
-            "user_id": 22,
-            "created_at": "2024-03-29T22:07:09.000000Z",
-            "updated_at": "2024-03-29T22:07:09.000000Z"
-        },
-        {
-            "id": 2,
-            "code": "102938",
-            "user_id": 22,
-            "created_at": "2024-03-29T22:07:09.000000Z",
-            "updated_at": "2024-03-29T22:07:09.000000Z"
-        },
-
-    ]
-
+    devices: DeviceGet[] = []
     constructor(
-        private readonly userService: UserServicesService
+        private readonly userService: UserServicesService,
+        private readonly deviceService: DeviceService,
+        private router: Router
     ){}
 
     ngOnInit(){
         this.getDevices()
     }
 
+    selectDevice(id: number){
+        this.deviceService.storeIdDevice(id)
+        this.router.navigate(['/dashboard'])
+    }
+
+
     getDevices(){
         this.userService.getUserDevice().subscribe(
             (data) => {
                 this.devices = data.data
+            },
+            (err) => {
+                console.log(err)
             }
         )
     }
