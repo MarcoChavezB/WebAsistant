@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {environment} from "../../../environments/environments";
-import {UserData, UserLogin, UserRegister, UserUpdate, LoginResponseInterface} from "../../Models/User";
-import { statusInterface } from '../../Models/User';
+import {LoginResponseInterface, UserData, UserLogin, UserRegister, UserUpdate, statusInterface} from "../../Models/User";
 import { Observable } from 'rxjs';
+import { DeviceGet } from '../../Models/Device';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -33,7 +34,6 @@ export class UserServicesService {
     return this.http.post<UserRegister>(this.registerURL, data)
   }
 
-  
   authenticate(): Observable<statusInterface> {
     return this.http.get<statusInterface>(environment.authenticateURL)
   }
@@ -45,5 +45,5 @@ export class UserServicesService {
   adminAuth(): Observable<any> {
     return this.http.get<any>(environment.urladminAuth)
   }
-  
+
 }

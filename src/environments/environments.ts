@@ -10,5 +10,5 @@ export const environment ={
   logoutURL : `${baseURL}user/logout`,
   authenticateURL : `${baseURL}user/authenticatetoken`,
   urladminAuth: `${baseURL}employee/employeeauthenticate`,
-
+  getUserDevice: `${baseURL}user/devices`,
 }
