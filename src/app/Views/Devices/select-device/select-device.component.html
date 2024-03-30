@@ -12,7 +12,9 @@
 
       <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 overflow-auto" style="max-height: 80vh;">
         <div *ngFor="let device of devices">
-            <app-device-row [reference]="device.code"/>
+            <app-device-row 
+            (click)="selectDevice(device.id)"
+            [reference]="device.code"/>
         </div>
       </div>
     </div>
