@@ -6,7 +6,7 @@ import {UserServicesService} from "@services/UserServices/user-services.service"
 import {GlobalLoadingComponent} from "../../../Components/GlobalLoading/global-loading.component";
 import {KeyValuePipe, NgForOf, NgIf} from "@angular/common";
 import { AuthServiceService } from '@services/AuthService/auth-service.service';
-import { DeviceService } from '@services/device.service';
+import { DeviceService } from '@services/DeviceService/device.service';
 @Component({
   selector: 'app-login',
   standalone: true,

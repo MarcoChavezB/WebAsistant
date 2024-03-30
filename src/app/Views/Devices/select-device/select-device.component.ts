@@ -3,7 +3,7 @@ import { DeviceRowComponent } from '../../../Components/Cards/device-row/device-
 import { UserServicesService } from '@services/UserServices/user-services.service';
 import { DeviceGet } from '../../../Models/Device';
 import { CommonModule } from '@angular/common';
-import { DeviceService } from '@services/device.service';
+import { DeviceService } from '@services/DeviceService/device.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -19,6 +19,7 @@ import { Router } from '@angular/router';
 export class SelectDeviceComponent {
 
     devices: DeviceGet[] = []
+    emptyDevices: boolean = false
     constructor(
         private readonly userService: UserServicesService,
         private readonly deviceService: DeviceService,
@@ -31,7 +32,7 @@ export class SelectDeviceComponent {
 
     selectDevice(id: number){
         this.deviceService.storeIdDevice(id)
-        this.router.navigate(['/dashboard'])
+        this.router.navigate(['/dashboard']) 
     }
 
 
@@ -41,7 +42,9 @@ export class SelectDeviceComponent {
                 this.devices = data.data
             },
             (err) => {
-                console.log(err)
+                if(err.status === 404){
+                    this.emptyDevices = true;
+                }
             }
         )
     }
