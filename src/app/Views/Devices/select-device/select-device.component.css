@@ -1,3 +1,17 @@
+.title-p{
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.title{
+    border-bottom: 1px solid white;
+    margin-bottom: 10px;
+    
+}
+
 #body{
     grid-template-rows: 1fr 5fr;
     background-color: #272a2f;

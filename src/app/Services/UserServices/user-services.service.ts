@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {environment} from "../../../environments/environments";
 import {UserData, UserLogin, UserRegister, UserUpdate} from "../../Models/User";
+import { Observable } from 'rxjs';
+import { DeviceGet } from '../../Models/Device';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +33,7 @@ export class UserServicesService {
   register(data: UserRegister){
     return this.http.post<UserRegister>(this.registerURL, data)
   }
+
+
 
 }
