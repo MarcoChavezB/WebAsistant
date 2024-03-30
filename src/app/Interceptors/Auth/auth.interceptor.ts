@@ -38,8 +38,6 @@ export class AuthInterceptor implements HttpInterceptor {
             alert('Token invalido o expirado')
           }
           );
-        } else if (error.status === 404){
-          this.route.navigate(['/NotFound'])
         } else if (error.status === 403){
           this.authService.logout()
           this.route.navigate(['/NotPermission'])
