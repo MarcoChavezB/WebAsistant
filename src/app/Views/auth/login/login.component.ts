@@ -24,6 +24,9 @@ export class LoginComponent {
     isSubmitting = false;
     backendErrors: any;
     backendErrorMessage: any;
+    public notfound = false;
+    public error = false;
+    public passwordVerify = false;
     constructor(
         private router:Router,
         private userService: UserServicesService,
@@ -40,6 +43,9 @@ export class LoginComponent {
     });
 
     onSubmit(){
+      this.notfound = false;
+      this.error = false;
+      this.passwordVerify = false;
       this.isSubmitting = true;
 
       const user: UserLogin = {
@@ -58,6 +64,15 @@ export class LoginComponent {
             this.backendErrors = err.error.errors
           }else if (!err.error.success){
             this.backendErrorMessage = err.error.message
+          }
+          if (err.status == 404){
+            this.notfound = true;
+          } else if(err.status == 401) {
+            this.passwordVerify = true;
+          }else if(err.status == 403) {
+            alert('Aun no verificas tu email en tu correo electrónico')
+          } else {
+            this.error = true
           }
         }
       )
