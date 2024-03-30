@@ -48,7 +48,8 @@ export class LoginComponent {
       this.userService.login(user).subscribe(
         data => {
           this.authService.saveTokenResponse(data.jwt, data.data)
-          
+          this.router.navigate(['/dashboard'])
+          console.log('login succesfull')
         },
         err => {
           this.isSubmitting = false;
