@@ -8,7 +8,8 @@ import { HomeComponent } from './Views/Dashboard/home/home.component';
 import {WelcomeViewComponent} from "./Views/Welcome/welcome-view.component";
 import {ControlViewComponent} from "./Views/Control/control-view.component";
 import {UserUpdateComponent} from "./Views/UserUpdate/user-update.component";
-import {StoreDeviceComponent} from "./Views/StoreDevice/store-device.component";
+import {StoreDeviceComponent} from "./Views/Device/store-device/store-device.component";
+import {ShowDeviceComponent} from "./Views/Device/show-device/show-device.component";
 
 export const routes: Routes = [
     {
@@ -48,7 +49,11 @@ export const routes: Routes = [
             {
                 path: 'employee/store/device',
                 component: StoreDeviceComponent
-            }
+            },
+          {
+            path: 'employee/device/data/:id',
+            component: ShowDeviceComponent,
+          }
         ]
     }
 ];
