@@ -18,5 +18,18 @@ export interface DeviceData {
 }
 
 export interface DeviceResult{
-  device: DeviceData[]
+  device: DeviceData
+}
+
+export interface DeviceGet{
+    id: number;
+    code: string;
+    user_id: number;
+    created_at: string;
+    updated_at: string;
+}
+
+export interface DeviceGetResult{
+    success: boolean;
+    data: DeviceGet[];
 }

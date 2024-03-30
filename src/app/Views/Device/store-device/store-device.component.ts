@@ -23,6 +23,8 @@ export class StoreDeviceComponent {
 
    isSubmitting = false;
    backendErrors: any;
+   deviceId: number | undefined;
+
    ngOnInit(){
 
     }
@@ -52,8 +54,8 @@ export class StoreDeviceComponent {
       this.deviceService.storeDevice(formValues).subscribe(
         data => {
           this.isSubmitting = false;
-          console.log(data);
-          //this.router.navigate(['/dashboard/employee/device/data/']);
+          this.deviceId = data.device.id;
+          this.router.navigate(['/dashboard/employee/device/data/' + this.deviceId]);
         },
         err => {
           this.isSubmitting = false;

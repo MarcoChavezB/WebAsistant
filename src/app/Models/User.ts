@@ -20,3 +20,14 @@ export interface UserRegister{
   password: string;
   password_confirmation: string;
 }
+
+export interface statusInterface {
+  status: boolean
+}
+
+export interface LoginResponseInterface {
+  msg: string;
+  data: UserData;
+  jwt: string;
+}
+

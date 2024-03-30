@@ -1,0 +1,25 @@
+.title-p{
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.card{
+
+box-shadow:  16px 16px 32px #17191c,
+             -16px -16px 32px #27292e
+}
+
+.title{
+    border-bottom: 1px solid white;
+    margin-bottom: 10px;
+    
+}
+
+#body{
+    grid-template-rows: 1fr 5fr;
+    background-color: #272a2f;
+    border-radius: 20px;
+}
