@@ -11,6 +11,8 @@ import {StoreDeviceComponent} from "./Views/StoreDevice/store-device.component";
 import { SelectDeviceComponent } from './Views/Devices/select-device/select-device.component';
 import { NotfoundComponent } from './Views/Notfound/notfound/notfound.component';
 import { NotpermissionComponent } from './Views/Notpermission/notpermission/notpermission.component';
+import { AuthGuard } from './Guards/AuthGuard/auth.guard';
+import { DesauthGuard } from './Guards/DesauthGuard/desauth.guard';
 
 export const routes: Routes = [
     {

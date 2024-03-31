@@ -86,4 +86,24 @@ export class AuthServiceService {
     }
   }
 
+  getRole() {
+    if (typeof window !== 'undefined') { 
+      const user = localStorage.getItem('user');  
+      if (user) { 
+        const userParsed = JSON.parse(user); 
+        const role = userParsed.role; 
+        console.log(role) 
+        switch (role) { 
+          case 'employee':
+            return 2;
+          case 'user':
+            return 1;
+          default:
+            return null; 
+        }
+      }
+    }
+    return null;
+  }
+
 }

@@ -60,11 +60,6 @@ export class LoginComponent {
         },
         err => {
           this.isSubmitting = false;
-          if (err.error.errors){
-            this.backendErrors = err.error.errors
-          }else if (!err.error.success){
-            this.backendErrorMessage = err.error.message
-          }
           if (err.status == 404){
             this.notfound = true;
           } else if(err.status == 401) {
@@ -74,6 +69,12 @@ export class LoginComponent {
           } else {
             this.error = true
           }
+          if (err.error.errors){
+            this.backendErrors = err.error.errors
+          }else if (!err.error.success){
+            this.backendErrorMessage = err.error.message
+          }
+          
         }
       )
     }
