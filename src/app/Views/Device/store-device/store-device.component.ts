@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {KeyValuePipe, NgForOf, NgIf} from "@angular/common";
-import {GlobalLoadingComponent} from "../../../Components/GlobalLoading/global-loading.component";
+import {GlobalLoaderComponent} from "@components/GlobalLoader/global-loader.component";
 import {DeviceServiceService} from "@services/DeviceServices/device-service.service";
 import {DeviceStore} from "../../../Models/Device";
 import {Router} from "@angular/router";
@@ -12,7 +12,7 @@ import {Router} from "@angular/router";
   imports: [
     KeyValuePipe,
     ReactiveFormsModule,
-    GlobalLoadingComponent,
+    GlobalLoaderComponent,
     NgIf,
     NgForOf
   ],

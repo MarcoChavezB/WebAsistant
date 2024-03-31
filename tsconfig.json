@@ -8,6 +8,9 @@
       "@services/*": [
         "./src/app/Services/*"
       ],
+      "@components/*": [
+        "./src/app/Components/*"
+      ]
     },
     "outDir": "./dist/out-tsc",
     "strict": true,

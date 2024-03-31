@@ -1,8 +1,8 @@
 .img{
-  background-image: url('../../../resources/images/analitics.png');
+  background-image: url('../../../resources/images/icons/icoGlobal.png');
 }
 .logo{
-  background-image: url('../../../resources/images/icons/icoGlobal.png');
+  background-image: url('../../../resources/images/profileicon.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -107,3 +107,17 @@
 .textInputWrapper:focus-within .textInput::placeholder {
   opacity: 0;
 }
+
+.alert {
+  color: #ef3042;
+  border-color: #f5c6cb;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  background-color: transparent;
+  padding: .5rem;
+}
+
+button:disabled {
+  background-color: gray !important;
+}
+

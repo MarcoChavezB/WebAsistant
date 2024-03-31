@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {GlobalLoadingComponent} from "../../../Components/GlobalLoading/global-loading.component";
+import {GlobalLoaderComponent} from "@components/GlobalLoader/global-loader.component";
 import {KeyValuePipe, NgForOf, NgIf} from "@angular/common";
 import {DeviceServiceService} from "../../../Services/DeviceServices/device-service.service";
 import {ActivatedRoute} from "@angular/router";
@@ -11,7 +11,7 @@ import {DeviceData, DeviceResult} from "../../../Models/Device";
   standalone: true,
   imports: [
     FormsModule,
-    GlobalLoadingComponent,
+    GlobalLoaderComponent,
     KeyValuePipe,
     NgForOf,
     NgIf,

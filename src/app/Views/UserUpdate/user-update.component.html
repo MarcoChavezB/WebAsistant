@@ -1,4 +1,4 @@
-<!-- source:https://codepen.io/owaiswiz/pen/jOPvEPB -->
+<app-GlobalLoader *ngIf="isSubmitting" />
 <div class="  text-gray-900 flex justify-center" style="height: 100vh; background-color: #09070e;">
   <div class="max-w-screen-xl m-0 sm:m-10  shadow sm:rounded-lg flex justify-center flex-1" style="background-color: #19181d;">
     <div class="flex-1 text-center hidden lg:flex" style="background-color: #141317;">
@@ -8,29 +8,64 @@
       <section class="logo-cont flex justify-center items-center ">
         <div class="logo h-full w-full"></div>
       </section>
-      <div class="mt-5 flex flex-col items-center justify-center">
+      <form class="mt-5 flex flex-col items-center justify-center" [formGroup]="userUpdateForm" (ngSubmit)="showDialog()">
         <div class="w-full flex-1 mt-8">
           <div class="mx-auto max-w-xs">
             <div class="textInputWrapper">
               <input
                 name="name"
+                formControlName="name"
                 placeholder="Your Name" type="text" class="textInput">
+
+              <div class="alert"
+                   *ngIf="userUpdateForm.controls['name'].invalid  &&  (userUpdateForm.controls['name'].dirty || userUpdateForm.controls['name'].touched)">
+                <div *ngIf="userUpdateForm.controls['name'].errors?.['required']">El nombre es requerido.
+                </div>
+                <div
+                  *ngIf="userUpdateForm.controls['name'].errors?.['minlength']">
+                  El nombre debe tener al menos 3 caracteres.
+                </div>
+              </div>
             </div>
+
             <div class="textInputWrapper">
               <input
                 name="email"
+                formControlName="email"
                 placeholder="Your Email" type="text" class="textInput">
+
+              <div class="alert"  *ngIf="userUpdateForm.controls['email'].invalid && (userUpdateForm.controls['email'].dirty || userUpdateForm.controls['email'].touched)">
+                <div *ngIf="userUpdateForm.controls['email'].errors?.['required']">
+                  El email es requerido.
+                </div>
+                <div
+                  *ngIf="userUpdateForm.controls['email'].errors?.['email']">
+                  El email debe ser válido.
+                </div>
+              </div>
             </div>
             <button
+              [disabled]="userUpdateForm.invalid || isSubmitting"
               class="mt-5 tracking-wide font-semibold text-white-500 w-full py-4 rounded-lg hover:bg-green-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none" style="background-color: #a3e583;">
 
               <span class="ml-">
-                                Update
+                                Actualizar
                             </span>
             </button>
+
+            <div class="alert" *ngIf="backendValidatorErrors">
+              <div class="text-red-500" *ngFor="let error of backendValidatorErrors | keyvalue" >
+                {{ error.value }}
+              </div>
+            </div>
+
+            <app-confirmation-dialog *ngIf="showConfirmationDialog"
+              [message]="dialogMessage"
+              (onConfirm)="onSubmit()" (onCancel)="closeDialog()"
+            />
           </div>
         </div>
-      </div>
+      </form>
     </div>
   </div>
 </div>

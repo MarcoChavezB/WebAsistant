@@ -12,4 +12,5 @@ export const environment ={
   authenticateURL : `${baseURL}user/authenticatetoken`,
   urladminAuth: `${baseURL}employee/employeeauthenticate`,
   getUserDevice: `${baseURL}user/devices`,
+  userUpdateURL: `${baseURL}user/update`,
 }
