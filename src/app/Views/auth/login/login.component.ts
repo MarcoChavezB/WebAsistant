@@ -3,16 +3,16 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import { Router } from '@angular/router';
 import {UserLogin} from "../../../Models/User";
 import {UserServicesService} from "@services/UserServices/user-services.service";
-import {GlobalLoadingComponent} from "../../../Components/GlobalLoading/global-loading.component";
+import {GlobalLoaderComponent} from "@components/GlobalLoader/global-loader.component";
 import {KeyValuePipe, NgForOf, NgIf} from "@angular/common";
 import { AuthServiceService } from '@services/AuthService/auth-service.service';
-import { DeviceService } from '@services/device.service';
+import { DeviceService } from '@services/DeviceService/device.service';
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [
     ReactiveFormsModule,
-    GlobalLoadingComponent,
+    GlobalLoaderComponent,
     NgIf,
     KeyValuePipe,
     NgForOf

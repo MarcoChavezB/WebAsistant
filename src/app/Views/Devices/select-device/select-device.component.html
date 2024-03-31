@@ -10,13 +10,20 @@
         </p>
       </div>
 
-      <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 overflow-auto" style="max-height: 80vh;">
+      <div
+        *ngIf="!emptyDevices"
+        class="grid grid-cols-2 gap-4 sm:grid-cols-3 overflow-auto " style="max-height: 80vh;">
         <div *ngFor="let device of devices">
             <app-device-row 
             (click)="selectDevice(device.id)"
             [reference]="device.code"/>
         </div>
       </div>
+     <!--No devices found-->
+        <div *ngIf="emptyDevices" class="h-full w-full bg-red-500">
+            
+        </div>
+        
     </div>
   </div>
 </section>

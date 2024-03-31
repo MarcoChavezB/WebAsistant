@@ -1,4 +1,4 @@
-<app-GlobalLoading *ngIf="isSubmitting" />
+<app-GlobalLoader *ngIf="isSubmitting" />
 <div class="  text-gray-900 flex justify-center" style="height: 100vh; background-color: #09070e;">
     <div class="max-w-screen-xl m-0 sm:m-10  shadow sm:rounded-lg flex justify-center flex-1" style="background-color: #19181d;">
         <div class="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
@@ -51,7 +51,7 @@
                                 Sign In
                             </span>
                         </button>
-                        
+
 
                       <div class="alert" *ngIf="backendErrorMessage">
                         <div class="text-red-500">
@@ -62,15 +62,15 @@
                       <div class="text-red-500" *ngIf="notfound">
                         User Not Found.
                       </div>
-                
+
                       <div class="text-red-500" *ngIf="passwordVerify" >
                         Incorrect password.
                       </div>
-                
+
                       <div class="text-red-500" *ngIf="error">
                         Server error.
                       </div>
-                      
+
                       <div class="alert" *ngIf="backendErrors">
                         <div class="text-red-500" *ngFor="let error of backendErrors | keyvalue">
                           {{ error.value }}

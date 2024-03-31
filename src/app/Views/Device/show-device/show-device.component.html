@@ -1,0 +1,39 @@
+<div class="  text-gray-900 flex justify-center" style="height: 100vh; background-color: #09070e;">
+  <div class="max-w-screen-xl m-0 sm:m-10  shadow sm:rounded-lg flex justify-center flex-1" style="background-color: #19181d;">
+    <div class="flex-1 text-center hidden lg:flex" style="background-color: #141317;">
+      <div class="m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat img"></div>
+    </div>
+    <div class="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
+      <section class="logo-cont flex justify-center items-center ">
+        <div class="logo h-full w-full"></div>
+      </section>
+      <div class="mt-4 text-white space-y-2">
+        <div class="flex items-center text-gray-300">
+          <label class="font-semibold">Tipo: {{deviceR?.type}}</label>
+        </div>
+        <br>
+        <div class="flex items-center text-gray-300">
+          <label class="font-semibold">Modelo:  {{deviceR?.model}} </label>
+        </div>
+        <br>
+        <div class="flex items-center text-gray-300">
+          <label class="font-semibold">Sistema Operativo: {{deviceR?.os}}</label>
+        </div>
+        <br>
+        <div class="flex items-center text-gray-300">
+          <label class="font-semibold">Codigo: {{deviceR?.code}}</label>
+        </div>
+        <br>
+        <div class="flex items-center text-gray-300">
+          <label class="font-semibold">Propietario: {{ deviceR?.owner_name ?? 'No asignado' }}</label>
+        </div>
+        <br>
+        <div class="flex items-center text-gray-300">
+          <label class="font-semibold">Correo del Propietario: {{deviceR?.owner_email ?? 'No asignado'}}</label>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  </div>
+

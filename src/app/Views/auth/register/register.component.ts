@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import {UserRegister} from "../../../Models/User";
 import {UserServicesService} from "@services/UserServices/user-services.service";
 import {KeyValuePipe, NgClass, NgForOf, NgIf} from "@angular/common";
-import {GlobalLoadingComponent} from "../../../Components/GlobalLoading/global-loading.component";
+import {GlobalLoaderComponent} from "@components/GlobalLoader/global-loader.component";
 @Component({
   selector: 'app-register',
   standalone: true,
@@ -14,7 +14,7 @@ import {GlobalLoadingComponent} from "../../../Components/GlobalLoading/global-l
     NgForOf,
     KeyValuePipe,
     NgClass,
-    GlobalLoadingComponent
+    GlobalLoaderComponent
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'

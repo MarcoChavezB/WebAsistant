@@ -1,8 +1,15 @@
 .img{
-  background-image: url('../../../resources/images/icons/icoGlobal.png');
+  background-image: url('../../../../resources/images/backImage.jpg.png');
+  mask-image: linear-gradient(
+    to top,
+    transparent 0%,
+    black 70%,
+    black 100%,
+    transparent 100%
+  );
 }
 .logo{
-  background-image: url('../../../resources/images/profileicon.png');
+  background-image: url('../../../../resources/images/icons/icoGlobal.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -14,9 +21,6 @@
   height: 4rem;
   width: 100%;
 }
-
-
-
 
 .textInputWrapper {
   position: relative;
@@ -120,4 +124,5 @@
 button:disabled {
   background-color: gray !important;
 }
+
 
