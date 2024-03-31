@@ -26,7 +26,11 @@ export class UserUpdateComponent {
   userData: UserData | undefined;
   backendValidatorErrors: any;
   showConfirmationDialog = false;
+  showSecondaryDialog = false;
   dialogMessage = '¿Estás seguro de que deseas actualizar tus datos?';
+  secondaryDialogMessage = 'Si actualizas tu email, se cerrará tu sesión y se te enviara nuevamente un email a tu nuevo correo donde deberás verificarlo nuevamente.' +
+    'Asegúrate de tener acceso a tu nuevo correo antes de continuar.';
+
 
   constructor(
     private userService: UserServicesService,
@@ -51,12 +55,24 @@ export class UserUpdateComponent {
         this.userUpdateForm.controls['name'].setValue(this.userData.name);
         this.userUpdateForm.controls['email'].setValue(this.userData.email);
         this.isSubmitting = false;
+      },
+      err  =>{
+        this.isSubmitting = false;
+        if (err.status == 500){
+          this.toast.error('Ha ocurrido un error interno. Nuestro equipo técnico ha sido notificado.', 'Error')
+        }else if (err.status == 404){
+          this.toast.error('No se pudo encontrar al usuario.', 'Errorsss')
+        }
       });
 
   }
 
-  showDialog(){
-    this.showConfirmationDialog = true;
+  showDialog() {
+    if (this.userUpdateForm.value.email !== this.userData?.email) {
+      this.showSecondaryDialog = true;
+    }else {
+      this.showConfirmationDialog = true;
+    }
   }
 
   onSubmit(){
@@ -81,8 +97,12 @@ export class UserUpdateComponent {
         },
         err => {
           this.isSubmitting = false;
-          if (err.error.errors){
+          if (err.status == 400 && err.error.errors){
             this.backendValidatorErrors = err.error.errors
+          }else if(err.status == 500){
+            this.toast.error('Ha ocurrido un error interno. Nuestro equipo técnico ha sido notificado.', 'Error')
+          }else if (err.status == 404){
+            this.toast.error('No se pudo encontrar al usuario.', 'Error')
           }
         }
       )
@@ -91,6 +111,7 @@ export class UserUpdateComponent {
 
   closeDialog(){
     this.showConfirmationDialog = false;
+    this.showSecondaryDialog = false;
   }
 
 }

@@ -59,10 +59,8 @@
               </div>
             </div>
 
-            <app-confirmation-dialog *ngIf="showConfirmationDialog"
-              [message]="dialogMessage"
-              (onConfirm)="onSubmit()" (onCancel)="closeDialog()"
-            />
+            <app-confirmation-dialog *ngIf="showConfirmationDialog" [message]="dialogMessage" (onConfirm)="onSubmit()" (onCancel)="closeDialog()"/>
+            <app-confirmation-dialog *ngIf="showSecondaryDialog" [message]="secondaryDialogMessage" (onConfirm)="onSubmit()" (onCancel)="closeDialog()"/>
           </div>
         </div>
       </form>
