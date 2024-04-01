@@ -35,7 +35,11 @@ export class AuthInterceptor implements HttpInterceptor {
         if (error.status === 401) {
           this.authService.resetAll()
           this.route.navigate(['/']).then(()=> {
-            alert('Token invalido o expirado')
+            if (typeof window !== 'undefined') {
+              alert('Token expirado o invalido');
+            } else {
+              console.error('Error de autenticación', error);
+            }
           }
           );
         } else if (error.status === 403){
@@ -49,7 +53,7 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   private shouldExclude(req: HttpRequest<any>): boolean {
-    if (req.url.endsWith('/login')) {
+    if (req.url.endsWith('/')) {
       return true;
     }
     return false;
