@@ -61,7 +61,9 @@ export class StoreDeviceComponent {
         err => {
           this.isSubmitting = false;
           if (err.error.errors){
-            this.backendErrors = err.error.errors
+            for (let error in err.error.errors){
+              this.toast.error(err.error.errors[error], 'Error')
+            }
           }else  if(err.status == 500){
             this.toast.error('Error en el servidor, intente de nuevo más tarde', 'Error')
           }

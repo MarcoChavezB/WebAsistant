@@ -165,6 +165,7 @@ export class UserUpdateComponent {
       err => {
         this.isSubmitting = false;
         if (err.status == 400 && err.error.errors){
+          this.updatePasswordForm.reset();
           for (let error in err.error.errors){
             this.toast.error(err.error.errors[error], 'Error')
           }
