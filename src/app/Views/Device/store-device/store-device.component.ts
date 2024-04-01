@@ -5,6 +5,7 @@ import {GlobalLoaderComponent} from "@components/GlobalLoader/global-loader.comp
 import {DeviceServiceService} from "@services/DeviceServices/device-service.service";
 import {DeviceStore} from "../../../Models/Device";
 import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-store-device',
@@ -29,8 +30,6 @@ export class StoreDeviceComponent {
 
     }
 
-
-
     storeDeviceForm = new FormGroup({
       type: new FormControl('', [Validators.required, Validators.minLength(3)]),
       model: new FormControl('', [Validators.required, Validators.minLength(3)]),
@@ -39,7 +38,8 @@ export class StoreDeviceComponent {
 
     constructor(
       private deviceService: DeviceServiceService,
-      private router: Router
+      private router: Router,
+      private toast: ToastrService
     ) {
     }
 
@@ -53,6 +53,7 @@ export class StoreDeviceComponent {
 
       this.deviceService.storeDevice(formValues).subscribe(
         data => {
+          this.toast.success('Dispositivo registrado correctamente', 'Éxito')
           this.isSubmitting = false;
           this.deviceId = data.device.id;
           this.router.navigate(['/dashboard/employee/device/data/' + this.deviceId]);
@@ -61,6 +62,8 @@ export class StoreDeviceComponent {
           this.isSubmitting = false;
           if (err.error.errors){
             this.backendErrors = err.error.errors
+          }else  if(err.status == 500){
+            this.toast.error('Error en el servidor, intente de nuevo más tarde', 'Error')
           }
         }
       )

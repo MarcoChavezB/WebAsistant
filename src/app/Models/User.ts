@@ -35,3 +35,9 @@ export interface LoginResponseInterface {
   jwt: string;
 }
 
+export interface UserPasswordUpdate{
+  old_password: string;
+  password: string;
+  password_confirmation: string;
+}
+

@@ -67,6 +67,10 @@ export const routes: Routes = [
           {
             path: 'employee/device/data/:id',
             component: ShowDeviceComponent,
+          },
+          {
+            path: '404',
+            component: NotfoundComponent
           }
         ]
     }

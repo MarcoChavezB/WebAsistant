@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserServicesService } from '@services/UserServices/user-services.service';
 import { Observable, map, catchError, of } from 'rxjs';
-import { UserData } from '../../Models/User';
+import { UserData } from '@models/User';
 
 @Injectable({
   providedIn: 'root'
@@ -37,13 +37,13 @@ export class AuthServiceService {
     }
     return null;
   }
-  
+
 
   isAuthenticated(): Observable<boolean> {
     const token = this.getToken();
     if (!token) {
-      return of(false); 
-    }  
+      return of(false);
+    }
     return this.usersservice.authenticate().pipe(
       map(() => true),
       catchError(() => {
@@ -51,7 +51,7 @@ export class AuthServiceService {
       })
     );
   }
-  
+
   resetAll(){
     if (typeof window !== 'undefined') {
     localStorage.removeItem('access_token');

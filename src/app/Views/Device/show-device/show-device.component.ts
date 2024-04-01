@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {GlobalLoaderComponent} from "@components/GlobalLoader/global-loader.component";
 import {KeyValuePipe, NgForOf, NgIf} from "@angular/common";
-import {DeviceServiceService} from "../../../Services/DeviceServices/device-service.service";
-import {ActivatedRoute} from "@angular/router";
+import {DeviceServiceService} from "@services/DeviceServices/device-service.service";
+import {ActivatedRoute, Router} from "@angular/router";
 import {DeviceData, DeviceResult} from "../../../Models/Device";
 
 @Component({
@@ -22,11 +22,13 @@ import {DeviceData, DeviceResult} from "../../../Models/Device";
 })
 export class ShowDeviceComponent {
 
+  isSubmitting = false;
   deviceR: DeviceData | undefined;
 
   constructor(
     private deviceService: DeviceServiceService,
     private route: ActivatedRoute,
+    private router: Router
   ) {
   }
 
@@ -37,12 +39,16 @@ export class ShowDeviceComponent {
   }
 
   getDevice(id: number){
+    this.isSubmitting = true;
     this.deviceService.getDeviceData(id).subscribe((device) => {
+      this.isSubmitting = false;
       this.deviceR = device.device;
     },
-      error => {
-      console.log(error);
-      alert("Something went wrong!")
+      err => {
+      this.isSubmitting = false;
+      if (err.status == 404){
+        this.router.navigate(['/dashboard/404']);
+      }
       });
   }
 

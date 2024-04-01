@@ -5,22 +5,37 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
   standalone: true,
   imports: [],
   template: `
-    <div class="confirmation-dialog">
-      <h2>Confirmación</h2>
-      <p> {{message}} </p>
-      <div class="buttons">
-        <button class="confirm-button" (click)="confirm()">Confirmar</button>
-        <button class="cancel-button" (click)="cancel()">Cancelar</button>
+    <div class="modal-backdrop">
+      <div class="confirmation-dialog">
+        <h2 class="text-black">Confirmación</h2>
+        <p class="text-black"> {{message}} </p>
+        <div class="buttons">
+          <button class="confirm-button" (click)="confirm()">Confirmar</button>
+          <button class="cancel-button" (click)="cancel()">Cancelar</button>
+        </div>
       </div>
     </div>
   `,
 
   styles: [`
-    .confirmation-dialog {
+    .modal-backdrop {
       position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .confirmation-dialog {
       padding: 2em;
       background-color: #f0f0f0;
       border: 1px solid #ccc;

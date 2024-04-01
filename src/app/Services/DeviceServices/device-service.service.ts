@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {environment} from "../../../environments/environments";
+import {environment} from "@environments/environments";
 import {HttpClient} from "@angular/common/http";
-import {DeviceData, DeviceResult, DeviceStore} from "../../Models/Device";
+import {DeviceData, DeviceResult, DeviceStore} from "@models/Device";
 import {Observable} from "rxjs";
 
 @Injectable({

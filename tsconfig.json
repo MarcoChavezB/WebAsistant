@@ -10,7 +10,13 @@
       ],
       "@components/*": [
         "./src/app/Components/*"
-      ]
+      ],
+      "@models/*": [
+        "./src/app/Models/*"
+      ],
+      "@environments/*": [
+        "./src/environments/*"
+      ],
     },
     "outDir": "./dist/out-tsc",
     "strict": true,

@@ -7,29 +7,30 @@
       <section class="logo-cont flex justify-center items-center ">
         <div class="logo h-full w-full"></div>
       </section>
+      <br>
       <div class="mt-4 text-white space-y-2">
         <div class="flex items-center text-gray-300">
-          <label class="font-semibold">Tipo: {{deviceR?.type}}</label>
+          <label class="font-bold">Tipo: {{deviceR?.type}}</label>
         </div>
         <br>
         <div class="flex items-center text-gray-300">
-          <label class="font-semibold">Modelo:  {{deviceR?.model}} </label>
+          <label class="font-bold">Modelo:  {{deviceR?.model}} </label>
         </div>
         <br>
         <div class="flex items-center text-gray-300">
-          <label class="font-semibold">Sistema Operativo: {{deviceR?.os}}</label>
+          <label class="font-bold">Sistema Operativo: {{deviceR?.os}}</label>
         </div>
         <br>
         <div class="flex items-center text-gray-300">
-          <label class="font-semibold">Codigo: {{deviceR?.code}}</label>
+          <label class="font-bold">Codigo de vinculación: {{deviceR?.code}}</label>
         </div>
         <br>
         <div class="flex items-center text-gray-300">
-          <label class="font-semibold">Propietario: {{ deviceR?.owner_name ?? 'No asignado' }}</label>
+          <label class="font-bold">Propietario: {{ deviceR?.owner_name ?? 'No asignado' }}</label>
         </div>
         <br>
         <div class="flex items-center text-gray-300">
-          <label class="font-semibold">Correo del Propietario: {{deviceR?.owner_email ?? 'No asignado'}}</label>
+          <label class="font-bold">Correo del Propietario: {{deviceR?.owner_email ?? 'No asignado'}}</label>
         </div>
       </div>
 

@@ -44,6 +44,7 @@
                 </div>
               </div>
             </div>
+            <p (click)="updatePassword()" class="text-blue-400 hover:text-blue-200">Actualizar mi contraseña</p>
             <button
               [disabled]="userUpdateForm.invalid || isSubmitting"
               class="mt-5 tracking-wide font-semibold text-white-500 w-full py-4 rounded-lg hover:bg-green-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none" style="background-color: #a3e583;">
@@ -58,6 +59,58 @@
                 {{ error.value }}
               </div>
             </div>
+
+            <app-global-modal *ngIf="showUpdatePasswordModal"
+                              [message]="updatePasswordModalMessage"  [title]="updatePasswordModalTitle" (onCancel)="closeDialog()" (onConfirm)="submitPasswordUpdate()">
+                <form class="mt-5 flex flex-col items-center justify-center" [formGroup]="updatePasswordForm" (ngSubmit)="submitPasswordUpdate()">
+                  <div class="textInputWrapper">
+                    <input
+                      name="old_password"
+                      formControlName="old_password"
+                      placeholder="Tu contraseña antigua" type="password" class="textInput">
+
+                    <div class="alert"
+                         *ngIf="updatePasswordForm.controls['old_password'].invalid  &&  (updatePasswordForm.controls['old_password'].dirty || updatePasswordForm.controls['old_password'].touched)">
+                      <div *ngIf="updatePasswordForm.controls['old_password'].errors?.['required']">La contraseña antigua es requerida.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="textInputWrapper">
+                    <input
+                      name="password"
+                      formControlName="password"
+                      placeholder="Tu nueva contraseña" type="password" class="textInput">
+
+                    <div class="alert"
+                         *ngIf="updatePasswordForm.controls['password'].invalid  &&  (updatePasswordForm.controls['password'].dirty || updatePasswordForm.controls['password'].touched)">
+                      <div *ngIf="updatePasswordForm.controls['password'].errors?.['required']">Tu nueva contraseña es requerida.
+                      </div>
+                      <div
+                        *ngIf="updatePasswordForm.controls['password'].errors?.['minlength']">
+                        Tu nueva contraseña debe tener al menos 6 caracteres.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="textInputWrapper">
+                      <input
+                        name="password_confirmation"
+                        formControlName="password_confirmation"
+                        placeholder="Confirma tu nueva contraseña" type="password" class="textInput">
+
+                      <div class="alert"
+                           *ngIf="updatePasswordForm.controls['password_confirmation'].invalid  &&  (updatePasswordForm.controls['password_confirmation'].dirty || updatePasswordForm.controls['password_confirmation'].touched)">
+                        <div *ngIf="updatePasswordForm.controls['password_confirmation'].errors?.['required']">La confirmación de la contraseña es requerida.
+                        </div>
+                        <div
+                          *ngIf="updatePasswordForm.controls['password_confirmation'].errors?.['minlength']">
+                          La confirmación de la contraseña debe tener al menos 6 caracteres.
+                        </div>
+                      </div>
+                  </div>
+                </form>
+            </app-global-modal>
 
             <app-confirmation-dialog *ngIf="showConfirmationDialog" [message]="dialogMessage" (onConfirm)="onSubmit()" (onCancel)="closeDialog()"/>
             <app-confirmation-dialog *ngIf="showSecondaryDialog" [message]="secondaryDialogMessage" (onConfirm)="onSubmit()" (onCancel)="closeDialog()"/>

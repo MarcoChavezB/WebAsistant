@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {environment} from "../../../environments/environments";
+import {environment} from "@environments/environments";
 import {
   LoginResponseInterface,
   UserData,
@@ -8,10 +8,11 @@ import {
   UserRegister,
   UserUpdate,
   statusInterface,
-  UserResponse
-} from "../../Models/User";
+  UserResponse,
+  UserPasswordUpdate
+} from "@models/User";
 import { Observable } from 'rxjs';
-import { DeviceGet, DeviceGetResult } from '../../Models/Device';
+import { DeviceGet, DeviceGetResult } from '@models/Device';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,7 @@ export class UserServicesService {
   private loginURL = environment.loginURL;
   private registerURL = environment.registerURL;
   private userUpdateURL = environment.userUpdateURL;
+  private updatePasswordURL = environment.updatePasswordURL;
 
   constructor(
     private readonly http: HttpClient
@@ -57,6 +59,10 @@ export class UserServicesService {
 
   getUserDevice(): Observable<DeviceGetResult>{
     return this.http.get<DeviceGetResult>(environment.getUserDevice)
+  }
+
+  updatePassword(data: UserPasswordUpdate): Observable<UserPasswordUpdate>{
+    return this.http.put<UserPasswordUpdate>(this.updatePasswordURL, data)
   }
 
 }
