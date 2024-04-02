@@ -14,4 +14,5 @@ export const environment ={
   getUserDevice: `${baseURL}user/devices`,
   userUpdateURL: `${baseURL}user/update`,
   updatePasswordURL: `${baseURL}user/update/password`,
+  forgotPasswordURL: `${baseURL}recovery/password`,
 }

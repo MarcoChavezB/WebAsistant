@@ -3,7 +3,7 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/
 import {KeyValuePipe, NgForOf, NgIf} from "@angular/common";
 import {GlobalLoaderComponent} from "@components/GlobalLoader/global-loader.component";
 import {DeviceServiceService} from "@services/DeviceServices/device-service.service";
-import {DeviceStore} from "../../../Models/Device";
+import {DeviceStore} from "@models/Device";
 import {Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
 

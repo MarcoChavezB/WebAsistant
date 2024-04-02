@@ -9,10 +9,11 @@ import {
   UserUpdate,
   statusInterface,
   UserResponse,
-  UserPasswordUpdate
+  UserPasswordUpdate, RecoveryPassword
 } from "@models/User";
 import { Observable } from 'rxjs';
 import { DeviceGet, DeviceGetResult } from '@models/Device';
+import {FormControl} from "@angular/forms";
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,7 @@ export class UserServicesService {
   private registerURL = environment.registerURL;
   private userUpdateURL = environment.userUpdateURL;
   private updatePasswordURL = environment.updatePasswordURL;
+  private forgotPasswordURL = environment.forgotPasswordURL;
 
   constructor(
     private readonly http: HttpClient
@@ -63,6 +65,10 @@ export class UserServicesService {
 
   updatePassword(data: UserPasswordUpdate): Observable<UserPasswordUpdate>{
     return this.http.put<UserPasswordUpdate>(this.updatePasswordURL, data)
+  }
+
+  passwordRecovery(data: RecoveryPassword){
+    return this.http.post<RecoveryPassword>(this.forgotPasswordURL, data)
   }
 
 }

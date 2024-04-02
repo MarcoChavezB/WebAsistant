@@ -41,3 +41,7 @@ export interface UserPasswordUpdate{
   password_confirmation: string;
 }
 
+export interface RecoveryPassword{
+  email: string;
+}
+

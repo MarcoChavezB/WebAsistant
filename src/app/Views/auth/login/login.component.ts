@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
-import {UserLogin} from "../../../Models/User";
+import {RecoveryPassword, UserLogin} from "@models/User";
 import {UserServicesService} from "@services/UserServices/user-services.service";
 import {GlobalLoaderComponent} from "@components/GlobalLoader/global-loader.component";
 import {KeyValuePipe, NgForOf, NgIf} from "@angular/common";
 import { AuthServiceService } from '@services/AuthService/auth-service.service';
 import { DeviceService } from '@services/DeviceService/device.service';
+import { ToastrService } from 'ngx-toastr';
+import {GlobalModalComponent} from "@components/Modal/global-modal/global-modal.component";
+
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -15,23 +18,30 @@ import { DeviceService } from '@services/DeviceService/device.service';
     GlobalLoaderComponent,
     NgIf,
     KeyValuePipe,
-    NgForOf
+    NgForOf,
+    GlobalModalComponent
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+
     isSubmitting = false;
     backendErrors: any;
     backendErrorMessage: any;
     public notfound = false;
     public error = false;
     public passwordVerify = false;
+    modalTitle = 'Recuperar contraseña';
+    modalMessage = 'Asegúrate de tener acceso a tu correo electrónico para recuperar tu contraseña';
+    showModal = false;
+
     constructor(
         private router:Router,
         private userService: UserServicesService,
         private authService: AuthServiceService,
-        private deviceService: DeviceService
+        private deviceService: DeviceService,
+        private toast: ToastrService
     ){}
     register(){
         this.router.navigate(['/register'])
@@ -85,5 +95,35 @@ export class LoginComponent {
         } else{
             this.router.navigate(['/dashboard'])
         }
+    }
+
+    recoveryPasswordForm = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email])
+    });
+
+    submitPasswordRecovery(){
+      this.isSubmitting = true;
+      this.showModal = false;
+      const formValues: RecoveryPassword = {
+        email: this.recoveryPasswordForm.value.email || ''
+      }
+      this.userService.passwordRecovery(formValues).subscribe(
+        data => {
+          this.isSubmitting = false;
+          this.recoveryPasswordForm.reset();
+          this.toast.success('Revisa tu correo electrónico para recuperar tu contraseña', 'Éxito')
+        },
+        err => {
+          this.recoveryPasswordForm.reset();
+          this.isSubmitting = false;
+          if (err.error.errors){
+            for (let error in err.error.errors){
+              this.toast.error(err.error.errors[error], 'Error')
+            }
+          }else if (err.status == 500){
+            this.toast.error('Error en el servidor, intente de nuevo más tarde', 'Error')
+          }
+        }
+      )
     }
 }
