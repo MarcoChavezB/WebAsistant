@@ -1,0 +1,64 @@
+<div class="container mx-auto px-4">
+    <div class="overflow-x-auto">
+        <table class="min-w-full table-auto leading-normal">
+            <thead>
+                <tr>
+                    <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                        Campo 1
+                    </th>
+                    <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                        Campo 2
+                    </th>
+                    <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                        Campo 3
+                    </th>
+                    <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                        Campo 4
+                    </th>
+                    <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                        Campo 5
+                    </th>
+                    <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                        Acciones
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let usuario of usuarios">
+                    <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                        <div class="overflow-x-auto max-w-xs whitespace-nowrap">
+                            {{usuario.campo1}}
+                        </div>
+                    </td>
+                    <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                        <div class="overflow-x-auto max-w-xs whitespace-nowrap">
+                            {{usuario.campo2}}
+                        </div>
+                    </td>
+                    <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                        <div class="overflow-x-auto max-w-xs whitespace-nowrap">
+                            {{usuario.campo3}}
+                        </div>
+                    </td>
+                    <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                        <div class="overflow-x-auto max-w-xs whitespace-nowrap">
+                            {{usuario.campo4}}
+                        </div>
+                    </td>
+                    <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                        <div class="overflow-x-auto max-w-xs whitespace-nowrap">
+                            {{usuario.campo5}}
+                        </div>
+                    </td>
+                    <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                        <div class="flex space-x-4 justify-center">
+                            <a href="#" class="text-blue-600 hover:text-blue-900"><i class="fas fa-edit"></i></a>
+                            <a href="#" class="text-red-600 hover:text-red-900"><i class="fas fa-trash-alt"></i></a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+            
+        </table>
+    </div>
+</div>

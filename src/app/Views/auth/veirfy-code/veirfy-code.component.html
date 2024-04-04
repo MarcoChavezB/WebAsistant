@@ -1,9 +1,9 @@
-<!-- <div *ngIf="mostrarAlerta" class="alert">
+<div *ngIf="mostrarAlerta" class="alert">
   <app-alert [message]="message"></app-alert>
-</div> -->
+</div>
 
-<div class="flex justify-center items-center w-full" style="height: 100vh;">
-  <div class="rounded-lg" style="background-color: #19181d;">
+<div class="flex justify-center items-center w-full h-full">
+  <div class="rounded-lg border bg-card">
     <div class="flex flex-col space-y-1.5 p-6">
       <div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="">
@@ -12,7 +12,7 @@
         </svg></div>
       <div>Verify your code</div>
       <div>
-        Ingresa el codigo de 6 digitos que te enviamos a tu correo
+        Ingresa el codigo de 6 caracteres que te enviamos a tu correo
       </div>
     </div>
     <div class="p-6 flex justify-center gap-4">
@@ -22,7 +22,7 @@
           <input 
           *ngIf="!success"
           type="text" #code1 [@shake]="hasError" [ngClass]="{successInput: success}"
-            class="text-center w-14 h-14 rounded-md bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
+            class="text-center w-14 h-14 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
             placeholder="-" maxlength="1" [(ngModel)]="code.code1" (ngModelChange)="cambiarFoco(1)" />
   
           <div 
@@ -40,7 +40,7 @@
           <input 
           *ngIf="!success"
           type="text" #code2 [@shake]="hasError" [ngClass]="{successInput: success}"
-            class="text-center w-14 h-14 rounded-md bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
+            class="text-center w-14 h-14 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
             placeholder="-" maxlength="1" [(ngModel)]="code.code2" (ngModelChange)="cambiarFoco(2)" />
   
           <div 
@@ -58,7 +58,7 @@
           <input 
           *ngIf="!success"
           type="text" #code3 [@shake]="hasError" [ngClass]="{successInput: success}"
-            class="text-center w-14 h-14 rounded-md bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
+            class="text-center w-14 h-14 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
             placeholder="-" maxlength="1" [(ngModel)]="code.code3" (ngModelChange)="cambiarFoco(3)" />
   
           <div 
@@ -76,7 +76,7 @@
           <input 
           *ngIf="!success"
           type="text" #code4 [@shake]="hasError" [ngClass]="{successInput: success}"
-            class="text-center w-14 h-14 rounded-md bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
+            class="text-center w-14 h-14 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
             placeholder="-" maxlength="1" [(ngModel)]="code.code4" (ngModelChange)="cambiarFoco(4)" />
   
           <div 
@@ -94,7 +94,7 @@
           <input 
           *ngIf="!success"
           type="text" #code5 [@shake]="hasError" [ngClass]="{successInput: success}"
-            class="text-center w-14 h-14 rounded-md bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
+            class="text-center w-14 h-14 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
             placeholder="-" maxlength="1" [(ngModel)]="code.code5" (ngModelChange)="cambiarFoco(5)" />
   
           <div 
@@ -112,7 +112,7 @@
           <input 
           *ngIf="!success"
           type="text" #code6 [@shake]="hasError" [ngClass]="{successInput: success}"
-            class="text-center w-14 h-14 rounded-md bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
+            class="text-center w-14 h-14 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
             placeholder="-" maxlength="1" [(ngModel)]="code.code6" (ngModelChange)="cambiarFoco(6)" />
   
           <div 
@@ -125,34 +125,33 @@
             </svg>
           </div>
         </div>
+        
       </div>
     </div>
     <div class="items-center p-6 flex justify-end">
+      
       <button 
-        [disabled]="loadingResend"
-        class="gap-2 text-white border-none border inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors  disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-9 rounded-md px-3" style="background-color: #1f1d23;">
-        <span 
-        class="loading loading-spinner" style="height: 10px; width: 10px;"></span>
+      (click)="resendEmail()"
+      [disabled]="loadingResend"
+        class=" text-white bg-slate-950 border inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors  disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-9 rounded-md px-3">
         <p
         *ngIf="!loadingResend"
         >Resend code</p>
-        <!-- <app-simple-loading
+        <app-GlobalLoader
         *ngIf="loadingResend"
-        />   -->
+        />  
       </button>
-       
+      
 
-
-
-      <button   
+        
+      <button 
+      (click)="verifyCode()"
       [disabled]="!code.code1 || !code.code2 || !code.code3 || !code.code4 || !code.code5 || !code.code6 || disabledSumbitButton || loadingVerify"
-        class="gap-2 text-white border-none bg-slate-950 border inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors  disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-9 rounded-md px-3">
-        <span 
-        class="loading loading-spinner" style="height: 10px; width: 10px;"></span>
+        class="text-white bg-slate-950 border inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors  disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-9 rounded-md px-3">
         <p>Submit</p>
-        <!-- <app-simple-loading
+        <app-GlobalLoader
         *ngIf="loadingVerify"
-        />   -->
+        />  
       </button>
     </div>
   </div>

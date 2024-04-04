@@ -12,7 +12,7 @@ import {
 } from "../../Models/User";
 import { Observable } from 'rxjs';
 import { DeviceGet, DeviceGetResult } from '../../Models/Device';
-
+import { CodeInterface } from '../../Models/Code';
 @Injectable({
   providedIn: 'root'
 })
@@ -57,6 +57,18 @@ export class UserServicesService {
 
   getUserDevice(): Observable<DeviceGetResult>{
     return this.http.get<DeviceGetResult>(environment.getUserDevice)
+  }
+
+  verifyCode(userId: string, codigo: string): Observable<CodeInterface> {
+    return this.http.post<CodeInterface>(environment.codeVerify, {userId, codigo})
+  }
+
+  sendEmailCode(userId: string): Observable<any> {
+    return this.http.post<any>(environment.sendEmailCode + userId, {})
+  }
+
+  checkCodeAuth(userId: string): Observable<any> {
+    return this.http.get<any>(environment.checkCodeAuth + userId)
   }
 
 }

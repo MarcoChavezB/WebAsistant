@@ -55,8 +55,9 @@ export class LoginComponent {
 
       this.userService.login(user).subscribe(
         data => {
-          this.authService.saveTokenResponse(data.jwt, data.data)
-          this.checkSelectDevice()
+          // this.authService.saveTokenResponse(data.jwt, data.data)
+          // this.checkSelectDevice()
+          
         },
         err => {
           this.isSubmitting = false;
@@ -66,6 +67,8 @@ export class LoginComponent {
             this.passwordVerify = true;
           }else if(err.status == 403) {
             alert('Aun no verificas tu email en tu correo electrónico')
+          } else if(err.status == 400) {
+
           } else {
             this.error = true
           }

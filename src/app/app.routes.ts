@@ -14,6 +14,7 @@ import { NotfoundComponent } from './Views/Notfound/notfound/notfound.component'
 import { NotpermissionComponent } from './Views/Notpermission/notpermission/notpermission.component';
 import { AuthGuard } from './Guards/AuthGuard/auth.guard';
 import { DesauthGuard } from './Guards/DesauthGuard/desauth.guard';
+import { DevicesindexComponent } from './Views/DevicesIndex/devicesindex/devicesindex.component';
 
 export const routes: Routes = [
     {
@@ -47,6 +48,9 @@ export const routes: Routes = [
     {
         path: 'NotFound',
         component: NotfoundComponent
+    },{
+        path: 'devicesindex',
+        component: DevicesindexComponent
     },
     {
         path: 'dashboard',

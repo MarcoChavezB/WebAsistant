@@ -1,6 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Component, ElementRef, ViewChild,  } from '@angular/core';
+import { UserServicesService } from '@services/UserServices/user-services.service';
+import { AuthServiceService } from '../../../Services/AuthService/auth-service.service';
+import { AlertComponent } from '@components/Alert/alert/alert.component';
+import { GlobalLoaderComponent } from '@components/GlobalLoader/global-loader.component';
+
 import {
   trigger,
   style,
@@ -9,8 +14,6 @@ import {
   keyframes
 } from '@angular/animations';
 import { Router } from '@angular/router';
-import { AlertConfirmationComponent } from '../../../Components/Alert/alert-confirmation/alert-confirmation.component';
-
 
 
 @Component({
@@ -19,6 +22,8 @@ import { AlertConfirmationComponent } from '../../../Components/Alert/alert-conf
   imports: [
     CommonModule,
     FormsModule,
+    AlertComponent,
+    GlobalLoaderComponent
   ],
   animations:[
     trigger('shake', [
@@ -36,12 +41,12 @@ import { AlertConfirmationComponent } from '../../../Components/Alert/alert-conf
     ])
   ],
   templateUrl: './veirfy-code.component.html',
-  styleUrl: './veirfy-code.component.css',
+  styleUrl: './veirfy-code.component.css'
 })
 export class CodeVerifyComponent {
   constructor(
-    // private readonly DataSVuser: UserServiceService,
-    // private readonly AuthService: AuthServiceService,
+    private readonly DataSVuser: UserServicesService,
+    private readonly AuthService: AuthServiceService,
     private readonly router: Router
   ) { }
 
@@ -96,67 +101,66 @@ export class CodeVerifyComponent {
       }
     }
   }
+  verifyCode() {
+    this.showAlert("Verificando codigo");
+    this.hasError = false;
+    this.loadingVerify = true;
+    this.codigo = Object.values(this.code).join("");
+    this.userId = this.AuthService.getUserId();
 
-//   verifyCode() {
-//     this.showAlert("Verificando codigo");
-//     this.hasError = false;
-//     this.loadingVerify = true;
-//     this.codigo = Object.values(this.code).join("");
-//     // this.userId = this.AuthService.getUserId();
-
-//     this.DataSVuser.verifyCode(this.userId, this.codigo).subscribe(
-//       (res) => {
-//         this.success = true;
-//         this.showAlert(res.mensaje);
-//         this.diableButtonEmail = false;
-//         this.disabledSumbitButton = true;
-//         this.hasError = false;
-//         setTimeout(() => {
-//           this.router.navigate(['dashboard']);
-//         }, 1000);
-//       },
-//       (error) => {
-//         this.resetInputs()
-//         this.loadingVerify=false
-//         this.hasError = true;
-//         if (error.error && error.error.mensaje) {
-//           this.showAlert(error.error.mensaje);
-//         } 
-//         if (error.error && error.error.error) {
-//             const validatorErrors = error.error.error;
-//             if (validatorErrors.codigo) {
-//               this.showAlert(validatorErrors.codigo[0]); 
-//             } else if (validatorErrors.userId) {
-//               this.showAlert(validatorErrors.userId[0]); 
-//             } 
-//         } 
-//       }
-//     );
-//   }
+    this.DataSVuser.verifyCode(this.userId, this.codigo).subscribe(
+      (res) => {
+        this.success = true;
+        this.showAlert(res.mensaje);
+        this.diableButtonEmail = false;
+        this.disabledSumbitButton = true;
+        this.hasError = false;
+        setTimeout(() => {
+          this.router.navigate(['dashboard']);
+        }, 1000);
+      },
+      (error) => {
+        this.resetInputs()
+        this.loadingVerify=false
+        this.hasError = true;
+        if (error.error && error.error.mensaje) {
+          this.showAlert(error.error.mensaje);
+        } 
+        if (error.error && error.error.error) {
+            const validatorErrors = error.error.error;
+            if (validatorErrors.codigo) {
+              this.showAlert(validatorErrors.codigo[0]); 
+            } else if (validatorErrors.userId) {
+              this.showAlert(validatorErrors.userId[0]); 
+            } 
+        } 
+      }
+    );
+  }
   
-//   resendEmail() {
+  resendEmail() {
     
-//     const lastSentTime = localStorage.getItem('lastSentTime');
-//     const currentTime = new Date().getTime();
+    const lastSentTime = localStorage.getItem('lastSentTime');
+    const currentTime = new Date().getTime();
   
-//     if (!lastSentTime || (currentTime - parseInt(lastSentTime, 10) >= 50000)) {
-//       this.loadingResend=true
-//       this.DataSVuser.sendEmailCode(this.AuthService.getUserId()).subscribe(
-//         res => {
-//           localStorage.setItem('resendCode', 'true');
-//           localStorage.setItem('lastSentTime', currentTime.toString());
-//           this.showAlert("Codigo enviado");
-//           this.loadingResend=false
-//         },
-//         error => {
-//           this.showAlert(error.error.mensaje);
-//         }
-//       );
-//     } else {
-//       const timeLeft = 50 - Math.floor((currentTime - parseInt(lastSentTime, 10)) / 1000);
-//       this.showAlert(`Espera ${timeLeft} segundos antes de volver a enviar el código.`);
-//     }
-//   }
+    if (!lastSentTime || (currentTime - parseInt(lastSentTime, 10) >= 50000)) {
+      this.loadingResend=true
+      this.DataSVuser.sendEmailCode(this.AuthService.getUserId()).subscribe(
+        res => {
+          localStorage.setItem('resendCode', 'true');
+          localStorage.setItem('lastSentTime', currentTime.toString());
+          this.showAlert("Codigo enviado");
+          this.loadingResend=false
+        },
+        error => {
+          this.showAlert(error.error.mensaje);
+        }
+      );
+    } else {
+      const timeLeft = 50 - Math.floor((currentTime - parseInt(lastSentTime, 10)) / 1000);
+      this.showAlert(`Espera ${timeLeft} segundos antes de volver a enviar el código.`);
+    }
+  }
   
 
   showAlert(message: string ){

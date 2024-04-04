@@ -41,6 +41,7 @@ export class ShowDeviceComponent {
       this.deviceR = device.device;
     },
       error => {
+      console.log(error);
       alert("Something went wrong!")
       });
   }

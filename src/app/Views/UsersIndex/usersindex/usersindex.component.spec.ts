@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VeirfyCodeComponent } from './veirfy-code.component';
+import { UsersindexComponent } from './usersindex.component';
 
-describe('VeirfyCodeComponent', () => {
-  let component: VeirfyCodeComponent;
-  let fixture: ComponentFixture<VeirfyCodeComponent>;
+describe('UsersindexComponent', () => {
+  let component: UsersindexComponent;
+  let fixture: ComponentFixture<UsersindexComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [VeirfyCodeComponent]
+      imports: [UsersindexComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(VeirfyCodeComponent);
+    fixture = TestBed.createComponent(UsersindexComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
