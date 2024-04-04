@@ -13,10 +13,14 @@ import { AuthServiceService } from '@services/AuthService/auth-service.service';
 })
 export class AsideNavbarComponent {
 
-  constructor( 
+  constructor(
     private authService: AuthServiceService,
     private router: Router,
     ) {}
+
+  ngOnInit() {
+
+  }
 
 
   exit() {
