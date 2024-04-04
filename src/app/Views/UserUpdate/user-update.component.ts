@@ -9,7 +9,6 @@ import {ToastrService} from "ngx-toastr";
 import {AuthServiceService} from "@services/AuthService/auth-service.service";
 import {Router} from "@angular/router";
 import {GlobalModalComponent} from "@components/Modal/global-modal/global-modal.component";
-import {beforeEach} from "node:test";
 
 @Component({
   selector: 'app-UserUpdate',
@@ -147,40 +146,44 @@ export class UserUpdateComponent {
   });
 
   submitPasswordUpdate(){
-    this.isSubmitting = true;
-    this.showUpdatePasswordModal = false;
-    const formValues: UserPasswordUpdate = {
-      old_password: this.updatePasswordForm.value.old_password || '',
-      password: this.updatePasswordForm.value.password || '',
-      password_confirmation: this.updatePasswordForm.value.password_confirmation || ''
-    }
-    this.userService.updatePassword(formValues).subscribe(
-      data => {
-        this.updatePasswordForm.reset();
-        this.isSubmitting = false;
-        this.toast.success('Contraseña actualizada', 'Actualización de contraseña');
-        this.authService.logout();
-        this.router.navigate(['']);
-      },
-      err => {
-        this.isSubmitting = false;
-        if (err.status == 400 && err.error.errors){
-          this.updatePasswordForm.reset();
-          for (let error in err.error.errors){
-            this.toast.error(err.error.errors[error], 'Error')
-          }
-        }else if(err.status == 500){
-          this.updatePasswordForm.reset();
-          this.toast.error('Ha ocurrido un error interno. Nuestro equipo técnico ha sido notificado.', 'Error')
-        }else if (err.status == 404){
-          this.updatePasswordForm.reset();
-          this.toast.error('No se pudo encontrar al usuario.', 'Error')
-        }else if(err.error.status == "error"){
-          this.updatePasswordForm.reset();
-          this.toast.error("Contraseña incorrecta", "Error")
-        }
+    if (this.updatePasswordForm.invalid){
+      this.toast.error('Campos invalidos', 'Error');
+    }else {
+      this.isSubmitting = true;
+      this.showUpdatePasswordModal = false;
+      const formValues: UserPasswordUpdate = {
+        old_password: this.updatePasswordForm.value.old_password || '',
+        password: this.updatePasswordForm.value.password || '',
+        password_confirmation: this.updatePasswordForm.value.password_confirmation || ''
       }
-    )
+      this.userService.updatePassword(formValues).subscribe(
+        data => {
+          this.updatePasswordForm.reset();
+          this.isSubmitting = false;
+          this.toast.success('Contraseña actualizada', 'Actualización de contraseña');
+          this.authService.logout();
+          this.router.navigate(['']);
+        },
+        err => {
+          this.isSubmitting = false;
+          if (err.status == 400 && err.error.errors){
+            this.updatePasswordForm.reset();
+            for (let error in err.error.errors){
+              this.toast.error(err.error.errors[error], 'Change password error')
+            }
+          }else if(err.status == 500){
+            this.updatePasswordForm.reset();
+            this.toast.error('Ha ocurrido un error interno. Nuestro equipo técnico ha sido notificado.', 'Error')
+          }else if (err.status == 404){
+            this.updatePasswordForm.reset();
+            this.toast.error('No se pudo encontrar al usuario.', 'Error')
+          }else if(err.error.status == "error"){
+            this.updatePasswordForm.reset();
+            this.toast.error("Contraseña incorrecta", "Error")
+          }
+        }
+      )
+    }
   }
 
   closeDialog(){

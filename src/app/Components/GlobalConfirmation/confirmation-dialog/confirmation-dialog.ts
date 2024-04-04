@@ -7,8 +7,8 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
   template: `
     <div class="modal-backdrop">
       <div class="confirmation-dialog">
-        <h2 class="text-black">Confirmación</h2>
-        <p class="text-black"> {{message}} </p>
+        <h2 class="text-gray-400">Confirmación</h2>
+        <p class="text-gray-400"> {{message}} </p>
         <div class="buttons">
           <button class="confirm-button" (click)="confirm()">Confirmar</button>
           <button class="cancel-button" (click)="cancel()">Cancelar</button>
@@ -37,8 +37,8 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 
     .confirmation-dialog {
       padding: 2em;
-      background-color: #f0f0f0;
-      border: 1px solid #ccc;
+      background-color: #19181d;
+      border: 1px solid #ffffff;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
       z-index: 1000;

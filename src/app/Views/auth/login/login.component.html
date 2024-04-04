@@ -108,7 +108,7 @@
       <app-global-modal
         [message]="modalMessage" [title]="modalTitle"
         *ngIf="showModal"
-        (onCancel)="showModal = false"
+        (onCancel)="closeModal()"
         (onConfirm)="submitPasswordRecovery()"
       >
         <form class="mx-auto max-w-xs" [formGroup]="recoveryPasswordForm" (ngSubmit)="submitPasswordRecovery()">

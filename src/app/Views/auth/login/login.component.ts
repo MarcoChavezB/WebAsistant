@@ -101,29 +101,39 @@ export class LoginComponent {
     email: new FormControl('', [Validators.required, Validators.email])
     });
 
-    submitPasswordRecovery(){
-      this.isSubmitting = true;
-      this.showModal = false;
-      const formValues: RecoveryPassword = {
-        email: this.recoveryPasswordForm.value.email || ''
-      }
-      this.userService.passwordRecovery(formValues).subscribe(
-        data => {
-          this.isSubmitting = false;
-          this.recoveryPasswordForm.reset();
-          this.toast.success('Revisa tu correo electrónico para recuperar tu contraseña', 'Éxito')
-        },
-        err => {
-          this.recoveryPasswordForm.reset();
-          this.isSubmitting = false;
-          if (err.error.errors){
-            for (let error in err.error.errors){
-              this.toast.error(err.error.errors[error], 'Error')
-            }
-          }else if (err.status == 500){
-            this.toast.error('Error en el servidor, intente de nuevo más tarde', 'Error')
-          }
+  submitPasswordRecovery(){
+      if (this.recoveryPasswordForm.invalid){
+        this.toast.error('Campos invalidos', 'Error')
+        this.recoveryPasswordForm.reset();
+      }else {
+        this.isSubmitting = true;
+        this.showModal = false;
+        const formValues: RecoveryPassword = {
+          email: this.recoveryPasswordForm.value.email || ''
         }
-      )
+        this.userService.passwordRecovery(formValues).subscribe(
+          data => {
+            this.isSubmitting = false;
+            this.recoveryPasswordForm.reset();
+            this.toast.success('Revisa tu correo electrónico para recuperar tu contraseña', 'Éxito')
+          },
+          err => {
+            this.recoveryPasswordForm.reset();
+            this.isSubmitting = false;
+            if (err.error.errors){
+              for (let error in err.error.errors){
+                this.toast.error(err.error.errors[error], 'Recover password error')
+              }
+            }else if (err.status == 500){
+              this.toast.error('Error en el servidor, intente de nuevo más tarde', 'Error')
+            }
+          }
+        )
+      }
+    }
+
+    closeModal(){
+        this.showModal = false;
+        this.recoveryPasswordForm.reset();
     }
 }
