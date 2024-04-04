@@ -29,11 +29,12 @@ export class UserUpdateComponent {
 
   isSubmitting = false;
   userData: UserData | undefined;
-  backendValidatorErrors: any;
 
   showConfirmationDialog = false;
   showSecondaryDialog = false;
   showUpdatePasswordModal = false;
+
+  editProfile = false;
 
   dialogMessage = '¿Estás seguro de que deseas actualizar tus datos?';
   secondaryDialogMessage = 'Si actualizas tu email, se cerrará tu sesión y se te enviara nuevamente un email a tu nuevo correo donde deberás verificarlo nuevamente.' +
@@ -99,8 +100,8 @@ export class UserUpdateComponent {
     }
 
     if (formValues.name === this.userData?.name && formValues.email === this.userData?.email){
+      this.editProfile = false;
       this.isSubmitting = false;
-      this.backendValidatorErrors = null;
       this.toast.info('No se realizaron cambios', 'Actualización de datos');
       return;
     }else{
@@ -112,6 +113,7 @@ export class UserUpdateComponent {
             this.authService.logout();
             this.router.navigate(['']);
           }else {
+            this.editProfile = false;
             this.isSubmitting = false;
             this.toast.success('Datos actualizados', 'Actualización de datos');
             this.getUserData();
@@ -119,7 +121,7 @@ export class UserUpdateComponent {
         },
         err => {
           this.isSubmitting = false;
-          if (err.status == 400 && err.error.errors){
+          if (err.error.errors){
             for (let error in err.error.errors){
               this.toast.error(err.error.errors[error], 'Error')
             }
@@ -187,7 +189,6 @@ export class UserUpdateComponent {
   }
 
   closeDialog(){
-    this.backendValidatorErrors = null;
     this.updatePasswordForm.reset();
     this.showConfirmationDialog = false;
     this.showSecondaryDialog = false;

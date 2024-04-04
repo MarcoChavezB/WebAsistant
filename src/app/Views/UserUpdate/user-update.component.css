@@ -1,6 +1,24 @@
-.img{
-  background-image: url('../../../resources/images/icons/icoGlobal.png');
+.username {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 30px;
+  color: #C5D1DE;
 }
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.email {
+  font-family: "Inter", sans-serif;
+  font-weight: 100;
+  font-size: 20px;
+  color: #717E8B;
+}
+
+
 .logo{
   background-image: url('../../../resources/images/profileicon.png');
   background-size: cover;
@@ -14,9 +32,6 @@
   height: 4rem;
   width: 100%;
 }
-
-
-
 
 .textInputWrapper {
   position: relative;
@@ -83,7 +98,7 @@
   transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
   transition-duration: 200ms;
   transition-property: background-color;
-  color: #e8e8e8;
+  color: #ADBAC7;
   font-size: 14px;
   font-weight: 500;
   padding: 12px;
