@@ -75,7 +75,7 @@ export class CodeVerifyComponent {
   @ViewChild('code5') code5: ElementRef | undefined;
   @ViewChild('code6') code6: ElementRef | undefined;
 
-
+  
 
   message: string = 'Usuario no existe';
   mostrarAlerta: boolean = false;

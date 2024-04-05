@@ -33,3 +33,8 @@ export interface DeviceGetResult{
     success: boolean;
     data: DeviceGet[];
 }
+
+export interface DevicesIndex{
+  success: boolean;
+  devices: DeviceData[];
+}

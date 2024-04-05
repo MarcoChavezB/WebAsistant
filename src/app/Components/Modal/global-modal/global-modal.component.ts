@@ -1,14 +1,18 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {NgClass} from "@angular/common";
 
 @Component({
-  selector: 'app-confirmation-dialog',
+  selector: 'app-global-modal',
   standalone: true,
-  imports: [],
+  imports: [
+    NgClass
+  ],
   template: `
     <div class="modal-backdrop">
       <div class="confirmation-dialog">
-        <h2 class="text-gray-400">Confirmación</h2>
+        <h2 class="text-gray-400">{{ title }}</h2>
         <p class="text-gray-400"> {{message}} </p>
+        <ng-content></ng-content>
         <div class="buttons">
           <button class="confirm-button" (click)="confirm()">Confirmar</button>
           <button class="cancel-button" (click)="cancel()">Cancelar</button>
@@ -73,19 +77,21 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
     }
   `]
 })
-export class ConfirmationDialog {
+export class GlobalModalComponent {
+
+  @Input() title: string = '';
+  @Input() message: string = '';
 
   @Output() onConfirm = new EventEmitter<void>();
   @Output() onCancel = new EventEmitter<void>();
 
-  @Input() message: string = 'Default';
+    confirm() {
+        this.onConfirm.emit();
+    }
 
-  confirm() {
-    this.onConfirm.emit();
-  }
+    cancel() {
+        this.onCancel.emit();
+    }
 
-  cancel() {
-    this.onCancel.emit();
-  }
 
 }

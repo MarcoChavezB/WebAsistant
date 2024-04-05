@@ -1,32 +1,49 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-interface Usuario {
-  id: number;
-  campo1: string;
-  campo2: string;
-  campo3: string;
-  campo4: string;
-  campo5: string;
-}
+import { DeviceData } from '@models/Device';
+import { DeviceServiceService } from '@services/DeviceServices/device-service.service';
+import { GlobalLoaderComponent } from '@components/GlobalLoader/global-loader.component';
 
 @Component({
   selector: 'app-devicesindex',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, GlobalLoaderComponent],
   templateUrl: './devicesindex.component.html',
   styleUrl: './devicesindex.component.css'
 })
 export class DevicesindexComponent {
+  constructor(
+    private deviceService: DeviceServiceService,
+  ){}
 
-  usuarios: Usuario[] = [
+  isSubmitting: boolean = false;
+  empty: boolean = false
+  devices: DeviceData[] = []
 
-    { id: 1, campo1: 'Valorlirnjiondrjgiowdhngqiowhngiopwuhseogjwedropjgpweoijgpwrjfiowrjgosdfijvweodpnjgnopsdjfgoprijfgoermgremjngioenrfoiqnwrognrkgnorejngoisenrgn 1', campo2: 'Valor 2', campo3: 'Valor 3', campo4: 'Valor 4', campo5: 'Valor 5' },
-    { id: 2, campo1: 'Valor 1', campo2: 'Valor 2', campo3: 'Valor 3', campo4: 'Valor 4', campo5: 'Valor 5' },
-    { id: 3, campo1: 'Valor 1', campo2: 'Valor 2', campo3: 'Valor 3', campo4: 'Valor 4', campo5: 'Valor 5' },
-    { id: 4, campo1: 'Valor 1', campo2: 'Valor 2', campo3: 'Valor 3', campo4: 'Valor 4', campo5: 'Valor 5' },
-    { id: 5, campo1: 'Valor 1', campo2: 'Valor 2', campo3: 'Valor 3', campo4: 'Valor 4', campo5: 'Valor 5' },
 
-  ];
+  ngOnInit(){
+    this.getDevices()
+  }
+  
+
+  getDevices(){
+    this.isSubmitting = true;
+    this.empty = false
+    this.deviceService.getDevicesIndex().subscribe(
+      (data) => {
+        this.isSubmitting = false;
+        this.devices = data.devices
+        if(this.devices.length === 0){
+          this.empty = true;
+        }
+      },
+      (err) => {
+        this.isSubmitting = false;
+          if(err.status === 404){
+              this.empty = true;
+          }
+      }
+    )
+  }
 
 }

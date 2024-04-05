@@ -9,11 +9,14 @@
         <div class="cover">
             <i class="bi bi-pie-chart-fill" routerLink="/dashboard/control"></i>
         </div>
-        <div class="cover">
-            <i class="bi bi-stack"></i>
+        <div class="cover" *ngIf="role === 2">
+            <i class="bi bi-laptop" routerLink="/dashboard/employee/store/device"></i>
         </div>
-        <div class="cover">
-            <i class="bi bi-people-fill" routerLink="/dashboard/employee/store/device"></i>
+        <div class="cover" *ngIf="role === 2">
+            <i class="bi bi-stack" routerLink="/dashboard/employee/devicesindex"></i>
+        </div>
+        <div class="cover" *ngIf="role === 2">
+            <i class="bi bi-people-fill" routerLink="/dashboard/employee/usersindex"></i>
         </div>
     </section>
     <section class="profile flex justify-center items-center">
@@ -21,5 +24,6 @@
     </section>
     <section class="profile flex justify-center items-center">
         <button class="bi bi-box-arrow-right" (click)="exit()"></button>
+        <app-GlobalLoader *ngIf="loadinglogout"></app-GlobalLoader>
     </section>
 </section>

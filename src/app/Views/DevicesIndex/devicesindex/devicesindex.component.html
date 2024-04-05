@@ -1,59 +1,78 @@
-<div class="container mx-auto px-4">
-    <div class="overflow-x-auto">
+<app-GlobalLoader *ngIf="isSubmitting" />
+<div class="flex items-center justify-center h-screen">
+    <div *ngIf="empty" class="flex items-center justify-center text-white text-sm">
+        No hay dispositivos que mostrar
+    </div>
+    <div class="container mx-auto px-4 overflow-y-auto" style="height: 70vh;" *ngIf="!empty">
+        <div class="overflow-x-auto">
         <table class="min-w-full table-auto leading-normal">
             <thead>
                 <tr>
-                    <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                        Campo 1
+                    <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider rounded-l-xl">
+                        ID
                     </th>
                     <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                        Campo 2
+                        Type
                     </th>
                     <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                        Campo 3
+                        Model
                     </th>
                     <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                        Campo 4
+                        Os
                     </th>
                     <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                        Campo 5
+                        Code
                     </th>
                     <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                        ID user
+                    </th>
+                    <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider rounded-r-xl">
                         Acciones
                     </th>
                 </tr>
             </thead>
+
             <tbody>
-                <tr *ngFor="let usuario of usuarios">
+                <tr *ngFor="let device of devices">
                     <td class="px-5 py-5 border-b border-gray-200 text-sm">
                         <div class="overflow-x-auto max-w-xs whitespace-nowrap">
-                            {{usuario.campo1}}
+                            {{device.id}}
                         </div>
                     </td>
                     <td class="px-5 py-5 border-b border-gray-200 text-sm">
                         <div class="overflow-x-auto max-w-xs whitespace-nowrap">
-                            {{usuario.campo2}}
+                            {{device.type}}
                         </div>
                     </td>
                     <td class="px-5 py-5 border-b border-gray-200 text-sm">
                         <div class="overflow-x-auto max-w-xs whitespace-nowrap">
-                            {{usuario.campo3}}
+                            {{device.model}}
                         </div>
                     </td>
                     <td class="px-5 py-5 border-b border-gray-200 text-sm">
                         <div class="overflow-x-auto max-w-xs whitespace-nowrap">
-                            {{usuario.campo4}}
+                            {{device.os}}
                         </div>
                     </td>
                     <td class="px-5 py-5 border-b border-gray-200 text-sm">
                         <div class="overflow-x-auto max-w-xs whitespace-nowrap">
-                            {{usuario.campo5}}
+                            {{device.code}}
                         </div>
                     </td>
+                    <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                        <div class="overflow-x-auto max-w-xs whitespace-nowrap">
+                          <span *ngIf="device.user_id; else notAssigned">
+                            {{ device.user_id }}
+                          </span>
+                          <ng-template #notAssigned>No asignado</ng-template>
+                        </div>
+                      </td>
+                      
                     <td class="px-5 py-5 border-b border-gray-200 text-sm">
                         <div class="flex space-x-4 justify-center">
-                            <a href="#" class="text-blue-600 hover:text-blue-900"><i class="fas fa-edit"></i></a>
-                            <a href="#" class="text-red-600 hover:text-red-900"><i class="fas fa-trash-alt"></i></a>
+                            <button class="px-4 py-2 bg-red-500 text-white font-bold rounded hover:bg-red-700 flex items-center">
+                                <i class="fas fa-ban"></i><span class="ml-2">Deshabilitar</span>
+                              </button>
                         </div>
                     </td>
                 </tr>
@@ -62,3 +81,6 @@
         </table>
     </div>
 </div>
+</div>
+
+

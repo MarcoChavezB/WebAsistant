@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {environment} from "../../../environments/environments";
+import {environment} from "@environments/environments";
 import {
   LoginResponseInterface,
   UserData,
@@ -8,11 +8,17 @@ import {
   UserRegister,
   UserUpdate,
   statusInterface,
-  UserResponse
-} from "../../Models/User";
+  UserResponse,
+  UserPasswordUpdate, RecoveryPassword,
+  usersindex,
+  mensaje
+
+} from "@models/User";
 import { Observable } from 'rxjs';
 import { DeviceGet, DeviceGetResult } from '../../Models/Device';
 import { CodeInterface } from '../../Models/Code';
+import {FormControl} from "@angular/forms";
+
 @Injectable({
   providedIn: 'root'
 })
@@ -22,6 +28,8 @@ export class UserServicesService {
   private loginURL = environment.loginURL;
   private registerURL = environment.registerURL;
   private userUpdateURL = environment.userUpdateURL;
+  private updatePasswordURL = environment.updatePasswordURL;
+  private forgotPasswordURL = environment.forgotPasswordURL;
 
   constructor(
     private readonly http: HttpClient
@@ -70,5 +78,20 @@ export class UserServicesService {
   checkCodeAuth(userId: string): Observable<any> {
     return this.http.get<any>(environment.checkCodeAuth + userId)
   }
+  
+  updatePassword(data: UserPasswordUpdate): Observable<UserPasswordUpdate>{
+    return this.http.put<UserPasswordUpdate>(this.updatePasswordURL, data)
+  }
 
+  passwordRecovery(data: RecoveryPassword){
+    return this.http.post<RecoveryPassword>(this.forgotPasswordURL, data)
+  }
+
+  getusersindex(): Observable<usersindex> {
+    return this.http.get<usersindex>(environment.getUsersIndex)
+  }
+
+  changeroleuser(iduser: number): Observable<mensaje> {
+    return this.http.post<mensaje>(environment.changeroleuser + iduser, null)
+  }
 }

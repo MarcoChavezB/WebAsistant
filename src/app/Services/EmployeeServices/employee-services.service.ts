@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {environment} from "../../../environments/environments";
-import {DeviceStore} from "../../Models/Device";
+import {environment} from "@environments/environments";
+import {DeviceStore} from "@models/Device";
 import {HttpClient} from "@angular/common/http";
 
 @Injectable({

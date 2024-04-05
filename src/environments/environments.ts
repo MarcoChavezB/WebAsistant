@@ -16,4 +16,10 @@ export const environment ={
   codeVerify: `${baseURL}/verifyCode`,
   sendEmailCode: `${baseURL}/getCode/`,
   checkCodeAuth: `${baseURL}/isActive/`,
+  updatePasswordURL: `${baseURL}user/update/password`,
+  forgotPasswordURL: `${baseURL}recovery/password`,
+  getDevicesIndex: `${baseURL}employee/device/index`,
+  getUsersIndex: `${baseURL}employee/users/index`,
+  changeroleuser: `${baseURL}employee/changerole/`,
+
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DeviceRowComponent } from '../../../Components/Cards/device-row/device-row.component';
+import { DeviceRowComponent } from '@components/Cards/device-row/device-row.component';
 import { UserServicesService } from '@services/UserServices/user-services.service';
 import { DeviceGet } from '../../../Models/Device';
 import { CommonModule } from '@angular/common';
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-select-device',
   standalone: true,
-  imports: [    
+  imports: [
     CommonModule,
     DeviceRowComponent
   ],
@@ -32,7 +32,7 @@ export class SelectDeviceComponent {
 
     selectDevice(id: number){
         this.deviceService.storeIdDevice(id)
-        this.router.navigate(['/dashboard']) 
+        this.router.navigate(['/dashboard'])
     }
 
 

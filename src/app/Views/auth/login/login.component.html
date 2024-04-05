@@ -82,6 +82,9 @@
                         <a
                         (click)="register()"
                         class="hover:underline cursor-pointer text-green-500">Sign up</a>
+                        <br>
+                        <a (click)="showModal = true"
+                          class="hover:underline cursor-pointer text-green-500">Forgot my password.</a>
                     </p>
                     </form>
                 </div>
@@ -101,5 +104,32 @@
               </div>
             </div>
         </div>
+
+      <app-global-modal
+        [message]="modalMessage" [title]="modalTitle"
+        *ngIf="showModal"
+        (onCancel)="closeModal()"
+        (onConfirm)="submitPasswordRecovery()"
+      >
+        <form class="mx-auto max-w-xs" [formGroup]="recoveryPasswordForm" (ngSubmit)="submitPasswordRecovery()">
+          <div class="textInputWrapper">
+            <input
+              name="email"
+              formControlName="email"
+              placeholder="Email" type="text" class="textInput">
+            <div class="alert"
+                 *ngIf="recoveryPasswordForm.controls['email'].invalid && (recoveryPasswordForm.controls['email'].dirty || recoveryPasswordForm.controls['email'].touched)">
+              <div
+                *ngIf="recoveryPasswordForm.controls['email'].errors?.['required']">El email es requerido.
+              </div>
+              <div
+                *ngIf="recoveryPasswordForm.controls['email'].errors?.['email']">
+                Formato de email incorrecto.
+              </div>
+            </div>
+          </div>
+        </form>
+
+      </app-global-modal>
     </div>
 </div>

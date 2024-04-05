@@ -36,3 +36,21 @@ export interface LoginResponseInterface {
   jwt: string;
 }
 
+export interface UserPasswordUpdate{
+  old_password: string;
+  password: string;
+  password_confirmation: string;
+}
+
+export interface RecoveryPassword{
+  email: string;
+}
+
+export interface usersindex{
+  users: UserData[]
+}
+
+export interface mensaje{
+  mensaje: string
+}
+
