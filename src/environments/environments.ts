@@ -1,4 +1,4 @@
-const baseURL= 'http://127.0.0.1:8000/api/';
+const baseURL= 'http://backend.mylittleasistant.online:8000/api/';
 
 export const environment ={
   production : false,
@@ -21,5 +21,6 @@ export const environment ={
   getDevicesIndex: `${baseURL}employee/device/index`,
   getUsersIndex: `${baseURL}employee/users/index`,
   changeroleuser: `${baseURL}employee/changerole/`,
+  synkdeviceuser:  `${baseURL}user/link/device`,
 
 }

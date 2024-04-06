@@ -19,6 +19,14 @@ export interface UserLogin{
   password: string;
 }
 
+
+
+export interface UserLoginCode{
+  email: string;
+  password: string;
+  codigo: string;
+}
+
 export interface UserRegister{
   name: string;
   email: string;

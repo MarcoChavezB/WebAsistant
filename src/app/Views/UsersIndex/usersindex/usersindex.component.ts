@@ -4,9 +4,7 @@ import { CommonModule } from '@angular/common';
 import { UserData } from '@models/User';
 import { UserServicesService } from '@services/UserServices/user-services.service';
 import {ConfirmationDialog} from "@components/GlobalConfirmation/confirmation-dialog/confirmation-dialog";
-import { error } from 'console';
 import { AlertComponent } from '@components/Alert/alert/alert.component';
-import { delay } from 'rxjs';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({

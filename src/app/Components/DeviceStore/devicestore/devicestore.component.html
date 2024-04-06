@@ -1,0 +1,18 @@
+
+<div class=" clks bg-black bg-opacity-50 rounded-lg p-6 max-w-md mx-auto my-8" [ngClass]="[colorDiv, 'transition-colors', 'duration-500', 'ease-in-out']">
+    <app-GlobalLoader class="indd" *ngIf="mostrarloading"></app-GlobalLoader>
+    <button (click)="close()" class="bg-transparent border-0 text-white">
+        <i class="bi bi-x-lg"></i>
+    </button>    
+    <h2 class="text-white text-center text-xl font-bold mb-4">Vincula tu dispositivo</h2>
+    
+    <div class="flex flex-col items-center">
+      <input type="text" placeholder="Inserta el código" [(ngModel)]="code" class="bg-gray-800 text-white rounded-lg p-3 mb-4 w-full">
+      
+      <p class="text-red-500 text-xs mb-4 w-full text-center" *ngIf="mostrarmsg">{{ msg }}</p>
+
+      <button [disabled]="disablebutton" (click)="vincular()" class="bg-blue-800 text-white rounded-lg p-3 w-full hover:bg-blue-700 transition duration-300">
+        Vincular
+      </button>
+    </div>
+  </div>

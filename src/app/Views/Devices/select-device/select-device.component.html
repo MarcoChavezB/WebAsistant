@@ -1,29 +1,35 @@
 
-<section class="w-full flex justify-center items-center" style="height: 100vh;">
-  <div class="max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
-    <div class="grid grid-cols-1 gap-y-8 lg:grid-cols-2 lg:items-center lg:gap-x-16">
-      <div class="mx-auto max-w-lg text-center lg:mx-0 ltr:lg:text-left rtl:lg:text-right">
+<section class="fondoAnimado w-full flex justify-center items-center " style="height: 100vh;">
+  <app-GlobalLoader class="inded" *ngIf="loadinglogout"></app-GlobalLoader>
+  <div class=" primerc">
+    <app-devicestore @slideInOut *ngIf="registrar" (closee)="close()" (success)="success()"></app-devicestore>
+    <div *ngIf="!registrar" class=" contenedorprinc" @slideInOut>
+      <div class="mx-auto max-w-lg text-center">
         <h2 class="text-3xl font-bold sm:text-4xl">Selecciona un dispositivo</h2>
 
         <p class="mt-4 text-gray-600">
           El dispositivo que selecciones será el que mostrara el control de sus sensores en el dashboard, no te preocupes, puedes cambiarlo en cualquier momento.
         </p>
       </div>
+      <button *ngIf="!emptyDevices" class="vincular" (click)="vincular()">Vincular un dispositivo</button>
 
       <div
         *ngIf="!emptyDevices"
-        class="grid grid-cols-2 gap-4 sm:grid-cols-3 overflow-auto " style="max-height: 80vh;">
+        class="devices" style="max-height: 80vh;">
         <div *ngFor="let device of devices">
             <app-device-row 
             (click)="selectDevice(device.id)"
             [reference]="device.code"/>
         </div>
       </div>
-     <!--No devices found-->
-        <div *ngIf="emptyDevices" class="h-full w-full bg-red-500">
-            
-        </div>
-        
+
+      <div *ngIf="emptyDevices" class=" padd flex w-full h-full flex-col text-white justify-center items-center">
+        No hay dispositivos que mostrar.
+        <button class="vincular" (click)="vincular()">Vincular un dispositivo</button>
+      </div>
+
     </div>
+    <button class="logout" (click)="logout()">Logout</button>
+
   </div>
 </section>

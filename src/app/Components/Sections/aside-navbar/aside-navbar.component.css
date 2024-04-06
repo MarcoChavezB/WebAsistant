@@ -3,6 +3,10 @@ section{
     grid-template-rows: 1fr 4fr 1fr;
 }
 
+.inded {
+    position: absolute;
+    z-index: 20;
+}
 .img{
     width: 5rem;
     height: 4rem;
@@ -23,7 +27,7 @@ section{
 /*
     Estilo cuando esta seleccionado
     CAMBIAR POR JS
- */
+
 .cover:first-child{
     background-color: #19181d;
     border-radius: 14px;

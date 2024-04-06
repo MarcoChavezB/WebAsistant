@@ -2,7 +2,6 @@ import { Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './Views/auth/login/login.component';
 import { RegisterComponent } from './Views/auth/register/register.component';
-import { CodeVerifyComponent } from './Views/auth/veirfy-code/veirfy-code.component';
 import { DashboardComponent } from './Layouts/dashboard/dashboard.component';
 import {WelcomeViewComponent} from "./Views/Welcome/welcome-view.component";
 import {ControlViewComponent} from "./Views/Control/control-view.component";
@@ -14,8 +13,11 @@ import { NotfoundComponent } from './Views/Notfound/notfound/notfound.component'
 import { NotpermissionComponent } from './Views/Notpermission/notpermission/notpermission.component';
 import { AuthGuard } from './Guards/AuthGuard/auth.guard';
 import { DesauthGuard } from './Guards/DesauthGuard/desauth.guard';
+import { AdminGuard } from './Guards/AdminGuard/admin.guard';
 import { DevicesindexComponent } from './Views/DevicesIndex/devicesindex/devicesindex.component';
 import { UsersindexComponent } from './Views/UsersIndex/usersindex/usersindex.component';
+import { DeviceGuard } from './Guards/DeviceGuard/device-guard.guard';
+import { DeviceGuardSelect } from './Guards/DeviceGuardSelect/deviceguardselect.guard';
 export const routes: Routes = [
     {
         path: '',
@@ -34,12 +36,47 @@ export const routes: Routes = [
         ]
     },
     {
-        path: 'verify-code',
-        component: CodeVerifyComponent
+        path: 'select-device',
+        component: SelectDeviceComponent,
+        canActivate: [AuthGuard, DeviceGuardSelect]
     },
     {
-        path: 'select-device',
-        component: SelectDeviceComponent
+        path: 'dashboard',
+        component: DashboardComponent,
+        canActivate: [AuthGuard, DeviceGuard],
+        children: [
+            {
+                path: '',
+                component: WelcomeViewComponent
+            },
+            {
+                path: 'control',
+                component: ControlViewComponent
+            },
+            {
+                path: 'my/info',
+                component: UserUpdateComponent
+            },{
+                path: '',
+                canActivate: [AdminGuard],
+                children:[
+                    {
+                        path: 'employee/store/device',
+                        component: StoreDeviceComponent
+                    },
+                    {
+                        path: 'employee/device/data/:id',
+                        component: ShowDeviceComponent,
+                    },{
+                        path: 'employee/devicesindex',
+                        component: DevicesindexComponent
+                    },{
+                        path: 'employee/usersindex',
+                        component: UsersindexComponent
+                    }
+                ]
+            }
+        ]
     },
     {
         path: 'NotPermission',
@@ -50,39 +87,7 @@ export const routes: Routes = [
         component: NotfoundComponent
     },
     {
-        path: 'dashboard',
-        component: DashboardComponent,
-        children: [
-            {
-                path: '',
-                component: WelcomeViewComponent
-            },
-            {
-                path: 'control',
-                component: ControlViewComponent
-            },
-          {
-            path: 'my/info',
-            component: UserUpdateComponent
-          },
-            {
-                path: 'employee/store/device',
-                component: StoreDeviceComponent
-            },
-          {
-            path: 'employee/device/data/:id',
-            component: ShowDeviceComponent,
-          },{
-            path: 'employee/devicesindex',
-            component: DevicesindexComponent
-            },{
-                path: 'employee/usersindex',
-                component: UsersindexComponent
-            },
-          {
-            path: '404',
-            component: NotfoundComponent
-          }
-        ]
-    }
+        path: '**',
+        component: NotfoundComponent
+    },
 ];

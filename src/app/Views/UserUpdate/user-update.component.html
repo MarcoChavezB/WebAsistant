@@ -1,16 +1,26 @@
 <app-GlobalLoader *ngIf="isSubmitting" />
-<div class="  text-gray-900 flex justify-center" style="height: 100vh; background-color: #09070e;">
-  <div class="max-w-screen-xl m-0 sm:m-10  shadow sm:rounded-lg flex justify-center flex-1" style="background-color: #19181d;">
-    <div class="flex-1 text-center hidden lg:flex" style="background-color: #141317;">
-      <div class="m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat img"></div>
-    </div>
-    <div class="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
-      <section class="logo-cont flex justify-center items-center ">
+  <div class="flex flex-col md:flex-row text-gray-900" style="height: 100vh; background-color: #09070e;">
+
+    <div class="w-full md:w-4/12 p-6 sm:p-12">
+
+      <section class="logo-cont flex justify-center items-center mb-4">
         <div class="logo h-full w-full"></div>
       </section>
-      <form class="mt-5 flex flex-col items-center justify-center" [formGroup]="userUpdateForm" (ngSubmit)="showDialog()">
-        <div class="w-full flex-1 mt-8">
-          <div class="mx-auto max-w-xs">
+
+      <div class="max-w-xs mb-4" *ngIf="!editProfile">
+        <span class="username block mb-2">{{userData?.name}}</span>
+        <span class="email block">{{userData?.email}}</span>
+      </div>
+
+      <button
+        (click)="editProfile = !editProfile"
+        *ngIf="!editProfile"
+        class="w-full mx-auto block rounded text-center py-2 mt-4"
+        style="background-color: #373E47; color: #ADBAC7; border: 1px solid #414646; font-weight: bold; border-radius: 10px">
+        Edit Profile
+      </button>
+
+      <form [formGroup]="userUpdateForm" (ngSubmit)="showDialog()" *ngIf="editProfile">
             <div class="textInputWrapper">
               <input
                 name="name"
@@ -45,25 +55,27 @@
               </div>
             </div>
             <p (click)="updatePassword()" class="text-blue-400 hover:text-blue-200">Actualizar mi contraseña</p>
-            <button
-              [disabled]="userUpdateForm.invalid || isSubmitting"
-              class="mt-5 tracking-wide font-semibold text-white-500 w-full py-4 rounded-lg hover:bg-green-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none" style="background-color: #a3e583;">
+        <br>
+        <div class="flex justify-between" style="width: 165px;">
+          <button
+            [disabled]="userUpdateForm.invalid || isSubmitting"
+            class="block rounded text-center py-2 px-4"
+            style="background-color: #347D39; color: #ffffff; font-weight: bold; border: 1px solid #195d04; border-radius: 10px;">
+            Save
+          </button>
 
-              <span class="ml-">
-                                Actualizar
-                            </span>
-            </button>
-
-            <div class="alert" *ngIf="backendValidatorErrors">
-              <div class="text-red-500" *ngFor="let error of backendValidatorErrors | keyvalue" >
-                {{ error.value }}
-              </div>
-            </div>
-
-            <app-confirmation-dialog *ngIf="showConfirmationDialog" [message]="dialogMessage" (onConfirm)="onSubmit()" (onCancel)="closeDialog()"/>
-            <app-confirmation-dialog *ngIf="showSecondaryDialog" [message]="secondaryDialogMessage" (onConfirm)="onSubmit()" (onCancel)="closeDialog()"/>
-          </div>
+          <button
+            type="button"
+            (click)="editProfile = !editProfile"
+            class="block rounded text-center py-2 px-4"
+            style="background-color: #373E47; color: #C5D1DE; font-weight: bold; border: 1px solid #414646; border-radius: 10px">
+            Cancel
+          </button>
         </div>
+
+
+        <app-confirmation-dialog *ngIf="showConfirmationDialog" [message]="dialogMessage" (onConfirm)="onSubmit()" (onCancel)="closeDialog()"/>
+            <app-confirmation-dialog *ngIf="showSecondaryDialog" [message]="secondaryDialogMessage" (onConfirm)="onSubmit()" (onCancel)="closeDialog()"/>
       </form>
 
       <app-global-modal *ngIf="showUpdatePasswordModal"
@@ -118,5 +130,8 @@
         </form>
       </app-global-modal>
     </div>
+
+  <div class="w-full md:w-8/12 bg-gray-500">
+    <!-- Vista para los carritos -->
   </div>
 </div>

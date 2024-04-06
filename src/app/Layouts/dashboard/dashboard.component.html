@@ -1,12 +1,13 @@
 <main class="flex justify-center items-center">
     <div class=" h-full w-full grid contenedor">
         <aside>
-            <app-aside-navbar/>
+            <app-aside-navbar (exit)="exit()"  />
         </aside>
         <main class="router-outlet">
             <router-outlet ></router-outlet>
         </main> 
         <div class="stars"></div>
         <div class="twinkling"></div>
+        <app-GlobalLoader class="inded" *ngIf="loadinglogout"></app-GlobalLoader>
     </div>
 </main>

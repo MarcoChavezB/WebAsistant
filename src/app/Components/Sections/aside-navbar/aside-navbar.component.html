@@ -20,10 +20,11 @@
         </div>
     </section>
     <section class="profile flex justify-center items-center">
-        <i class="bi bi-person-fill" routerLink="/dashboard/my/info"></i>
+      <div class="cover">
+      <i class="bi bi-person-fill" routerLink="/dashboard/my/info"></i>
+      </div>
     </section>
     <section class="profile flex justify-center items-center">
-        <button class="bi bi-box-arrow-right" (click)="exit()"></button>
-        <app-GlobalLoader *ngIf="loadinglogout"></app-GlobalLoader>
+        <button class="bi bi-box-arrow-right" (click)="exitt()"></button>
     </section>
 </section>

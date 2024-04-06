@@ -1,6 +1,10 @@
-<app-GlobalLoader *ngIf="isSubmitting" />
-<div class="  text-gray-900 flex justify-center" style="height: 100vh; background-color: #09070e;">
-    <div class="max-w-screen-xl m-0 sm:m-10  shadow sm:rounded-lg flex justify-center flex-1" style="background-color: #19181d;">
+<app-GlobalLoader class="zindx" *ngIf="isSubmitting" />
+<app-code-verify *ngIf="verifycode" [email]="email" [password]="password" (onCancel)="cancel()"></app-code-verify>
+<div *ngIf="mostrarAlerta" class="alertmsg">
+  <app-alert [message]="message"></app-alert>
+</div>
+<div *ngIf="!verifycode" class="fondoAnimado text-gray-900 justify-center">
+  <div class=" primerc max-w-screen-xl m-0 sm:m-10  shadow sm:rounded-lg flex justify-center flex-1" style="background-color: #0000008a;">
         <div class="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
             <section class="logo-cont flex justify-center items-center ">
                 <div class="logo h-full w-full"></div>
@@ -90,19 +94,24 @@
                 </div>
             </div>
         </div>
-        <div class="flex-1 text-center hidden lg:flex" style="background-color: #141317;">
+        <div class="flex-1 text-center hidden lg:flex" style="background-color: #000000dc;">
           <div class="flex justify-center items-center w-full h-screen bg-contain bg-center bg-no-repeat">
-              <div class="cube-container">
-                <div class="cube">
-                  <div class="face front">¡My Little Assistant!</div>
-                  <div class="face back">¡Welcome!</div>
-                  <div class="face right">¡Welcome!</div>
-                  <div class="face left">¡Welcome!</div>
-                  <div class="face top">¡My Little Assistant!</div>
-                  <div class="face bottom">¡Welcome!</div>
-                </div>
+
+            <div class="e-card playing">
+              
+              <div class="wave"></div>
+              <div class="wave"></div>
+              <div class="wave"></div>
+  
+              <div class="infotop">
+                <br>      
+                  My Little Assistant
+                <br>
+                <div class="name">¡Welcome!</div>
               </div>
             </div>
+
+          </div>
         </div>
 
       <app-global-modal

@@ -1,0 +1,14 @@
+.clks {
+    overflow: hidden;
+    width: 35vh;
+    height: 50vh;
+}
+
+.indd {
+    z-index: 2;
+    position: absolute;
+}
+
+.divConTransicion {
+    transition: background-color 5.0s ease; 
+  }

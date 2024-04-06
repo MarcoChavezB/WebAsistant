@@ -9,7 +9,8 @@ import { AuthServiceService } from '@services/AuthService/auth-service.service';
 import { DeviceService } from '@services/DeviceService/device.service';
 import { ToastrService } from 'ngx-toastr';
 import {GlobalModalComponent} from "@components/Modal/global-modal/global-modal.component";
-
+import { CodeVerifyComponent } from '../veirfy-code/veirfy-code.component';
+import { AlertComponent } from '@components/Alert/alert/alert.component';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -19,7 +20,9 @@ import {GlobalModalComponent} from "@components/Modal/global-modal/global-modal.
     NgIf,
     KeyValuePipe,
     NgForOf,
-    GlobalModalComponent
+    GlobalModalComponent,
+    CodeVerifyComponent,
+    AlertComponent
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
@@ -35,7 +38,13 @@ export class LoginComponent {
     modalTitle = 'Recuperar contraseña';
     modalMessage = 'Asegúrate de tener acceso a tu correo electrónico para recuperar tu contraseña';
     showModal = false;
+    email = ''
+    password = ''
+    verifycode = false
 
+    message: string = '';
+    mostrarAlerta: boolean = false;
+  
     constructor(
         private router:Router,
         private userService: UserServicesService,
@@ -52,6 +61,13 @@ export class LoginComponent {
       password: new FormControl('', [Validators.required])
     });
 
+    cancel(){
+      this.email = ''
+      this.password = ''
+      this.verifycode = false
+      this.showAlert("Logueate de nuevo para obtener un nuevo código");
+    }
+
     onSubmit(){
       this.notfound = false;
       this.error = false;
@@ -65,8 +81,11 @@ export class LoginComponent {
 
       this.userService.login(user).subscribe(
         data => {
-          this.authService.saveTokenResponse(data.jwt, data.data)
-          this.checkSelectDevice()
+          this.email = user.email
+          this.password = user.password
+          this.verifycode = true
+          this.isSubmitting = false;
+
         },
         err => {
           this.isSubmitting = false;
@@ -81,7 +100,7 @@ export class LoginComponent {
             this.notfound = true;
           } else if(err.status == 401) {
             this.passwordVerify = true;
-          }else if(err.status == 403) {
+          } else if(err.status == 403) {
             alert('Aun no verificas tu email en tu correo electrónico')
           } else {
             this.error = true
@@ -91,13 +110,13 @@ export class LoginComponent {
       )
     }
 
-    checkSelectDevice(){
-        let device = this.deviceService.getStoredIdDevice()
-        if (device == 0){
-            this.router.navigate(['/select-device'])
-        } else{
-            this.router.navigate(['/dashboard'])
-        }
+    showAlert(message: string ){
+      this.message = message;
+      this.mostrarAlerta = true;
+      setTimeout(() => {
+        this.mostrarAlerta = false;
+      }
+      , 10000);
     }
 
     recoveryPasswordForm = new FormGroup({

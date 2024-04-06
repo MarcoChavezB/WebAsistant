@@ -36,7 +36,7 @@ export class AuthInterceptor implements HttpInterceptor {
           this.authService.resetAll()
           this.route.navigate(['/']).then(()=> {
             if (typeof window !== 'undefined') {
-              alert('Token expirado o invalido');
+              alert('Sesión cerrada correctamente');
             } else {
               console.error('Error de autenticación', error);
             }
@@ -53,10 +53,8 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   private shouldExclude(req: HttpRequest<any>): boolean {
-    if (req.url.endsWith('/')) {
-      return true;
-    }
-    return false;
+    const excludedPaths = ['/', '/login', '/register']; 
+    return excludedPaths.some(path => req.url.endsWith(path));
   }
 
 }

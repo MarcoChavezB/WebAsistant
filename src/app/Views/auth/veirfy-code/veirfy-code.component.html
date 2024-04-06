@@ -1,9 +1,13 @@
 <div *ngIf="mostrarAlerta" class="alert">
   <app-alert [message]="message"></app-alert>
 </div>
+<app-GlobalLoader
+*ngIf="loadingVerify" class="loadr"
+/>  
 
-<div class="flex justify-center items-center w-full h-full">
-  <div class="rounded-lg border bg-card">
+<div class="fondoAnimado flex flex-col justify-center items-center w-full h-screen">
+  <div class=" primerc img"></div>
+  <div class=" primerc rounded-lg border bg-card vff">
     <div class="flex flex-col space-y-1.5 p-6">
       <div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="">
@@ -149,9 +153,7 @@
       [disabled]="!code.code1 || !code.code2 || !code.code3 || !code.code4 || !code.code5 || !code.code6 || disabledSumbitButton || loadingVerify"
         class="text-white bg-slate-950 border inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors  disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-9 rounded-md px-3">
         <p>Submit</p>
-        <app-GlobalLoader
-        *ngIf="loadingVerify"
-        />  
+       
       </button>
     </div>
   </div>

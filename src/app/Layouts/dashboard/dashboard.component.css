@@ -42,6 +42,10 @@ main{
     to {background-position:10000px 0;}
 }
 
+.inded {
+    position: relative;
+    z-index: 7;
+}
 .stars, .twinkling {
   position:absolute;
   top:0;

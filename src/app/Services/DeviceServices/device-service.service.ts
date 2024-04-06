@@ -27,4 +27,8 @@ export class DeviceServiceService {
     return this.http.get<DevicesIndex>(environment.getDevicesIndex);
   }
 
+  synkDeviceUser(device_code: object): Observable<any> {
+    return this.http.post<any>(environment.synkdeviceuser, device_code );
+  }
+
 }
