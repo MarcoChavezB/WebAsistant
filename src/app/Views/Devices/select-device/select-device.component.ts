@@ -61,6 +61,7 @@ export class SelectDeviceComponent {
 
     success(){
         this.registrar = false
+        this.getDevices()
     }
 
     vincular(){
@@ -68,6 +69,7 @@ export class SelectDeviceComponent {
     }
     
     getDevices(){
+        this.devices = []
         this.userService.getUserDevice().subscribe(
             (data) => {
                 this.devices = data.data
