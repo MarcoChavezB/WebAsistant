@@ -61,13 +61,6 @@ export const routes: Routes = [
                 canActivate: [AdminGuard],
                 children:[
                     {
-                        path: 'employee/store/device',
-                        component: StoreDeviceComponent
-                    },
-                    {
-                        path: 'employee/device/data/:id',
-                        component: ShowDeviceComponent,
-                    },{
                         path: 'employee/devicesindex',
                         component: DevicesindexComponent
                     },{

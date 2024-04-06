@@ -1,0 +1,23 @@
+.borders {
+    border-radius: 2vh;
+}
+
+.grilla {
+    display: grid;
+    grid-template-columns: 40% 60%;
+}
+
+.info {
+    grid-column: 1;
+}
+.img{
+    grid-column: 2;
+    background-image: url('../../../../../resources/images/backImage.jpg');
+    mask-image: linear-gradient(
+      to top,
+      transparent 0%,
+      black 70%,
+      black 100%,
+      transparent 100%
+    );
+  }

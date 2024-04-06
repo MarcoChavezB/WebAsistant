@@ -1,5 +1,7 @@
 <app-GlobalLoader *ngIf="isSubmitting" />
-  <div class="flex flex-col md:flex-row text-gray-900" style="height: 100vh; background-color: #09070e;">
+<div class="flex flex-col md:flex-row items-center  justify-center text-gray-900" style="height: 100%; width: 100%;">
+
+  <div class="flex flex-col md:flex-row text-gray-900" style="height: 90%; width: 90%; background-color: #00000088; border-radius: 3vh; padding: 2vh;">
 
     <div class="w-full md:w-4/12 p-6 sm:p-12">
 
@@ -131,7 +133,24 @@
       </app-global-modal>
     </div>
 
-  <div class="w-full md:w-8/12 bg-gray-500">
-    <!-- Vista para los carritos -->
+    <div class="flex items-center justify-center md:w-8/12 bg-transparent" style="position: relative; height: 100%; width: 80%; background-color: #0002145e; border-radius: 3vh; padding: 2vh; gap: 10vh; box-shadow: 0 0 15px rgba(255, 255, 255, 0.212); overflow: hidden;">
+      <div class="stars"></div>
+       <div 
+        class="devices indess" style="max-height: 80vh;">
+        <div *ngFor="let device of devices">
+            <app-device-row-user
+            (click)="selectDevice(device.id)"
+            [reference]="device.code"/>
+        </div>
+        
+        <div *ngIf="emptyDevices" class=" flex w-full h-full flex-col text-white justify-center items-center">
+          Hubo un error al mostrar los dispositivos.
+        </div>
+      </div>
+      <app-devicestore  class=" indess devicestore" (success)="success()"></app-devicestore>
+
   </div>
 </div>
+
+</div>
+ 

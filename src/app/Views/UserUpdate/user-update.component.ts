@@ -9,7 +9,10 @@ import {ToastrService} from "ngx-toastr";
 import {AuthServiceService} from "@services/AuthService/auth-service.service";
 import {Router} from "@angular/router";
 import {GlobalModalComponent} from "@components/Modal/global-modal/global-modal.component";
-
+import { DeviceGet } from '@models/Device';
+import { CommonModule } from '@angular/common';
+import { DevicestoreComponent } from '@components/DeviceStore/devicestore/devicestore.component';
+import { DeviceRowUserComponent } from '@components/Cards/device-row-user/device-row-user/device-row-user.component';
 @Component({
   selector: 'app-UserUpdate',
   standalone: true,
@@ -20,7 +23,10 @@ import {GlobalModalComponent} from "@components/Modal/global-modal/global-modal.
     GlobalLoaderComponent,
     ConfirmationDialog,
     NgForOf,
-    GlobalModalComponent
+    GlobalModalComponent,
+    DeviceRowUserComponent,
+    CommonModule,
+    DevicestoreComponent,
   ],
   templateUrl: './user-update.component.html',
   styleUrl: './user-update.component.css'
@@ -47,12 +53,42 @@ export class UserUpdateComponent {
     private userService: UserServicesService,
     private toast: ToastrService,
     private authService: AuthServiceService,
-    private router: Router
+    private router: Router,
+
   ) {
+  }
+
+  registrar = false
+  devices: DeviceGet[] = []
+  emptyDevices = false
+
+  selectDevice(id: number){
+
+  }
+
+
+  success(){
+    this.getDevices()
+  }
+
+  getDevices(){
+    this.devices = []
+    this.emptyDevices = false
+      this.userService.getUserDevice().subscribe(
+          (data) => {
+              this.devices = data.data
+          },
+          (err) => {
+              if(err.status === 404){
+                  this.emptyDevices = true;
+              }
+          }
+      )
   }
 
   ngOnInit() {
     this.getUserData();
+    this.getDevices();
   }
 
   userUpdateForm = new FormGroup({

@@ -1,0 +1,16 @@
+.img{
+    width: 75vh;
+    height: 75vh;
+    background-image: url('../../../resources/images/icons/icoGlobal.png');
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    z-index: 0;
+    margin-left: 55vh;
+    opacity: 40%;
+}
+
+.tttx{
+    position: absolute;
+    z-index: 1;
+}

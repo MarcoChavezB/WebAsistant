@@ -40,24 +40,24 @@ box-shadow:  16px 16px 32px #17191c,
     background-color: #0000009c;
     border-radius: 4vh;
 
-    scrollbar-width: thin; /* Firefox */
-    scrollbar-color: rgba(255, 255, 255, 0.5) transparent; /* Firefox: barra, fondo */
+    scrollbar-width: thin; 
+    scrollbar-color: rgba(255, 255, 255, 0.5) transparent; 
 
     &::-webkit-scrollbar {
-        width: 8px; /* Ancho del scrollbar */
+        width: 8px; 
     }
 
     &::-webkit-scrollbar-track {
-        background: transparent; /* Fondo del track, transparente para no verlo */
+        background: transparent; 
     }
 
     &::-webkit-scrollbar-thumb {
-        background-color: rgba(255, 255, 255, 0.5); /* Color de la barrita con transparencia */
-        border-radius: 4px; /* Bordes redondeados para la barrita */
+        background-color: rgba(255, 255, 255, 0.5); 
+        border-radius: 4px; 
     }
 
     &::-webkit-scrollbar-thumb:hover {
-        background: rgba(162, 164, 255, 0.74); /* Color de la barrita al pasar el mouse */
+        background: rgba(162, 164, 255, 0.74); 
     }
 }
 

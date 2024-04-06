@@ -41,9 +41,11 @@ export class DevicestoreComponent {
       (data)=>{
         this.disablebutton = false
         this.mostrarloading = false
+        this.code = ''
         this.colorDiv = 'bg-green-500'; 
         setTimeout(() => {
             this.success.emit()
+            this.colorDiv = 'rgba(0, 0, 0, 0.5)'; 
         }, 1000);
       },
       (err)=>{
