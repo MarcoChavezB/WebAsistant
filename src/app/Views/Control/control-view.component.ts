@@ -3,6 +3,7 @@ import { CardGraphLineComponent } from '../../Components/Cards/card-graph-line/c
 import { MapsComponent } from '../../Components/Sections/maps/maps.component';
 import { AnguloCardComponent } from '../../Components/Cards/angulo-card/angulo-card.component';
 import { CommonModule } from '@angular/common';
+import { ControllerComponent } from '@components/Sections/controller/controller.component';
 
 @Component({
   selector: 'app-Control',
@@ -11,7 +12,8 @@ import { CommonModule } from '@angular/common';
     CommonModule,
     AnguloCardComponent,
     CardGraphLineComponent,
-    MapsComponent
+    MapsComponent,
+    ControllerComponent
   ],
   templateUrl: './control-view.component.html',
   styleUrl: './control-view.component.css'

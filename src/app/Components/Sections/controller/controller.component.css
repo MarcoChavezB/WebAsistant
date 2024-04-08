@@ -1,0 +1,115 @@
+.contened {
+    width: 40%;
+    height: 100%;
+
+}
+
+.princ {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.151);
+    border-radius: 2vh;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.212);
+}
+
+.brrd {
+    border-radius: 1vh;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.534);
+
+}
+
+.brrd:disabled {
+    background-color: #000000a1; 
+    cursor: not-allowed;
+}
+
+
+.controlesmiddle{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.aba {
+    background-color: rgb(182, 0, 0);
+    width: 100%;
+
+}
+
+.aba:active {
+    background-color: rgb(250, 0, 0);
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.521);
+}
+
+.izqui {
+    background-color: rgb(173, 147, 0);
+    width: 100%;
+    
+}
+
+.izqui:active {
+    background-color: rgb(231, 197, 0);
+    box-shadow: 0 0 15px rgba(255, 217, 0, 0.623);
+
+}
+
+.dere{
+    background-color: rgb(0, 53, 168);
+    width: 100%;
+}
+
+.dere:active{
+    background-color: rgb(0, 74, 235);
+    box-shadow: 0 0 15px rgba(0, 74, 235, 0.63);
+
+}
+
+
+.piti{
+    background-color: rgb(0, 0, 0);
+    width: auto;
+}
+
+.piti:active{
+    background-color: rgb(46, 46, 46);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.767);
+}
+
+
+.arri {
+    background-color: rgb(13, 161, 0);
+    width: 100%;
+
+}
+
+.arri:active {
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+    background-color: rgb(20, 241, 0);
+    box-shadow: 0 0 25px rgb(13, 161, 0);
+
+}
+.brazo{
+    background-color: rgba(255, 255, 255, 0.226);
+    width: 100%;
+}
+
+.brazo:active{
+    background-color: rgba(255, 255, 255, 0.562);
+    box-shadow: 0 0 25px rgba(201, 201, 201, 0.822);
+}
+
+
+.alerrt{
+    display: flex;
+    color: white;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: 35vh;
+    height: 7vh;
+    background-color: rgba(138, 138, 138, 0.61);
+    margin-top: 5vh;
+    position: absolute;
+    z-index: 2;
+}

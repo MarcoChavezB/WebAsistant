@@ -18,6 +18,7 @@ import { DevicesindexComponent } from './Views/DevicesIndex/devicesindex/devices
 import { UsersindexComponent } from './Views/UsersIndex/usersindex/usersindex.component';
 import { DeviceGuard } from './Guards/DeviceGuard/device-guard.guard';
 import { DeviceGuardSelect } from './Guards/DeviceGuardSelect/deviceguardselect.guard';
+import { ControllerComponent } from '@components/Sections/controller/controller.component';
 export const routes: Routes = [
     {
         path: '',

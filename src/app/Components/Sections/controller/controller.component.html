@@ -1,0 +1,40 @@
+<div class="noti">
+    <div @slideInOut *ngIf="error" class="alerrt rounded-l-xl rounded-r-xl"> <p>Hubo un error en la petición</p></div>
+</div>
+<div class="princ flex items-center justify-center ">
+
+    <div class="contened flex flex-col items-center justify-center space-y-4">
+        <!-- Botón Arriba -->
+        <button (click)="control('w')" [disabled]="disabled" class="brrd arri text-white font-bold py-4 px-6 shadow-lg text-lg">
+          <i class="bi bi-arrow-up"></i>
+        </button>
+      
+        <div class="flex space-x-4 controlesmiddle">
+          <!-- Botón Izquierda -->
+          <button (click)="control('a')" [disabled]="disabled" class="brrd izqui text-white font-bold py-4 px-6 shadow-lg text-lg">
+            <i class="bi bi-arrow-left"></i>
+          </button>
+      
+          <!-- Botón Pitido -->
+          <button (click)="control('e')" [disabled]="disabled" class="brrd piti text-white font-bold py-4 px-6 shadow-lg text-lg">
+            <i class="bi bi-volume-up"></i>
+          </button>
+      
+          <!-- Botón Derecha -->
+          <button (click)="control('d')" [disabled]="disabled" class="brrd dere text-white font-bold py-4 px-6 shadow-lg text-lg">
+            <i class="bi bi-arrow-right"></i>
+          </button>
+        </div>
+      
+        <!-- Botón Abajo -->
+        <button (click)="control('s')" [disabled]="disabled" class="brrd aba text-white font-bold py-4 px-6 shadow-lg text-lg">
+          <i class="bi bi-arrow-down"></i>
+        </button>
+    
+        <!-- Otro Botón -->
+        <button (click)="control('q')" [disabled]="disabled" class="brrd brazo text-white font-bold py-4 px-6 shadow-lg text-lg">
+            <i class="bi bi-thermometer-half"></i>
+        </button>
+    </div>
+    
+</div>

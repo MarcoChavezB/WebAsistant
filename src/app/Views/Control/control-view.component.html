@@ -17,8 +17,12 @@
             <app-maps/>            
         </article>
     </section>
+
     <section class="bottom grid">
-        <article class="h-full w-full p-5 flex justify-between items-center gap-5">
+        <app-controller>
+
+        </app-controller>
+        <article class="bgg h-full w-full p-5 flex justify-between items-center gap-5">
             <app-card-graph-line [sensorName]="'Temperatura'" [sensorIcon]="'bi bi-thermometer-half'" [sensorValue]="90"
                 [data]="data" [labels]="labels" [fill]="fill" [backgroundColor]="backColor" [borderColor]="borderColor"
                 [tension]="tension" [responsive]="responsive" />
