@@ -50,8 +50,8 @@ export class SelectDeviceComponent {
         this.getDevices()
     }
 
-    selectDevice(id: number){
-        this.deviceService.storeIdDevice(id)
+    selectDevice(code: string){
+        this.deviceService.storeIdDevice(code)
         this.router.navigate(['/dashboard'])
     }
 

@@ -151,7 +151,7 @@ export class CodeVerifyComponent {
   
   checkSelectDevice(){
     let device = this.deviceService.getStoredIdDevice()
-    if (device == 0){
+    if (device == ''){
         this.router.navigate(['/select-device'])
     } else{
         this.router.navigate(['/dashboard'])

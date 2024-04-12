@@ -8,12 +8,12 @@ import { Observable } from 'rxjs';
 })
 export class DeviceGuard implements CanActivate {
   constructor(private deviceserv: DeviceService, private router: Router) {}
-  deviceid : number = 0
+  deviceid : string = ''
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
       this.deviceid = this.deviceserv.getStoredIdDevice()
-      if(this.deviceid === 0){
+      if(this.deviceid === ''){
         this.router.navigate(['/select-device'])
         return false;
       }

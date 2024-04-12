@@ -18,7 +18,7 @@
         class="devices" style="max-height: 80vh;">
         <div *ngFor="let device of devices">
             <app-device-row 
-            (click)="selectDevice(device.id)"
+            (click)="selectDevice(device.code)"
             [reference]="device.code"/>
         </div>
       </div>

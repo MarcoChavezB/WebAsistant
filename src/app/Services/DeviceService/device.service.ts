@@ -5,14 +5,15 @@ import { Injectable } from '@angular/core';
 })
 export class DeviceService {
   constructor() { }
-  storeIdDevice(id: number){
-    localStorage.setItem('device_id', id.toString())
+  
+  storeIdDevice(code: string){
+    localStorage.setItem('device_id', code)
   }
-  getStoredIdDevice(): number{
+  getStoredIdDevice(): string{
     const id = localStorage.getItem('device_id')
     if(id){
-      return parseInt(id)
+      return id
     }
-    return 0
+    return ''
   }
 }

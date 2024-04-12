@@ -5,12 +5,11 @@ import {RecoveryPassword, UserLogin} from "@models/User";
 import {UserServicesService} from "@services/UserServices/user-services.service";
 import {GlobalLoaderComponent} from "@components/GlobalLoader/global-loader.component";
 import {KeyValuePipe, NgForOf, NgIf} from "@angular/common";
-import { AuthServiceService } from '@services/AuthService/auth-service.service';
-import { DeviceService } from '@services/DeviceService/device.service';
 import { ToastrService } from 'ngx-toastr';
 import {GlobalModalComponent} from "@components/Modal/global-modal/global-modal.component";
 import { CodeVerifyComponent } from '../veirfy-code/veirfy-code.component';
 import { AlertComponent } from '@components/Alert/alert/alert.component';
+
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -32,26 +31,25 @@ export class LoginComponent {
     isSubmitting = false;
     backendErrors: any;
     backendErrorMessage: any;
-    public notfound = false;
-    public error = false;
-    public passwordVerify = false;
     modalTitle = 'Recuperar contraseña';
     modalMessage = 'Asegúrate de tener acceso a tu correo electrónico para recuperar tu contraseña';
     showModal = false;
     email = ''
     password = ''
     verifycode = false
-
     message: string = '';
     mostrarAlerta: boolean = false;
+
+    public notfound = false;
+    public error = false;
+    public passwordVerify = false;
   
     constructor(
         private router:Router,
         private userService: UserServicesService,
-        private authService: AuthServiceService,
-        private deviceService: DeviceService,
         private toast: ToastrService
     ){}
+
     register(){
         this.router.navigate(['/register'])
     }
@@ -110,18 +108,18 @@ export class LoginComponent {
       )
     }
 
-    showAlert(message: string ){
-      this.message = message;
-      this.mostrarAlerta = true;
-      setTimeout(() => {
-        this.mostrarAlerta = false;
-      }
-      , 10000);
+  showAlert(message: string ){
+    this.message = message;
+    this.mostrarAlerta = true;
+    setTimeout(() => {
+       this.mostrarAlerta = false;
     }
+    , 10000);
+  }
 
-    recoveryPasswordForm = new FormGroup({
+  recoveryPasswordForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email])
-    });
+  });
 
   submitPasswordRecovery(){
       if (this.recoveryPasswordForm.invalid){
