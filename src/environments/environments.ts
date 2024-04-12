@@ -1,4 +1,4 @@
-const baseURL= 'http://backend.mylittleasistant.online:8000/api/';
+const baseURL= 'http://127.0.0.1:8000/api/';
 const ControlbaseURL= 'http://controller.mylittleasistant.online/api/';
 
 export const environment ={
@@ -24,4 +24,5 @@ export const environment ={
   changeroleuser: `${baseURL}employee/changerole/`,
   synkdeviceuser:  `${baseURL}user/link/device`,
   Controller:  `${ControlbaseURL}mqtt/`,
+  sse: `${baseURL}notification/`,
 }
