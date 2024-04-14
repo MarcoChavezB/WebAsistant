@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
-import { CardGraphLineComponent } from '../../Components/Cards/card-graph-line/card-graph-line.component';
-import { MapsComponent } from '../../Components/Sections/maps/maps.component';
-import { AnguloCardComponent } from '../../Components/Cards/angulo-card/angulo-card.component';
+import { CardGraphLineComponent } from '@components/Cards/card-graph-line/card-graph-line.component';
+import { MapsComponent } from '@components/Sections/maps/maps.component';
+import { AnguloCardComponent } from '@components/Cards/angulo-card/angulo-card.component';
 import { CommonModule } from '@angular/common';
 import { ControllerComponent } from '@components/Sections/controller/controller.component';
-
+import {ToastrService} from "ngx-toastr";
+import {DeviceService} from "@services/DeviceService/device.service";
+import {AuthServiceService} from "@services/AuthService/auth-service.service";
+import {environment} from "@environments/environments";
 @Component({
   selector: 'app-Control',
   standalone: true,
@@ -27,8 +30,21 @@ export class ControlViewComponent {
     tension: number = 0.5;
     responsive: boolean = false;
 
+    eventSource: EventSource | null = null;
+
     ngOnInit(){
         this.loadingVideo();
+        this.sseOpenConnection();
+    }
+
+    ngOnDestroy(){
+        this.sseCloseConnection();
+    }
+    constructor(
+        private toast: ToastrService,
+        private deviceService: DeviceService,
+        private authService: AuthServiceService
+    ) {
     }
 
     loading: boolean = true;
@@ -38,4 +54,22 @@ export class ControlViewComponent {
             this.loading = false;
         }, 3000);
     }
+
+    devCode = this.deviceService.getStoredIdDevice();
+    userId = this.authService.getUserId();
+  sseOpenConnection(){
+    this.eventSource = new EventSource(environment.sse + this.devCode + '/' + this.userId);
+
+    this.eventSource.addEventListener('notification', (e) => {
+      const data = JSON.parse(e.data);
+      if (data[0] == this.deviceService.getStoredIdDevice() ){
+        console.log(e.data)
+        this.toast.warning("Tu dispositivo esta expuesto a una temperatura muy alta: " + data[1], 'Notificación')
+      }
+    })
+  }
+
+  sseCloseConnection(){
+    this.eventSource?.close();
+  }
 }

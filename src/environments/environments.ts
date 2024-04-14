@@ -1,4 +1,4 @@
-const baseURL= 'http://backend.mylittleasistant.online:8000/api/';
+const baseURL= 'http://127.0.0.1:8000/api/';
 const ControlbaseURL= 'http://controller.mylittleasistant.online/api/';
 
 export const environment ={
@@ -30,9 +30,9 @@ export const environment ={
   gpsdata: `${ControlbaseURL}gps/lastone/`,
   pesodata: `${ControlbaseURL}peso/lastone/`,
   inclinaciondata: `${ControlbaseURL}vel/lastone/`,
-
+  sse: `${baseURL}notification/`,
   pusher: {
     key: `2489eced27769e3a01d1`,
     cluster: `us3`
-  }
+  },
 }
