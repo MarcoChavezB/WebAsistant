@@ -1,9 +1,10 @@
-<google-map 
+<google-map #map 
+  [options]="options"
   height="100%"
   width="100%"
   [center]="center"
   [zoom]="zoom"
-  [options]="options">
+  >
     <ng-container *ngFor="let position of markerPositions">
       <map-marker [position]="position" [options]="markerOptions"></map-marker>
     </ng-container>

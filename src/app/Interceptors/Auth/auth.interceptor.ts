@@ -24,6 +24,9 @@ export class AuthInterceptor implements HttpInterceptor {
         setHeaders: {
           Authorization: `Bearer ${authToken}`,
           //Accept: 'application/json'
+        }, 
+        setParams: {
+          '_': Date.now().toString()
         }
       });
       console.log(req)

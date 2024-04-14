@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild  } from '@angular/core';
 import { GoogleMap, MapMarker} from '@angular/google-maps';
 import { Renderer2, ElementRef } from '@angular/core';
 import { environment } from '@environments/environments';
-declare var google: any;
-
+import { SensordataserviceService } from '@services/SensorDataService/sensordataservice.service';
+import { DeviceService } from '@services/DeviceService/device.service';
+import { EchoService } from '@services/Echo/echo.service';
 @Component({
   selector: 'app-maps',
   standalone: true,
@@ -17,11 +18,13 @@ declare var google: any;
   styleUrl: './maps.component.css'
 })
 export class MapsComponent {
+  constructor(private renderer: Renderer2, private el: ElementRef, private sensorservice: SensordataserviceService, private deviceservice: DeviceService, private echoservice: EchoService) {}
+
+
+  @ViewChild(GoogleMap, { static: false }) map!:GoogleMap;
 
   private mapApiLoaded: boolean = false;
-  private intervalId: any;
   
-  constructor(private renderer: Renderer2, private el: ElementRef) {}
 
     darkThemeStyles: google.maps.MapTypeStyle[] = [
       { elementType: 'geometry', stylers: [{ color: '#242f3e' }] },
@@ -120,19 +123,36 @@ export class MapsComponent {
     
   
     center: google.maps.LatLngLiteral = {lat:  25.534824, lng:-103.334487};
+
     ngOnInit(){
+      this.echoservice.listenToAllEvents('gps-channel', (data, event) => {
+        console.log('Evento recibido:', event);
+        console.log('Datos del evento:', data);
+      });
         this.loadGoogleMapsApi().then(() => {
           this.mapApiLoaded = true;
           this.initializeMap();
+          
         }).catch((error) => {
           console.error('Error loading Google Maps API', error);
         });
     }
 
     ngOnDestroy() {
-      if (this.intervalId) {
-        clearInterval(this.intervalId);
-      }
+
+    }
+
+    gpsdata(){
+      this.sensorservice.getGpsData(this.deviceservice.getStoredIdDevice()).subscribe(
+        (data)=>{
+        
+
+        }, 
+        (err)=>{
+
+
+        }
+      )
     }
 
 
@@ -159,7 +179,9 @@ export class MapsComponent {
       });
     }
 
+    
     private initializeMap() {
+
       if (!this.mapApiLoaded) return;
 
       this.options = {
@@ -173,17 +195,12 @@ export class MapsComponent {
         draggable: false
       };
 
-      this.updateMarkerLocation();
-
     }
 
-    updateMarkerLocation() {
-      setInterval(() => {
-        const newLat = this.center.lat + (Math.random() - 0.5) / 5000;
-        const newLng = this.center.lng + (Math.random() - 0.5) / 5000;
-        this.animateMarker(newLat, newLng);
-      }, 5000);
-    }
+    zoom: number = 15; 
+        
+    markerPositions: google.maps.LatLngLiteral[] = [];
+
 
     animateMarker(newLat: number, newLng: number) {
       const deltaLat = (newLat - this.center.lat) / 100;
@@ -196,6 +213,9 @@ export class MapsComponent {
         this.center.lng += deltaLng;
     
         this.markerPositions[0] = { lat: this.center.lat, lng: this.center.lng };
+        if (this.map) {
+          this.map.panTo(new google.maps.LatLng(this.center.lat, this.center.lng));
+        }
     
         if (i < 100) {
           requestAnimationFrame(moveMarker);
@@ -205,12 +225,4 @@ export class MapsComponent {
       moveMarker();
     }
     
-    zoom: number = 15; 
-        
-    markerPositions: google.maps.LatLngLiteral[] = [];
-
-    lastMarket(coords: google.maps.LatLngLiteral) {
-        this.markerPositions = [];
-        this.markerPositions.push(coords);    
-    }
 }
