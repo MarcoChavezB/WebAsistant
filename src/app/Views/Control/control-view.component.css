@@ -63,6 +63,22 @@ article{
     z-index: 1;
 }
 
+.urls{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 4vh;
+    flex-direction: column;
+}
+
+.urlinput {
+    width: 100%;
+    border-radius: 2vh;
+    border-color: rgb(255, 255, 255);
+    border-width: 2px;
+    height: 5vh;
+
+}
 .valores{
     width: 20vh;
     height: 10vh;

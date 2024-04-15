@@ -10,6 +10,9 @@ import { GraficatempComponent } from '@components/Sections/Sensores/GraficaTemp/
 import { GradicaVelocidadComponent } from '@components/Sections/Sensores/GraficaVelocidad/gradica-velocidad/gradica-velocidad.component';
 import { EchoService } from '@services/Echo/echo.service';
 import { SensordataserviceService } from '@services/SensorDataService/sensordataservice.service';
+import { FormsModule } from '@angular/forms';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+
 @Component({
   selector: 'app-Control',
   standalone: true,
@@ -19,6 +22,7 @@ import { SensordataserviceService } from '@services/SensorDataService/sensordata
     ControllerComponent,
     GraficatempComponent,
     GradicaVelocidadComponent,
+    FormsModule,
   ],
   templateUrl: './control-view.component.html',
   styleUrl: './control-view.component.css'
@@ -27,7 +31,8 @@ export class ControlViewComponent {
     peso = '';
     grados = '';
     eventSource: EventSource | null = null;
-
+    url: SafeResourceUrl | null = null;
+    newurl: string = ''
     ngOnInit(){
         this.loadingVideo();
         this.sseOpenConnection();
@@ -83,8 +88,17 @@ export class ControlViewComponent {
         private deviceService: DeviceService,
         private authService: AuthServiceService,
         private EchoService: EchoService,
-        private sensorservice:SensordataserviceService
+        private sensorservice:SensordataserviceService,
+        private sanitizer: DomSanitizer,
     ) {
+    }
+
+    setUrl(newUrl: string) {
+      this.url = this.sanitizer.bypassSecurityTrustResourceUrl(newUrl);
+    }
+
+    updateUrl() {
+      setTimeout(() => this.setUrl(this.newurl), 10);  
     }
 
     loading: boolean = true;

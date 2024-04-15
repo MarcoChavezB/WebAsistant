@@ -13,6 +13,12 @@
                     <h1>Weight</h1>
                     <h3>{{ peso }} KG</h3>
                 </div>
+                <div class="urls">
+                    <input type="text" class="urlinput" [(ngModel)]="newurl">
+                    <button (click)="updateUrl()" class="btn">Load New URL</button>
+
+                </div>
+
                 <div class="valores">
                     <h1>Inclination</h1>
                     <h3>{{ grados }} °</h3>
@@ -21,7 +27,7 @@
             <iframe
                 *ngIf="!loading"
                 class="h-full w-full vdd"
-                src="https://player.twitch.tv/?channel=elabrahaham&parent=localhost"
+                [src]="url"
                 allowfullscreen
                 autoplay
                 >
@@ -49,3 +55,4 @@
         </article>
     </section>
 </main>
+
