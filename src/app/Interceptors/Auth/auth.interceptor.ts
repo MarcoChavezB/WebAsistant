@@ -23,7 +23,6 @@ export class AuthInterceptor implements HttpInterceptor {
       req = req.clone({
         setHeaders: {
           Authorization: `Bearer ${authToken}`,
-          //Accept: 'application/json'
         }, 
         setParams: {
           '_': Date.now().toString()

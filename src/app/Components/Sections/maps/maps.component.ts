@@ -24,88 +24,39 @@ export class MapsComponent {
   @ViewChild(GoogleMap, { static: false }) map!:GoogleMap;
 
   private mapApiLoaded: boolean = false;
-  
+  loaded = false;
+
 
     darkThemeStyles: google.maps.MapTypeStyle[] = [
-      { elementType: 'geometry', stylers: [{ color: '#242f3e' }] },
-      { elementType: 'labels.text.stroke', stylers: [{ color: '#242f3e' }] },
-      { elementType: 'labels.text.fill', stylers: [{ color: '#746855' }] },
       {
-        featureType: 'administrative.locality',
-        elementType: 'labels.text.fill',
-        stylers: [{ color: '#d59563' }]
+        "featureType": "administrative.land_parcel",
+        "elementType": "labels",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
       },
       {
-        featureType: 'poi',
-        elementType: 'labels.text.fill',
-        stylers: [{ color: '#d59563' }]
+        "featureType": "poi",
+        "elementType": "labels.text",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
       },
       {
-        featureType: 'poi.park',
-        elementType: 'geometry',
-        stylers: [{ color: '#263c3f' }]
-      },
-      {
-        featureType: 'poi.park',
-        elementType: 'labels.text.fill',
-        stylers: [{ color: '#6b9a76' }]
-      },
-      {
-        featureType: 'road',
-        elementType: 'geometry',
-        stylers: [{ color: '#38414e' }]
-      },
-      {
-        featureType: 'road',
-        elementType: 'geometry.stroke',
-        stylers: [{ color: '#212a37' }]
-      },
-      {
-        featureType: 'road',
-        elementType: 'labels.text.fill',
-        stylers: [{ color: '#9ca5b3' }]
-      },
-      {
-        featureType: 'road.highway',
-        elementType: 'geometry',
-        stylers: [{ color: '#746855' }]
-      },
-      {
-        featureType: 'road.highway',
-        elementType: 'geometry.stroke',
-        stylers: [{ color: '#1f2835' }]
-      },
-      {
-        featureType: 'road.highway',
-        elementType: 'labels.text.fill',
-        stylers: [{ color: '#f3d19c' }]
-      },
-      {
-        featureType: 'transit',
-        elementType: 'geometry',
-        stylers: [{ color: '#2f3948' }]
-      },
-      {
-        featureType: 'transit.station',
-        elementType: 'labels.text.fill',
-        stylers: [{ color: '#d59563' }]
-      },
-      {
-        featureType: 'water',
-        elementType: 'geometry',
-        stylers: [{ color: '#17263c' }]
-      },
-      {
-        featureType: 'water',
-        elementType: 'labels.text.fill',
-        stylers: [{ color: '#515c6d' }]
-      },
-      {
-        featureType: 'water',
-        elementType: 'labels.text.stroke',
-        stylers: [{ color: '#17263c' }]
+        "featureType": "road.local",
+        "elementType": "labels",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
       }
     ];
+    
     
 
     options: google.maps.MapOptions = {
@@ -125,35 +76,50 @@ export class MapsComponent {
     center: google.maps.LatLngLiteral = {lat:  25.534824, lng:-103.334487};
 
     ngOnInit(){
-      this.echoservice.listenToAllEvents('gps-channel', (data, event) => {
-        console.log('Evento recibido:', event);
-        console.log('Datos del evento:', data);
-      });
+
         this.loadGoogleMapsApi().then(() => {
+          this.loaded = true;
           this.mapApiLoaded = true;
           this.initializeMap();
-          
+
+          setTimeout(() => {
+            this.gpsdata()
+            this.echoservice.listenToNewGpsData((data) => {
+              console.log('Datos del evento:', data);
+              this.gpsdata()
+            });
+          }, 5000);
+
         }).catch((error) => {
           console.error('Error loading Google Maps API', error);
         });
     }
 
     ngOnDestroy() {
-
+      this.echoservice.leaveChannel('gpschann')
     }
 
-    gpsdata(){
+    gpsdata() {
       this.sensorservice.getGpsData(this.deviceservice.getStoredIdDevice()).subscribe(
-        (data)=>{
-        
-
-        }, 
-        (err)=>{
-
-
+        (data) => {
+          const coordenadas = data.data[0].Valor;
+          if (coordenadas) {
+            const splitCoords = coordenadas.split(',').map(coord => parseFloat(coord.trim()));
+            if (splitCoords.length === 2) {
+              this.animateMarker(splitCoords[0], splitCoords[1]);
+            } else {
+              console.error('Formato de coordenadas incorrecto', coordenadas);
+            }
+          } else {
+            console.error('No se encontraron coordenadas en la respuesta', data);
+          }
+        },
+        (err) => {
+          console.error('Error al obtener datos del GPS:', err);
         }
-      )
+      );
     }
+    
 
 
     private loadGoogleMapsApi(): Promise<any> {

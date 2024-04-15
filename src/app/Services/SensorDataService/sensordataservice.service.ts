@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {environment} from "@environments/environments";
-import { SensorData } from '@models/Sensor';
+import { SensorDataResponse } from '@models/Sensor';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 @Injectable({
@@ -10,24 +10,24 @@ export class SensordataserviceService {
 
   constructor(private readonly http: HttpClient) { }
 
-  getInclinacionData(deviceCode: string): Observable<SensorData> {
-    return this.http.get<SensorData>(environment.inclinaciondata + deviceCode);
+  getInclinacionData(deviceCode: string): Observable<SensorDataResponse> {
+    return this.http.get<SensorDataResponse>(environment.inclinaciondata + deviceCode);
   }
 
-  getGpsData(deviceCode: string): Observable<SensorData> {
-    return this.http.get<SensorData>(environment.gpsdata + deviceCode);
+  getGpsData(deviceCode: string): Observable<SensorDataResponse> {
+    return this.http.get<SensorDataResponse>(environment.gpsdata + deviceCode);
   }
 
-  getPesoData(deviceCode: string): Observable<SensorData> {
-    return this.http.get<SensorData>(environment.pesodata + deviceCode);
+  getPesoData(deviceCode: string): Observable<SensorDataResponse> {
+    return this.http.get<SensorDataResponse>(environment.pesodata + deviceCode);
   }
 
-  getVelocidadData(deviceCode: string): Observable<SensorData> {
-    return this.http.get<SensorData>(environment.velocidaddata + deviceCode);
+  getVelocidadData(deviceCode: string): Observable<SensorDataResponse> {
+    return this.http.get<SensorDataResponse>(environment.velocidaddata + deviceCode);
   }
 
-  getTemperaturaData(deviceCode: string): Observable<SensorData> {
-    return this.http.get<SensorData>(environment.tempdata + deviceCode);
+  getTemperaturaData(deviceCode: string): Observable<SensorDataResponse> {
+    return this.http.get<SensorDataResponse>(environment.tempdata + deviceCode);
   }
 
 }

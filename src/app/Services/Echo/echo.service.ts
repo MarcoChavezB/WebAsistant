@@ -55,19 +55,31 @@ export class EchoService {
       callback(e);
     });
   }
-  
-  public listentestevent(callback: (e: any) => void) {
-    this.echo?.channel('test-channel').listen('.*', (e: any) => {
+
+  public listenToNewPesoData(callback: (e: any) => void) {
+    this.echo?.channel('pesochann').listen('.pesoevent', (e: any) => {
       callback(e);
     });
   }
 
-  public listenToAllEvents(channel: string, callback: (e: any, event: string) => void) {
-    const echoChannel = this.echo?.channel(channel);
-  
-    echoChannel?.listen('.*', (e: any, event: string) => {
-      callback(e, event);
+  public listenToNewIncliData(callback: (e: any) => void) {
+    this.echo?.channel('inclichann').listen('.inclievent', (e: any) => {
+      callback(e);
     });
   }
+
+  public listenToNewTempData(callback: (e: any) => void) {
+    this.echo?.channel('tempchann').listen('.tempevent', (e: any) => {
+      callback(e);
+    });
+  }
+
+  public listenToNewVeloData(callback: (e: any) => void) {
+    this.echo?.channel('velochann').listen('.veloevent', (e: any) => {
+      callback(e);
+    });
+  }
+  
+
   
 }

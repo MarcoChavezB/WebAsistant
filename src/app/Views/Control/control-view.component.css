@@ -18,7 +18,64 @@ article{
     gap: 1rem;
 }
 .bgg {
+    display: flex;
     background-color: rgba(0, 0, 0, 0.534);
     border-radius: 2vh;
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.212);
+    flex-direction: row;
+    gap: 2vh;
+    padding: 2vh;
+}
+
+.bghs {
+    background-image: linear-gradient(to top, rgb(78, 0, 0), rgb(0, 0, 71));
+}
+
+.border {
+    border-radius: 3vh;
+
+}
+
+.indxx{
+    display: flex;
+    position: absolute;
+    align-items: flex-end;
+    justify-content: space-between;
+    z-index: 5;
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.596), rgba(0, 0, 0, 0));
+    width: 100%;
+    height: 100%;
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0;
+}
+
+.overr{
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.vdd{
+    position: relative;
+    z-index: 1;
+}
+
+.valores{
+    width: 20vh;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.562);
+    border-radius: 2vh;
+    border-color: rgb(255, 255, 255);
+    border-width: 2px;
+    margin-bottom: 4vh;
+    margin-left: 4vh;
+    margin-right: 4vh;
+    flex-direction: column;
+
 }

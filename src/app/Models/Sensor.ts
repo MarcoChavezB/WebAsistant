@@ -10,3 +10,8 @@ export interface SensorData {
     created_at: string;
   }
   
+  export interface SensorDataResponse {
+    success: boolean,
+    data: SensorData[]
+  }
+  

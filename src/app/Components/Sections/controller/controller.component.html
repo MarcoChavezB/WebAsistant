@@ -3,38 +3,82 @@
 </div>
 <div class="princ flex items-center justify-center ">
 
-    <div class="contened flex flex-col items-center justify-center space-y-4">
-        <!-- Botón Arriba -->
-        <button (click)="control('w')" [disabled]="disabled" class="brrd arri text-white font-bold py-4 px-6 shadow-lg text-lg">
-          <i class="bi bi-arrow-up"></i>
+    <div class="botonesextra flex flex-col items-center justify-center space-y-4">
+
+      <h2>Camera</h2>
+      <div class="flex space-x-4 controlesmiddle">
+        <!-- Botón Izquierda -->
+        <button (click)="control('i')" [disabled]="disabled" class="brazo piti text-white font-bold py-4 px-6 shadow-lg text-lg">
+          <i class="bi bi-arrow-left">i</i>
         </button>
+    
+        <!-- Botón Pitido -->
+        <button (click)="control('o')" [disabled]="disabled" class="brazo piti text-white font-bold py-4 px-6 shadow-lg text-lg">
+          <i>O</i>
+        </button>
+    
+        <!-- Botón Derecha -->
+        <button (click)="control('p')" [disabled]="disabled" class="brazo piti text-white font-bold py-4 px-6 shadow-lg text-lg">
+          <i class="bi bi-arrow-right">P</i>
+        </button>
+      </div>
+
+      <div class="grille2">
+        <div class="luces">
+          <h2>Lights</h2>
+          <button (click)="control('1')" [disabled]="disabled" class="luzbtn text-white font-bold py-4 px-6 shadow-lg text-lg">
+            <i class="bi bi-lightbulb-fill">1</i>
+          </button>
       
+          <button (click)="control('2')" [disabled]="disabled" class="luzbtn text-white font-bold py-4 px-6 shadow-lg text-lg">
+            <i class="bi bi-lightbulb-off-fill">2</i>
+          </button>
+
+        </div>
+        <div class="luces">
+          <h2>Inclination</h2>
+          <button (click)="control('u')" [disabled]="disabled" class="luzbtn text-white font-bold py-4 px-6 shadow-lg text-lg">
+            <i class="bi bi-arrow-up">U</i>
+          </button>
+      
+          <button (click)="control('j')" [disabled]="disabled" class="luzbtn text-white font-bold py-4 px-6 shadow-lg text-lg">
+            <i class="bi bi-arrow-down">J</i>
+          </button>
+
+        </div>
+      </div>
+    </div>
+    <div class="contened flex flex-col items-center justify-center space-y-4">
+      <h2>Controller</h2>
+
+        <!-- Botón Arriba -->
+        <button (click)="control('w')" [disabled]="checkDisabled('w')" class="brrd arri text-white font-bold py-4 px-6 shadow-lg text-lg">
+          <i class="bi bi-arrow-up">W</i>
+        </button>
         <div class="flex space-x-4 controlesmiddle">
           <!-- Botón Izquierda -->
-          <button (click)="control('a')" [disabled]="disabled" class="brrd izqui text-white font-bold py-4 px-6 shadow-lg text-lg">
-            <i class="bi bi-arrow-left"></i>
+          <button (click)="control('a')" [disabled]="checkDisabled('a')" class="brrd izqui text-white font-bold py-4 px-6 shadow-lg text-lg">
+            <i class="bi bi-arrow-left">A</i>
           </button>
       
           <!-- Botón Pitido -->
           <button (click)="control('e')" [disabled]="disabled" class="brrd piti text-white font-bold py-4 px-6 shadow-lg text-lg">
-            <i class="bi bi-volume-up"></i>
+            <i class="bi bi-volume-up">E</i>
           </button>
       
           <!-- Botón Derecha -->
-          <button (click)="control('d')" [disabled]="disabled" class="brrd dere text-white font-bold py-4 px-6 shadow-lg text-lg">
-            <i class="bi bi-arrow-right"></i>
+          <button (click)="control('d')" [disabled]="checkDisabled('d')" class="brrd dere text-white font-bold py-4 px-6 shadow-lg text-lg">
+            <i class="bi bi-arrow-right">D</i>
           </button>
         </div>
       
         <!-- Botón Abajo -->
-        <button (click)="control('s')" [disabled]="disabled" class="brrd aba text-white font-bold py-4 px-6 shadow-lg text-lg">
-          <i class="bi bi-arrow-down"></i>
+        <button (click)="control('s')" [disabled]="checkDisabled('s')" class="brrd aba text-white font-bold py-4 px-6 shadow-lg text-lg">
+          <i class="bi bi-arrow-down">S</i>
         </button>
     
-        <!-- Otro Botón -->
-        <button (click)="control('q')" [disabled]="disabled" class="brrd brazo text-white font-bold py-4 px-6 shadow-lg text-lg">
-            <i class="bi bi-thermometer-half"></i>
-        </button>
+        
+     
     </div>
     
 </div>
