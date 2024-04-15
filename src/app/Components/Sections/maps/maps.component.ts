@@ -107,6 +107,7 @@ export class MapsComponent {
             const splitCoords = coordenadas.split(',').map(coord => parseFloat(coord.trim()));
             if (splitCoords.length === 2) {
               this.animateMarker(splitCoords[0], splitCoords[1]);
+              console.log(splitCoords[0], splitCoords[1])
             } else {
               console.error('Formato de coordenadas incorrecto', coordenadas);
             }
