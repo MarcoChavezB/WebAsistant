@@ -104,7 +104,7 @@ export class ControlViewComponent {
       const data = JSON.parse(e.data);
       if (data[0] == this.deviceService.getStoredIdDevice() ){
         console.log(e.data)
-        this.toast.warning("Tu dispositivo esta expuesto a una temperatura muy alta: " + data[1], 'Notificación')
+        this.toast.warning("El motor de tu dispositivo esta expuesto a temperaturas muy alta. Data: " + data[1], 'Alerta')
       }
     })
   }
