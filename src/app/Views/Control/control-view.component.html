@@ -1,17 +1,32 @@
 <main class="menu grid h-full w-full">
     <section class="top grid">
-        <article id="camera" class="flex justify-center items-center">
+        <article id="camera" class="overr flex justify-center items-center">
             <span
             *ngIf="loading"
              class="loading loading-dots loading-lg"></span>
+
+             <div
+             *ngIf="!loading"
+             class="indxx"
+             >
+                <div class="valores">
+                    <h1>Weight</h1>
+                    <h3>{{ peso }} KG</h3>
+                </div>
+                <div class="valores">
+                    <h1>Inclination</h1>
+                    <h3>{{ grados }} °</h3>
+                </div>
+             </div>
             <iframe
                 *ngIf="!loading"
-                class="h-full w-full"
+                class="h-full w-full vdd"
                 src="https://player.twitch.tv/?channel=elabrahaham&parent=localhost"
                 allowfullscreen
                 autoplay
                 >
             </iframe>
+
         </article>
         <article id="map">
             <app-maps/>            
@@ -22,22 +37,15 @@
         <app-controller>
 
         </app-controller>
-        <article class="bgg h-full w-full p-5 flex justify-between items-center gap-5">
-            <app-card-graph-line [sensorName]="'Temperatura'" [sensorIcon]="'bi bi-thermometer-half'" [sensorValue]="90"
-                [data]="data" [labels]="labels" [fill]="fill" [backgroundColor]="backColor" [borderColor]="borderColor"
-                [tension]="tension" [responsive]="responsive" />
+        <article class="bgg">
 
-            <app-card-graph-line [sensorName]="'Velocidad'" [sensorIcon]="'bi bi-thermometer-half'" [sensorValue]="30"
-                [data]="data" [labels]="labels" [fill]="fill" [backgroundColor]="backColor" [borderColor]="borderColor"
-                [tension]="tension" [responsive]="responsive" />
+            <div class="max-w-xl border bghs p-8">
+                <app-graficatemp></app-graficatemp>
+              </div>
 
-            <app-card-graph-line [sensorName]="'Angulo'" [sensorIcon]="'bi bi-thermometer-half'" [sensorValue]="90"
-                [data]="data" [labels]="labels" [fill]="fill" [backgroundColor]="backColor" [borderColor]="borderColor"
-                [tension]="tension" [responsive]="responsive" />
-
-            <app-card-graph-line [sensorName]="'Angulo'" [sensorIcon]="'bi bi-thermometer-half'" [sensorValue]="90"
-                [data]="data" [labels]="labels" [fill]="fill" [backgroundColor]="backColor" [borderColor]="borderColor"
-                [tension]="tension" [responsive]="responsive" />
+              <div class="max-w-xl border p-8">
+                <app-gradica-velocidad></app-gradica-velocidad>
+              </div>
         </article>
     </section>
 </main>

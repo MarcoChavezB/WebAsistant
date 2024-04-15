@@ -1,7 +1,8 @@
-const baseURL= 'http://127.0.0.1:8000/api/';
+const baseURL= 'http://backend.mylittleasistant.online:8000/api/';
 const ControlbaseURL= 'http://controller.mylittleasistant.online/api/';
 
 export const environment ={
+  urlws: 'backend.mylittleasistant.online:6001',
   production : false,
   fetchUserDataURL : `${baseURL}user/info`,
   loginURL : `${baseURL}user/login`,
@@ -24,5 +25,14 @@ export const environment ={
   changeroleuser: `${baseURL}employee/changerole/`,
   synkdeviceuser:  `${baseURL}user/link/device`,
   Controller:  `${ControlbaseURL}mqtt/`,
+  tempdata: `${baseURL}Temp/lastfive/`,
+  velocidaddata: `${baseURL}vel/lastfive/`,
+  gpsdata: `${baseURL}gps/lastone/`,
+  pesodata: `${baseURL}peso/lastone/`,
+  inclinaciondata: `${baseURL}incli/lastone/`,
   sse: `${baseURL}notification/`,
+  pusher: {
+    key: `2489eced27769e3a01d1`,
+    cluster: `us3`
+  },
 }

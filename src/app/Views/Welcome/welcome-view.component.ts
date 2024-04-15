@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {animate, style, transition, trigger} from "@angular/animations";
-
+import { EchoService } from '@services/Echo/echo.service';
 @Component({
   selector: 'app-Welcome',
   standalone: true,
@@ -17,5 +17,7 @@ import {animate, style, transition, trigger} from "@angular/animations";
   ]
 })
 export class WelcomeViewComponent {
+
+
 
 }

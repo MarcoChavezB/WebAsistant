@@ -1,7 +1,0 @@
-main{
-    height: 100vh;
-}
-
-.contenedor{
-    grid-template-columns: 1fr 13fr;
-}

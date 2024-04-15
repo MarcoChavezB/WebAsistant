@@ -28,10 +28,13 @@ export class ControllerComponent {
     private readonly controllerser: ControllerServiceService
   ){ }
 
+  keyActive: { [key: string]: boolean } = { 'w': false, 'a': false, 's': false, 'd': false };
+
   disabled = false
   error = false
 
   control(cs: string){
+    console.log(cs)
     this.error = false
     this.controllerser.Controller(cs).subscribe(
       (data)=>{
@@ -42,6 +45,7 @@ export class ControllerComponent {
       },
       (err)=>{
         this.error = true
+        console.log(err)
         setTimeout(() => {
           this.error = false
         }, 5000);
@@ -49,29 +53,29 @@ export class ControllerComponent {
     )
   }
 
+
   @HostListener('document:keydown', ['$event'])
-  handleKeyboardEvent(event: KeyboardEvent) {
-    switch(event.key) {
-      case 'w':
-        this.control('w');
-        break;
-      case 'a':
-        this.control('a');
-        break;
-      case 's':
-        this.control('s');
-        break;
-      case 'd':
-        this.control('d');
-        break;
-      case 'e': 
-        this.control('e');
-        break;
-      case 'q': 
-        this.control('q');
-        break;
-      default:
-        break;
+  handleKeyDown(event: KeyboardEvent) {
+    const controlKeys = ['w', 'a', 's', 'd'];
+    if (controlKeys.includes(event.key.toLowerCase())) {
+      if (!this.keyActive[event.key]) { 
+        this.keyActive[event.key] = true; 
+        this.control(event.key); 
+        controlKeys.filter(k => k !== event.key).forEach(k => this.keyActive[k] = false); 
+      }
+    } else {
+      this.control(event.key);  
     }
   }
+checkDisabled(key: string): boolean {
+  return Object.keys(this.keyActive).some(k => this.keyActive[k] && k !== key);
+}
+
+@HostListener('document:keyup', ['$event'])
+handleKeyUp(event: KeyboardEvent) {
+  if (this.keyActive[event.key]) { 
+    this.keyActive[event.key] = false;
+    this.control('x'); 
+  }
+}
 }
