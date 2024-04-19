@@ -60,11 +60,17 @@ export class ControllerComponent {
     if (controlKeys.includes(event.key.toLowerCase())) {
       if (!this.keyActive[event.key]) { 
         this.keyActive[event.key] = true; 
-        this.control(event.key); 
+        this.control(event.key);
         controlKeys.filter(k => k !== event.key).forEach(k => this.keyActive[k] = false); 
       }
     } else {
-      this.control(event.key);  
+      if(event.key === 'p'){
+        this.control('i');  
+      } else if (event.key === 'i'){
+        this.control('p');  
+      } else {
+        this.control(event.key);  
+      }
     }
   }
 checkDisabled(key: string): boolean {
