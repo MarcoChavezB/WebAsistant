@@ -48,7 +48,7 @@ export class ControlViewComponent {
           this.pesodata()
         });
     }
-  
+
     inclidata(){
       this.sensorservice.getInclinacionData(this.deviceService.getStoredIdDevice()).subscribe(
         (data) => {
@@ -78,8 +78,8 @@ export class ControlViewComponent {
         }
       )
     }
-  
-  
+
+
     ngOnDestroy(){
         this.sseCloseConnection();
     }
@@ -98,7 +98,7 @@ export class ControlViewComponent {
     }
 
     updateUrl() {
-      setTimeout(() => this.setUrl(this.newurl), 10);  
+      setTimeout(() => this.setUrl(this.newurl), 10);
     }
 
     loading: boolean = true;
@@ -118,7 +118,15 @@ export class ControlViewComponent {
       const data = JSON.parse(e.data);
       if (data[0] == this.deviceService.getStoredIdDevice() ){
         console.log(e.data)
-        this.toast.warning("El motor de tu dispositivo esta expuesto a temperaturas muy alta. Data: " + data[1], 'Alerta')
+        this.toast.warning("El motor de tu dispositivo esta expuesto a temperaturas muy altas. Data: " + data[1], 'Alerta')
+      }
+    })
+
+    this.eventSource.addEventListener('incli-notification', (e) => {
+      const data = JSON.parse(e.data);
+      if (data[0] == this.deviceService.getStoredIdDevice() ){
+        console.log(e.data)
+        this.toast.warning("El motor de tu dispositivo esta inclinado. Data: " + data[1], 'Alerta')
       }
     })
   }
