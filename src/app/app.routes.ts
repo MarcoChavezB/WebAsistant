@@ -6,8 +6,6 @@ import { DashboardComponent } from './Layouts/dashboard/dashboard.component';
 import {WelcomeViewComponent} from "./Views/Welcome/welcome-view.component";
 import {ControlViewComponent} from "./Views/Control/control-view.component";
 import {UserUpdateComponent} from "./Views/UserUpdate/user-update.component";
-import {StoreDeviceComponent} from "./Views/Device/store-device/store-device.component";
-import {ShowDeviceComponent} from "./Views/Device/show-device/show-device.component";
 import { SelectDeviceComponent } from './Views/Devices/select-device/select-device.component';
 import { NotfoundComponent } from './Views/Notfound/notfound/notfound.component';
 import { NotpermissionComponent } from './Views/Notpermission/notpermission/notpermission.component';
@@ -18,7 +16,7 @@ import { DevicesindexComponent } from './Views/DevicesIndex/devicesindex/devices
 import { UsersindexComponent } from './Views/UsersIndex/usersindex/usersindex.component';
 import { DeviceGuard } from './Guards/DeviceGuard/device-guard.guard';
 import { DeviceGuardSelect } from './Guards/DeviceGuardSelect/deviceguardselect.guard';
-import { ControllerComponent } from '@components/Sections/controller/controller.component';
+
 export const routes: Routes = [
     {
         path: '',

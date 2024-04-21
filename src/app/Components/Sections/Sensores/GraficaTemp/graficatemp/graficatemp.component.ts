@@ -38,10 +38,17 @@ export class GraficatempComponent implements AfterViewInit {
 
   ngOnInit(){
     this.tempdata()
-    this.EchoService.listenToNewTempData((data) => {
-      console.log('Datos del evento:', data);
-      this.tempdata()
-    });
+    setTimeout(()=> {
+      this.EchoService.listenToNewTempData((data) => {
+        console.log('Datos del evento:', data);
+        this.tempdata()
+      });
+    }, 1500);
+    
+  }
+
+  ngOnDestroy(){
+    this.EchoService.leaveChannel('tempchann')
   }
 
   tempdata(){

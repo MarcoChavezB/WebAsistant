@@ -38,10 +38,16 @@ export class GradicaVelocidadComponent implements AfterViewInit {
 
   ngOnInit(){
     this.velodata()
-    this.EchoService.listenToNewVeloData((data) => {
-      console.log('Datos del evento:', data);
-      this.velodata()
-    });
+    setTimeout(()=> {
+      this.EchoService.listenToNewVeloData((data) => {
+        console.log('Datos del evento:', data);
+        this.velodata()
+      });
+    }, 1500) 
+  }
+
+  ngOnDestroy(){
+    this.EchoService.leaveChannel('velochann')
   }
 
   velodata(){

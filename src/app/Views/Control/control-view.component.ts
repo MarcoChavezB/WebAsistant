@@ -38,15 +38,17 @@ export class ControlViewComponent {
         this.sseOpenConnection();
         this.inclidata()
         this.pesodata()
-        this.EchoService.listenToNewIncliData((data) => {
-          console.log('Datos del evento:', data);
-          this.inclidata()
-        });
-
-        this.EchoService.listenToNewPesoData((data) => {
-          console.log('Datos del evento:', data);
-          this.pesodata()
-        });
+        setTimeout(()=> {
+          this.EchoService.listenToNewIncliData((data) => {
+            console.log('Datos del evento:', data);
+            this.inclidata()
+          });
+  
+          this.EchoService.listenToNewPesoData((data) => {
+            console.log('Datos del evento:', data);
+            this.pesodata()
+          });
+        }, 1500)
     }
   
     inclidata(){
@@ -82,6 +84,9 @@ export class ControlViewComponent {
   
     ngOnDestroy(){
         this.sseCloseConnection();
+        this.EchoService.leaveChannel('inclichann')
+        this.EchoService.leaveChannel('pesochann')
+
     }
     constructor(
         private toast: ToastrService,
