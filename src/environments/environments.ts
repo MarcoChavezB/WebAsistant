@@ -15,9 +15,11 @@ export const environment ={
   urladminAuth: `${baseURL}employee/employeeauthenticate`,
   getUserDevice: `${baseURL}user/devices`,
   userUpdateURL: `${baseURL}user/update`,
+
   codeVerify: `${baseURL}/verifyCode`,
   sendEmailCode: `${baseURL}/getCode/`,
   checkCodeAuth: `${baseURL}/isActive/`,
+
   updatePasswordURL: `${baseURL}user/update/password`,
   forgotPasswordURL: `${baseURL}user/recovery/password`,
   getDevicesIndex: `${baseURL}employee/device/index`,

@@ -78,7 +78,7 @@ export class UserServicesService {
   checkCodeAuth(userId: string): Observable<any> {
     return this.http.get<any>(environment.checkCodeAuth + userId)
   }
-  
+
   updatePassword(data: UserPasswordUpdate): Observable<UserPasswordUpdate>{
     return this.http.put<UserPasswordUpdate>(this.updatePasswordURL, data)
   }

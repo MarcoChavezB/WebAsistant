@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpErrorResponse  } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { AuthServiceService } from '../../Services/AuthService/auth-service.service';
+import { AuthServiceService } from '@services/AuthService/auth-service.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Provider } from '@angular/core';
 import { Router } from '@angular/router';
@@ -23,7 +23,7 @@ export class AuthInterceptor implements HttpInterceptor {
       req = req.clone({
         setHeaders: {
           Authorization: `Bearer ${authToken}`,
-        }, 
+        },
         setParams: {
           '_': Date.now().toString()
         }
@@ -55,7 +55,7 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   private shouldExclude(req: HttpRequest<any>): boolean {
-    const excludedPaths = ['/', '/login', '/register']; 
+    const excludedPaths = ['/', '/login', '/register'];
     return excludedPaths.some(path => req.url.endsWith(path));
   }
 

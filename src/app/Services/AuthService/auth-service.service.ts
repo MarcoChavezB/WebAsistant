@@ -71,7 +71,7 @@ export class AuthServiceService {
               localStorage.removeItem('device_id');
               resolve(true);
             } else {
-              resolve(false); 
+              resolve(false);
             }
           },
           error => {
@@ -79,11 +79,11 @@ export class AuthServiceService {
           }
         );
       } else {
-        resolve(false); 
+        resolve(false);
       }
     });
   }
-  
+
 
   getUserId(){
     if (typeof window !== 'undefined') {
@@ -98,19 +98,19 @@ export class AuthServiceService {
   }
 
   getRole() {
-    if (typeof window !== 'undefined') { 
-      const user = localStorage.getItem('user');  
-      if (user) { 
-        const userParsed = JSON.parse(user); 
-        const role = userParsed.role; 
-        console.log(role) 
-        switch (role) { 
+    if (typeof window !== 'undefined') {
+      const user = localStorage.getItem('user');
+      if (user) {
+        const userParsed = JSON.parse(user);
+        const role = userParsed.role;
+        console.log(role)
+        switch (role) {
           case 'employee':
             return 2;
           case 'user':
             return 1;
           default:
-            return null; 
+            return null;
         }
       }
     }
