@@ -41,7 +41,7 @@ article{
     display: flex;
     position: absolute;
     align-items: flex-end;
-    justify-content: space-between;
+    justify-content: center;
     z-index: 5;
     background-image: linear-gradient(to top, rgba(0, 0, 0, 0.596), rgba(0, 0, 0, 0));
     width: 100%;

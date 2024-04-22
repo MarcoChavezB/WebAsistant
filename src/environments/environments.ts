@@ -26,6 +26,7 @@ export const environment ={
   getUsersIndex: `${baseURL}employee/users/index`,
   changeroleuser: `${baseURL}employee/changerole/`,
   synkdeviceuser:  `${baseURL}user/link/device`,
+  unsynkdeviceuser:  `${baseURL}user/deslink/device`,
   Controller:  `${ControlbaseURL}mqtt/`,
   tempdata: `${baseURL}Temp/lastfive/`,
   velocidaddata: `${baseURL}vel/lastfive/`,

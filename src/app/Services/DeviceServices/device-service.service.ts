@@ -31,4 +31,8 @@ export class DeviceServiceService {
     return this.http.post<any>(environment.synkdeviceuser, device_code );
   }
 
+  unsynkDeviceUser(device_code: object): Observable<any> {
+    return this.http.post<any>(environment.unsynkdeviceuser, device_code );
+  }
+
 }

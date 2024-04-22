@@ -13,6 +13,9 @@ import { DeviceGet } from '@models/Device';
 import { CommonModule } from '@angular/common';
 import { DevicestoreComponent } from '@components/DeviceStore/devicestore/devicestore.component';
 import { DeviceRowUserComponent } from '@components/Cards/device-row-user/device-row-user/device-row-user.component';
+import { DeviceService } from '@services/DeviceService/device.service';
+import { DeviceServiceService } from '@services/DeviceServices/device-service.service';
+import { error } from 'console';
 @Component({
   selector: 'app-UserUpdate',
   standalone: true,
@@ -54,6 +57,8 @@ export class UserUpdateComponent {
     private toast: ToastrService,
     private authService: AuthServiceService,
     private router: Router,
+    private deviceserv: DeviceService,
+    private devicesService:DeviceServiceService, 
 
   ) {
   }
@@ -61,9 +66,15 @@ export class UserUpdateComponent {
   registrar = false
   devices: DeviceGet[] = []
   emptyDevices = false
+  deviceselect = ''
+  confirmdelete = false
+  selectDevice(id: string){
+    this.deviceserv.storeIdDevice(id)
+    this.updatedeviceselect()
+  }
 
-  selectDevice(id: number){
-
+  updatedeviceselect(){
+    this.deviceselect = this.deviceserv.getStoredIdDevice()
   }
 
 
@@ -89,6 +100,34 @@ export class UserUpdateComponent {
   ngOnInit() {
     this.getUserData();
     this.getDevices();
+    this.deviceselect = this.deviceserv.getStoredIdDevice()
+  }
+
+  unlink(device: string){
+    if(device === this.deviceserv.getStoredIdDevice()){
+      alert('Primero selecciona otro dispositivo para desvicular')
+    } else {
+      const code: object = {
+        device_code: device
+      }
+      const confirmacion = window.confirm('¿Estás seguro de que quieres eliminar este dispositivo?');
+      if (confirmacion) {
+        this.devicesService.unsynkDeviceUser(code).subscribe(
+          data=>{
+            alert('Dispositivo desvinculado exitosamente')
+            this.getDevices()          
+          },
+          error=>{
+            if(error.status === 404){
+              alert('Dispositivo no encontrado')
+            }
+          }
+        )
+      } else {
+  
+      }
+    }
+    
   }
 
   userUpdateForm = new FormGroup({

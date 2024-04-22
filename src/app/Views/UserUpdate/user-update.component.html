@@ -137,10 +137,13 @@
       <div class="stars"></div>
       <div 
         class="devices indess" style="max-height: 80vh;">
+        <h4 class="text-white">Devices</h4>
         <div *ngFor="let device of devices">
             <app-device-row-user
-            (click)="selectDevice(device.id)"
-            [reference]="device.code"/>
+            (clickemit2)="selectDevice(device.code)"
+            [reference]="device.code"
+            (clickemit)="unlink(device.code)"
+            />
         </div>
         
         <div *ngIf="emptyDevices" class=" flex w-full h-full flex-col text-white justify-center items-center">
@@ -149,7 +152,9 @@
       </div>
       <div class="segundoup indess">
         <div class="deviceuser">
-
+          <h4 class="text-white">Device Selected</h4>
+          <img src="/../../assets/backImage80.png" alt="" class="img">
+          <h1 class="text-white">{{ deviceselect }} </h1>
         </div>
         <app-devicestore  class="devicestore" (success)="success()"></app-devicestore>
 

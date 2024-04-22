@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-device-row-user',
@@ -9,4 +9,16 @@ import { Component, Input } from '@angular/core';
 })
 export class DeviceRowUserComponent {
   @Input() reference: string = '#######';
+  @Output() clickemit = new EventEmitter<void>();
+  @Output() clickemit2 = new EventEmitter<void>();
+
+
+  clickk(){
+    this.clickemit.emit()
+  }
+
+  clickk2(){
+    this.clickemit2.emit()
+  }
+
 }
