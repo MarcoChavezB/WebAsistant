@@ -62,6 +62,7 @@ export class ControllerComponent {
         this.keyActive[event.key] = true; 
         this.control(event.key);
         controlKeys.filter(k => k !== event.key).forEach(k => this.keyActive[k] = false); 
+        
       }
     } else {
       if(event.key === 'p'){
@@ -69,7 +70,7 @@ export class ControllerComponent {
       } else if (event.key === 'i'){
         this.control('p');  
       } else {
-        this.control(event.key);  
+        
       }
     }
   }
@@ -82,6 +83,8 @@ handleKeyUp(event: KeyboardEvent) {
   if (this.keyActive[event.key]) { 
     this.keyActive[event.key] = false;
     this.control('x'); 
+  } else {
+
   }
 }
 }

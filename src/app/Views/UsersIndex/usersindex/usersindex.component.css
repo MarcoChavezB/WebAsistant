@@ -19,3 +19,13 @@
     align-items: center;
     justify-content: center;
 }
+
+.titulo {
+    margin: 3vh;
+    font-size: 4vh;
+
+}
+
+.ksks {
+    height: auto;
+}

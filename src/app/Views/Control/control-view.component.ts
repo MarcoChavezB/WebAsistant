@@ -33,6 +33,13 @@ export class ControlViewComponent {
     eventSource: EventSource | null = null;
     url: SafeResourceUrl | null = null;
     newurl: string = ''
+    activecontrols= false;
+    isCheckboxChecked: boolean = false;
+
+    onCheckboxChange(event: Event) {
+      const inputElement = event.target as HTMLInputElement;
+      this.activecontrols = inputElement.checked;
+    }
     ngOnInit(){
         this.loadingVideo();
         this.sseOpenConnection();

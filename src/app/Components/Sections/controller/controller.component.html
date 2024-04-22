@@ -46,6 +46,19 @@
           </button>
 
         </div>
+
+        <div class="luces">
+          <h2>Alarm</h2>
+          <button (click)="control('v')" [disabled]="disabled" class="luzbtn text-white font-bold py-4 px-6 shadow-lg text-lg">
+            <i class="bi bi-volume-up">V</i>
+          </button>
+      
+          <button (click)="control('b')" [disabled]="disabled" class="luzbtn text-white font-bold py-4 px-6 shadow-lg text-lg">
+            <i class="bi bi-volume-down">B</i>
+          </button>
+
+        </div>
+
       </div>
     </div>
     <div class="contened flex flex-col items-center justify-center space-y-4">

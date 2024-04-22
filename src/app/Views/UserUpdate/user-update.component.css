@@ -5,6 +5,20 @@
   color: #C5D1DE;
 }
 
+.deviceuser{
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.425);
+  border-radius: 2vh;
+
+}
+.segundoup {
+  display: grid;
+  grid-template-rows: 30% 70%;
+  width: auto;
+  height: 90%;
+
+}
+
 .button-container {
   display: flex;
   justify-content: space-between;
@@ -12,6 +26,7 @@
 
 .devicestore{
   right: 0;
+  grid-row: 2;
 }
 
 .stars {

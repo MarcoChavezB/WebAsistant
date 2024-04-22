@@ -3,7 +3,8 @@
     <div @slideInOut *ngIf="alert" class="alerrt rounded-l-xl rounded-r-xl"> <p>{{ response }}</p></div>
 </div>
 <app-confirmation-dialog *ngIf="showConfirmationDialog" [message]="dialogMessage" (onConfirm)="onSubmit()" (onCancel)="closeDialog()"/>
-<div class="flex items-center justify-center h-screen">
+<h1 class="titulo">Users</h1>
+<div class=" ksks flex items-center justify-center h-screen">
     <div *ngIf="empty" class="flex items-center justify-center text-white text-sm">
         No hay usuarios que mostrar
     </div>

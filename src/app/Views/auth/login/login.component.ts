@@ -28,7 +28,7 @@ import { AlertComponent } from '@components/Alert/alert/alert.component';
 })
 export class LoginComponent {
 
-    isSubmitting = false;
+    isSubmitting = true;
     backendErrors: any;
     backendErrorMessage: any;
     modalTitle = 'Recuperar contraseña';
@@ -64,6 +64,12 @@ export class LoginComponent {
       this.password = ''
       this.verifycode = false
       this.showAlert("Logueate de nuevo para obtener un nuevo código");
+    }
+
+    ngOnInit(){
+      setTimeout(() => {
+        this.isSubmitting = false;
+      }, 3000);
     }
 
     onSubmit(){

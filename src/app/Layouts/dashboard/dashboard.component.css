@@ -1,5 +1,6 @@
 .contenedor {
     grid-template-columns: 1fr 13fr;
+    overflow: hidden;
 }
 
 .fondoAnimado {
@@ -7,6 +8,7 @@
     background: linear-gradient(rgb(0, 11, 31), rgb(0, 0, 0));
     overflow: hidden;
 }
+
 
 .fondoAnimado::before {
     content: "";

@@ -135,7 +135,7 @@
 
     <div class="flex items-center justify-center md:w-8/12 bg-transparent" style="position: relative; height: 100%; width: 80%; background-color: #0002145e; border-radius: 3vh; padding: 2vh; gap: 10vh; box-shadow: 0 0 15px rgba(255, 255, 255, 0.212); overflow: hidden;">
       <div class="stars"></div>
-       <div 
+      <div 
         class="devices indess" style="max-height: 80vh;">
         <div *ngFor="let device of devices">
             <app-device-row-user
@@ -147,7 +147,13 @@
           Hubo un error al mostrar los dispositivos.
         </div>
       </div>
-      <app-devicestore  class=" indess devicestore" (success)="success()"></app-devicestore>
+      <div class="segundoup indess">
+        <div class="deviceuser">
+
+        </div>
+        <app-devicestore  class="devicestore" (success)="success()"></app-devicestore>
+
+      </div>
 
   </div>
 </div>

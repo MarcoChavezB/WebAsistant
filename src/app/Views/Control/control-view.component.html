@@ -40,10 +40,16 @@
     </section>
 
     <section class="bottom grid">
-        <app-controller>
 
-        </app-controller>
-        <article class="bgg">
+        <label class="switch">
+            <input type="checkbox" (change)="onCheckboxChange($event)" [checked]="isCheckboxChecked">
+            <span class="slider"></span>
+          </label>
+          <h1  class="switch2">Active Controls</h1>
+
+        <app-controller class="b11" *ngIf="activecontrols"></app-controller>
+
+        <article class="bgg" >
 
             <div class="max-w-xl border bghs p-8">
                 <app-graficatemp></app-graficatemp>
