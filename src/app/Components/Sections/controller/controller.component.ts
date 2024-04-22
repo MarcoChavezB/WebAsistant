@@ -70,7 +70,7 @@ export class ControllerComponent {
       } else if (event.key === 'i'){
         this.control('p');  
       } else {
-        
+        this.control(event.key);  
       }
     }
   }
