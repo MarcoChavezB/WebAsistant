@@ -1,7 +1,9 @@
 <app-GlobalLoader *ngIf="isSubmitting" />
+
 <div class="noti">
     <div @slideInOut *ngIf="alert" class="alerrt rounded-l-xl rounded-r-xl"> <p>{{ response }}</p></div>
 </div>
+
 <app-confirmation-dialog *ngIf="showConfirmationDialog" [message]="dialogMessage" (onConfirm)="onSubmit()" (onCancel)="closeDialog()"/>
 <h1 class="titulo">Users</h1>
 <div class=" ksks flex items-center justify-center h-screen">

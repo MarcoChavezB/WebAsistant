@@ -34,6 +34,13 @@ export const environment ={
   pesodata: `${baseURL}peso/lastone/`,
   inclinaciondata: `${baseURL}incli/lastone/`,
   sse: `${baseURL}notification/`,
+
+  tempindexdata: `${baseURL}Temp/getindexpagination`,
+  velocidadindexdata: `${baseURL}vel/getindexpagination`,
+  gpsindexdata: `${baseURL}gps/getindexpagination`,
+  pesoindexdata: `${baseURL}peso/getindexpagination`,
+  inclinacionindexdata: `${baseURL}incli/getindexpagination`,
+
   pusher: {
     key: `2489eced27769e3a01d1`,
     cluster: `us3`

@@ -1,0 +1,218 @@
+<main class="h-full w-full flex justify-center items-center ml-5">
+    <div class=" flex flex-col w-full h-full text-gray-700  shadow-md rounded-xl bg-clip-border">
+      <div class=" mx-4 mt-4 overflow-hidden text-gray-700 bg-white rounded-none bg-clip-border">
+        <div class="flex flex-col items-center justify-between gap-8 mb-8">
+          <div class="w-full">
+            <h5 class="block font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+              Historial de Sensores
+            </h5>
+            <p class="block mt-1 font-sans text-base antialiased font-normal leading-relaxed text-gray-700">
+              Datos Registrados
+            </p>
+            <div class="flex flex-col items-center justify-between gap-4 md:flex-row relative z-50">
+              <div class="filtros flex justify-between">
+                <div class="flex overflow-hidden bg-white border divide-x rounded-lg rtl:flex-row-reverse">
+                  <button
+                    (click)="velodata()"
+                    [ngClass]="selectedButtons.vel === true ? 'button-selected' : 'button-unselected'"
+                    class="flex items-center px-4 py-2 text-sm font-medium text-gray-600 transition-colors duration-200 sm:text-base sm:px-6 gap-x-3 hover:bg-gray-100">
+                    <svg class="w-5 h-5 sm:w-6 sm:h-6" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-boxes" viewBox="0 0 16 16">
+                      <path d="M7.752.066a.5.5 0 0 1 .496 0l3.75 2.143a.5.5 0 0 1 .252.434v3.995l3.498 2A.5.5 0 0 1 16 9.07v4.286a.5.5 0 0 1-.252.434l-3.75 2.143a.5.5 0 0 1-.496 0l-3.502-2-3.502 2.001a.5.5 0 0 1-.496 0l-3.75-2.143A.5.5 0 0 1 0 13.357V9.071a.5.5 0 0 1 .252-.434L3.75 6.638V2.643a.5.5 0 0 1 .252-.434zM4.25 7.504 1.508 9.071l2.742 1.567 2.742-1.567zM7.5 9.933l-2.75 1.571v3.134l2.75-1.571zm1 3.134 2.75 1.571v-3.134L8.5 9.933zm.508-3.996 2.742 1.567 2.742-1.567-2.742-1.567zm2.242-2.433V3.504L8.5 5.076V8.21zM7.5 8.21V5.076L4.75 3.504v3.134zM5.258 2.643 8 4.21l2.742-1.567L8 1.076zM15 9.933l-2.75 1.571v3.134L15 13.067zM3.75 14.638v-3.134L1 9.933v3.134z"/>
+                    </svg>
+                    <span>Velocity</span>
+                  </button>
+                  <button
+                    (click)="weightdata()"
+                    [ngClass]="selectedButtons.peso === true ? 'button-selected' : 'button-unselected'"
+                    class="flex items-center px-4 py-2 text-sm font-medium text-gray-600 transition-colors duration-200 sm:text-base sm:px-6 gap-x-3 hover:bg-gray-100">
+                    <svg class="w-5 h-5 sm:w-6 sm:h-6" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-square" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm8.5 2.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"/>
+                    </svg>
+                    <span>Weight</span>
+                  </button>
+                  <button
+                    (click)="inclidata()"
+                    [ngClass]="selectedButtons.incli === true ? 'button-selected' : 'button-unselected'"
+                    class="flex items-center px-4 py-2 text-sm font-medium text-gray-600 transition-colors duration-200 sm:text-base sm:px-6 gap-x-3 hover:bg-gray-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                      stroke="currentColor" class="w-5 h-5 sm:w-6 sm:h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
+                    </svg>
+                    <span>Inclination</span>
+                  </button>
+                  <button
+                    (click)="gpsdata()"
+                    [ngClass]="selectedButtons.gps=== true ? 'button-selected' : 'button-unselected'"
+                    class="flex items-center px-4 py-2 text-sm font-medium text-gray-600 transition-colors duration-200 sm:text-base sm:px-6 gap-x-3 hover:bg-gray-100">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send-plus" viewBox="0 0 16 16">
+                    <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855a.75.75 0 0 0-.124 1.329l4.995 3.178 1.531 2.406a.5.5 0 0 0 .844-.536L6.637 10.07l7.494-7.494-1.895 4.738a.5.5 0 1 0 .928.372zm-2.54 1.183L5.93 9.363 1.591 6.602z"/>
+                    <path d="M16 12.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0m-3.5-2a.5.5 0 0 0-.5.5v1h-1a.5.5 0 0 0 0 1h1v1a.5.5 0 0 0 1 0v-1h1a.5.5 0 0 0 0-1h-1v-1a.5.5 0 0 0-.5-.5"/>
+                  </svg>
+                    <span>Gps</span>
+                  </button>
+                  <button
+                    (click)="tempdata()"
+                    [ngClass]="selectedButtons.temp === true ? 'button-selected' : 'button-unselected'"
+                    class="flex items-center px-4 py-2 text-sm font-medium text-gray-600 transition-colors duration-200 sm:text-base sm:px-6 gap-x-3 hover:bg-gray-100">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-minus" viewBox="0 0 16 16">
+                    <path d="m.5 3 .04.87a2 2 0 0 0-.342 1.311l.637 7A2 2 0 0 0 2.826 14H9v-1H2.826a1 1 0 0 1-.995-.91l-.637-7A1 1 0 0 1 2.19 4h11.62a1 1 0 0 1 .996 1.09L14.54 8h1.005l.256-2.819A2 2 0 0 0 13.81 3H9.828a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 6.172 1H2.5a2 2 0 0 0-2 2m5.672-1a1 1 0 0 1 .707.293L7.586 3H2.19q-.362.002-.683.12L1.5 2.98a1 1 0 0 1 1-.98z"/>
+                    <path d="M11 11.5a.5.5 0 0 1 .5-.5h4a.5.5 0 1 1 0 1h-4a.5.5 0 0 1-.5-.5"/>
+                  </svg>
+                    <span>Temperature</span>
+                  </button>
+                </div>
+              </div>
+  
+                <div class="flex justify-between items-center gap-10">
+              
+                    <button 
+                        class="bg-black rounded-lg hover:bg-black/80 duration-300 transition-colors border border-transparent px-8 py-2.5">
+                        <p class="text-white" (click)="previouspage()">Previous Page</p>
+                    </button>
+                    <button 
+                        class="bg-black rounded-lg hover:bg-black/80 duration-300 transition-colors border border-transparent px-8 py-2.5">
+                        <p class="text-white" (click)="nextpage()" >Next Page</p>
+                    </button>
+
+                    
+                    <h1 class="">{{ numpage }}</h1>
+                </div>
+              <div style="height: 10vh;"></div>
+            </div>
+          </div>
+
+          <div *ngIf="existdata" class="flex justify-center items-center mt-20 pospsp">
+            <div class="flex flex-col items-center justify-center max-w-3xl text-center">
+              <div class="inline-block rounded-lg p-3 bg-gray-100"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" class="h-6 w-6">
+                  <path d="m7.5 4.27 9 5.15"></path>
+                  <path
+                    d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z">
+                  </path>
+                  <path d="m3.3 7 8.7 5 8.7-5"></path>
+                  <path d="M12 22V12"></path>
+                </svg>
+              </div>
+              <div class="mt-4">
+                <h1 class="text-3xl font-bold tracking-tight">
+                  Sin Información
+                </h1>
+                <p class="max-w-[600px] mt-4 text-gray-500 md:mt-2 dark:text-gray-400">
+                  No hay información para mostrar
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <div *ngIf="!existdata" class="flex flex-col gap-2 shrink-0 sm:flex-row w-full" 
+            style="max-height: 70vh; height: 70vh; overflow: auto; max-width: 80vw;">
+            <table class="w-full text-left table-auto min-w-max">
+              <thead>
+                <tr>
+                  <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
+                    <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                      Type
+                    </p>
+                  </th>
+                  <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
+                    <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                      Unidad
+                    </p>
+                  </th>
+                  <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
+                    <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                      No. Sensor
+                    </p>
+                  </th>
+                  <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
+                    <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                      Value
+                    </p>
+                  </th>
+                  <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
+                    <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                      DateTime
+                    </p>
+                  </th>
+                  <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
+                    <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                      Code Device
+                    </p>
+                  </th>
+                  <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
+                    <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                      Id Mongo
+                    </p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let data of datas">
+                  <th class="p-4 border-b border-blue-gray-50">
+                    <div class="flex items-center gap-3">
+                      <div class="flex flex-col">
+                        <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                          {{data.Tipo}}
+                        </p>
+                      </div>
+                    </div>
+                  </th>
+                  <td class="p-4 border-b border-blue-gray-50">
+                    <div class="flex flex-col">
+                      <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                        {{data.Unidad}}
+                      </p>
+                    </div>
+                  </td>
+                  <td class="p-4 border-b border-blue-gray-50">
+                    <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                      {{data.NoSensor}}
+                    </p>
+                  </td>
+                  <td class="p-4 border-b border-blue-gray-50">
+                    <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                      {{data.Valor}}
+                    </p>
+                  </td>
+                  <td class="p-4 border-b border-blue-gray-50">
+                    <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                      {{data.Datetime}}
+                    </p>
+                  </td>
+                  <td class="p-4 border-b border-blue-gray-50">
+                    <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                      {{data.Device}}
+                    </p>
+                  </td>
+                  <td class="p-4 border-b border-blue-gray-50">
+                    <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                      {{data._id}}
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  
+  
+  
+  <div *ngIf="showLoading" class="modal-loader">
+    <div class="cancel flex justify-end mr-2">
+      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
+        class="bi bi-x" viewBox="0 0 16 16">
+        <path
+          d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+      </svg>
+    </div>
+    <div class="cont-loader flex justify-center items-center">
+      <div class="loader"></div>
+    </div>
+  </div>
+  

@@ -16,7 +16,7 @@ import { DevicesindexComponent } from './Views/DevicesIndex/devicesindex/devices
 import { UsersindexComponent } from './Views/UsersIndex/usersindex/usersindex.component';
 import { DeviceGuard } from './Guards/DeviceGuard/device-guard.guard';
 import { DeviceGuardSelect } from './Guards/DeviceGuardSelect/deviceguardselect.guard';
-
+import { HistorydataComponent } from './Views/HistoryData/historydata/historydata.component';
 export const routes: Routes = [
     {
         path: '',
@@ -51,6 +51,9 @@ export const routes: Routes = [
             {
                 path: 'control',
                 component: ControlViewComponent
+            },{
+                path: 'historydata',
+                component: HistorydataComponent
             },
             {
                 path: 'my/info',

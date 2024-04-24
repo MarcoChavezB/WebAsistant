@@ -15,3 +15,11 @@ export interface SensorData {
     data: SensorData[]
   }
   
+
+  export interface SensorDataIndexPagination {
+    success: boolean,
+    page: number,
+    perPage : number,
+    data: SensorData[]
+  }
+  

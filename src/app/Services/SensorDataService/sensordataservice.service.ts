@@ -3,6 +3,7 @@ import {environment} from "@environments/environments";
 import { SensorDataResponse } from '@models/Sensor';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
+import { SensorDataIndexPagination } from '@models/Sensor';
 @Injectable({
   providedIn: 'root'
 })
@@ -28,6 +29,29 @@ export class SensordataserviceService {
 
   getTemperaturaData(deviceCode: string): Observable<SensorDataResponse> {
     return this.http.get<SensorDataResponse>(environment.tempdata + deviceCode);
+  }
+
+
+  // index pagination 
+
+  getTempindexdata(deviceCodee: string, numm: number): Observable<SensorDataIndexPagination> {
+    return this.http.post<SensorDataIndexPagination>(environment.tempindexdata, {deviceCode: deviceCodee, num: numm})
+  }
+
+  getPesoindexdata(deviceCodee: string, numm: number): Observable<SensorDataIndexPagination> {
+    return this.http.post<SensorDataIndexPagination>(environment.pesoindexdata, {deviceCode: deviceCodee, num: numm})
+  }
+
+  getIncliindexdata(deviceCodee: string, numm: number): Observable<SensorDataIndexPagination> {
+    return this.http.post<SensorDataIndexPagination>(environment.inclinacionindexdata, {deviceCode: deviceCodee, num: numm})
+  }
+
+  getGpsindexdata(deviceCodee: string, numm: number): Observable<SensorDataIndexPagination> {
+    return this.http.post<SensorDataIndexPagination>(environment.gpsindexdata, {deviceCode: deviceCodee, num: numm})
+  }
+
+  getVelocidadindexdata(deviceCodee: string, numm: number): Observable<SensorDataIndexPagination> {
+    return this.http.post<SensorDataIndexPagination>(environment.velocidadindexdata, {deviceCode: deviceCodee, num: numm})
   }
 
 }
